@@ -1,0 +1,23 @@
+
+// Variables
+$color-primary: #5eb8ff;
+$color-secondary: #0288d1;
+$color-dark :#005b9f;
+$font-main: 'IBM Plex Sans', sans-serif;;
+$font-header: 'IBM Plex Sans Condensed', sans-serif;;
+
+
+.App {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000;
+}
+
+#the-text {
+  font-size: 3em;
+  color: $color-primary;
+  font-family: $font-header;
+}
