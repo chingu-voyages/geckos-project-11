@@ -4,7 +4,8 @@ class Landing extends Component {
   render() {
     return (
       <section id="landing-container" className="flex-col">
-        <div className="landing-display">
+        <div className="landing-display flex-col">
+        <img src="./placeholder.png" alt="Placeholder Img" />
         </div>
       </section>
     );
