@@ -6,7 +6,7 @@ Chingu Voyage Project
 * Kev "The Killer Whale"
 * Eric "The Narwhal"
 
-##Idea
+## Idea
 
 Our goal is to build a simplified version of the [My Fitness Pal](https://www.myfitnesspal.com/) (from Under Armour)
 
@@ -16,7 +16,7 @@ This project will include:
 - [ ] Ability to input food to track calories
 - [ ] Charts to show track progress
 
-##Dependencies
+## Dependencies
 Our project uses the following:
 * React
 * SCSS
