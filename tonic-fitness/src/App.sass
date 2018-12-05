@@ -18,7 +18,18 @@ $font-header: 'IBM Plex Sans Condensed', sans-serif
 
 /* Nav */
 
-#the-text
+#nav-container
+  grid-column: c1 / c2
+  grid-row: r1 / r2
+  display: flex
+  flex-flow: row-nowrap
+  justify-content: space-between
+
+#header
+
+
+.nav-header
+  margin-left: 2em
   font-size: 3em
   color: $color-primary
   font-family: $font-header
