@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 class Landing extends Component {
   render() {
     return (
-      <div className="goals">
-      Goals!!
-      </div>
+      <section id="landing-container" className="flex-col">
+        <div className="landing-display">
+        </div>
+      </section>
     );
   }
 }
