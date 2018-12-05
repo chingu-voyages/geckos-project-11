@@ -7,13 +7,10 @@ $font-main: 'IBM Plex Sans', sans-serif
 $font-header: 'IBM Plex Sans Condensed', sans-serif
 
 
-.App
-  display: flex
-  flex-flow: column nowrap
-  justify-content: center
-  align-items: center
-  height: 100vh
-  background-color: #000
+#app-container
+  display: grid
+  grid-template-columns: [c1] 100% [c2]
+  grid-template-rows: [r1] 100px [r2] 1fr [r3] 50px [r4]
 
 
 #the-text
