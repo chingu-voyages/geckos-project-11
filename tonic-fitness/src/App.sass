@@ -21,15 +21,26 @@ $font-header: 'IBM Plex Sans Condensed', sans-serif
 #nav-container
   grid-column: c1 / c2
   grid-row: r1 / r2
-  display: flex
-  flex-flow: row-nowrap
-  justify-content: space-between
+  width: 100%
 
 #header
+  display: flex
+  flex-flow: row nowrap
+  justify-content: space-around
+  align-items: center
+  width: 100%
 
-
-.nav-header
+#nav-header
   margin-left: 2em
   font-size: 3em
   color: $color-primary
   font-family: $font-header
+
+.nav-login
+  color: $color-primary
+  font-family: $font-header
+
+.nav-login-item:first-of-type
+  padding: 0.5em
+  margin: 0.5em
+  border-right: 1px solid #fff
