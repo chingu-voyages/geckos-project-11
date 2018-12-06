@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Landing extends Component {
-  render() {
+const Landing = () => {
     return (
       <section id="landing-container" className="flex-col">
         <div className="landing-display flex-row">
@@ -22,10 +21,7 @@ class Landing extends Component {
           </article>
         </div>
       </section>
-    );
+    )
   }
-}
 
 export default Landing;
-
-// <img className="placeholder" src="./placeholder.png" alt="Placeholder Img" />
