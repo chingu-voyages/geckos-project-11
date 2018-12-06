@@ -1,0 +1,81 @@
+
+// Variables
+$color-primary: #5eb8ff
+$color-secondary: #0288d1
+$color-dark : #005b9f
+$font-main: 'IBM Plex Sans', sans-serif
+$font-header: 'IBM Plex Sans Condensed', sans-serif
+
+
+/*  Root Styling/Layout */
+
+#app-container
+  display: grid
+  grid-template-columns: [c1] 100% [c2]
+  grid-template-rows: [r1] 100px [r2] 1fr [r3] 50px [r4]
+
+.flex-col
+  display: flex
+  flex-flow: column nowrap
+  justify-content: center
+  align-items: center
+
+.flex-row
+  display: flex
+  flex-flow: row nowrap
+  justify-content: space-evenly
+  align-items: center
+
+.heading-text
+  font-family: $font-header
+  font-size: 2em
+  color: #fff
+
+
+/* Nav */
+
+#nav-container
+  grid-column: c1 / c2
+  grid-row: r1 / r2
+  width: 100%
+  background-color: #000
+  box-shadow: 0 2px 15px #000
+
+#header
+  display: flex
+  flex-flow: row nowrap
+  justify-content: space-around
+  align-items: center
+  width: 100%
+  max-height: 100%
+
+#nav-header
+  font-size: 3em
+  color: $color-primary
+  font-family: $font-header
+
+.nav-login
+  color: $color-primary
+  font-family: $font-header
+
+.nav-login-item:first-of-type
+  padding: 0.5em
+  margin: 0.5em
+  border-right: 1px solid #fff
+
+
+/* Landing */
+
+#landing-container
+  grid-column: c1 / c2
+  grid-row: r2 / r3
+  height: 1000px
+  background-color: $color-secondary
+
+.landing-display
+  width: 80%
+  padding: 5em
+  border: 1px solid #000
+
+// .placeholder
+//   width: 100%
