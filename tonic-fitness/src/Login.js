@@ -2,9 +2,11 @@ import React from 'react';
 
 import Signup from './Signup.js';
 
-const Login = () => {
+const Login = (props) => {
   return (
-    <aside id="login-container" className="hide flex-col">
+    <aside id="login-container"
+           className="hide flex-col"
+           onClick={props.closeLogin}>
       <div className="login-nav">
         <span className="login-nav-item">Sign In</span>
         <span className="login-nav-item">Sign Up</span>

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Login from './Login';
+
 const openLogin = () => {
   let loginContainer = document.getElementById("login-container");
   loginContainer.classList.toggle("hide");
@@ -19,6 +21,8 @@ const Nav = () => {
                 >Sign up</span>
         </div>
       </header>
+      <Login
+        closeLogin={openLogin} />
     </nav>
   );
 }
