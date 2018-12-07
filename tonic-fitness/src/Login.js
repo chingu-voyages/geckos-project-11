@@ -11,10 +11,10 @@ const Login = (props) => {
         <span className="login-nav-item">Sign In</span>
       </div>
       <div className="login-body flex-col">
-        <h4 className="login-close"
-            onClick={props.closeLogin}>
+        <button className="login-close"
+                onClick={props.closeLogin}>
           X close
-        </h4>
+        </button>
         <Signup />
       </div>
     </aside>
