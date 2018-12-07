@@ -76,10 +76,19 @@ $font-header: 'IBM Plex Sans Condensed', sans-serif
   background-color: #ffffffa0
 
 .login-body
+  position: relative
   width: 600px
   height: 400px
   background-color: #fff
   box-shadow: 5px 5px 25px #000
+
+.login-close
+  position: absolute
+  top: 0
+  right: 1em
+  z-index: 3
+  &:hover
+    cursor: pointer
 
 .login-nav
   display: flex
