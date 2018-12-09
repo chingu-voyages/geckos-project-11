@@ -18,8 +18,6 @@ a:active {
   color: inherit;
 }
 
-
-
 #app-container {
   display: grid;
   grid-template-columns: [c1] 100% [c2];
@@ -49,6 +47,7 @@ a:active {
 .hide {
   display: none;
 }
+
 
 
 /* Nav */
@@ -146,6 +145,7 @@ a:active {
 }
 
 
+
 /* Landing */
 
 #landing-container {
@@ -153,10 +153,11 @@ a:active {
   grid-row: r2 / r3;
   height: 1000px;
   background-color: $color-secondary;
-}
 
-.landing-display {
-  width: 80%;
-  padding: 5em;
-  border: 1px solid #000;
+  .display {
+    width: 80%;
+    padding: 5em;
+    border: 1px solid #000;
+  }
+
 }
