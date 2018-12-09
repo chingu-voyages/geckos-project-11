@@ -6,7 +6,7 @@ import Landing from './Landing.js';
 import Goals from './Goals.js';
 import Signup from './Signup.js';
 import Log from './Log.js';
-import Results from './Results.js;'
+import Results from './Results.js';
 
 import './App.sass';
 
