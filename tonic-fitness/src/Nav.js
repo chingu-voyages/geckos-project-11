@@ -15,8 +15,8 @@ const Nav = () => {
         <Link to="/">
           <h1 id="icon">Tonic Fitness</h1>
         </Link>
-        <div className="nlogin">
-          <span className="nav-login-item"
+        <div className="login">
+          <span className="login-item"
                 onClick= {openLogin}
                 >Sign in</span>
           <span className="login-item"

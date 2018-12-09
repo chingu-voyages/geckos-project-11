@@ -94,54 +94,55 @@ a:active {
 
 
 
-/* Signup */
+/* Login */
 
 #login-container {
   position: fixed;
   width: 100vw;
   height: 100vh;
   background-color: #ffffffa0;
-}
 
-.login-body {
-  position: relative;
-  width: 600px;
-  height: 400px;
-  background-color: #fff;
-  box-shadow: 5px 5px 25px #000;
-}
+  .body {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    background-color: #fff;
+    box-shadow: 5px 5px 25px #000;
+  }
 
-.login-close {
-  position: absolute;
-  top: 1em;
-  right: 1em;
-  z-index: 3;
-}
+  .close {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    z-index: 3;
+  }
 
-.login-close:hover{
-  cursor:pointer;
-}
+  .close:hover{
+    cursor:pointer;
+  }
 
-.login-nav {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  width: 600px;
-  z-index: 2;
-}
+  .nav {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    z-index: 2;
+  }
 
-.login-nav-item {
-  width: 50%;
-  padding: 0.6em 0;
-  text-align: center;
-  color: #fff;
-  background-color: $color-dark;
-  border-radius: 20px 20px 0 0;
-}
+  .nav-item {
+    width: 50%;
+    padding: 0.6em 0;
+    text-align: center;
+    color: #fff;
+    background-color: $color-dark;
+    border-radius: 20px 20px 0 0;
+  }
 
-.login-nav-item:hover {
-  cursor: pointer;
+  .nav-item:hover {
+    cursor: pointer;
+  }
+
 }
 
 
