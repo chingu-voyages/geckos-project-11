@@ -6,15 +6,15 @@ const Signup = () => {
       <form action="" method="post" id="signup-form">
         <div className="form-field">
           Name:
-          <input type="text" name="name" id="form-name" placeholder="Skinnyboy Thompson" required />
+          <input type="text" name="name" id="name" placeholder="Skinnyboy Thompson" required />
         </div>
         <div className="form-field">
           Password:
-          <input type="password" name="name" id="form-password" minlength="6" maxlength="20" placeholder="6-20 characters" required />
+          <input type="password" name="name" id="password" minlength="6" maxlength="20" placeholder="6-20 characters" required />
         </div>
         <div className="form-field">
           Location:
-          <input type="text" name="name" id="form-loc" placeholder="Where are you from?" required />
+          <input type="text" name="name" id="loc" placeholder="Where are you from?" required />
         </div>
       </form>
     </div>

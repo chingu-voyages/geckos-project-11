@@ -146,6 +146,16 @@ a:active {
     width: 100%;
   }
 
+  #signup-form {
+    margin:0;
+    padding:0;
+
+    .form-field {
+      color: $color-primary;
+    }
+
+  }
+
 }
 
 
