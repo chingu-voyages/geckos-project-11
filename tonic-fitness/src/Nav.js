@@ -13,13 +13,13 @@ const Nav = () => {
     <nav id="nav-container">
       <header id="header">
         <Link to="/">
-          <h1 id="nav-header">Tonic Fitness</h1>
+          <h1 id="icon">Tonic Fitness</h1>
         </Link>
-        <div className="nav-login">
-          <span className="nav-login-item"
+        <div className="login">
+          <span className="login-item"
                 onClick= {openLogin}
                 >Sign in</span>
-          <span className="nav-login-item"
+          <span className="login-item"
                 onClick= {openLogin}
                 >Sign up</span>
         </div>
