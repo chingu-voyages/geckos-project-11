@@ -177,9 +177,15 @@ a:active {
   }
 
   #submit {
-    width: 300px;
-    color: $color-dark;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: $color-primary;
     font-size: 2em;
+  }
+
+  #submit:hover {
+    box-shadow: 4px 3px 20px #000;
   }
 
   ::placeholder {
