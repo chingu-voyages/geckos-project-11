@@ -16,7 +16,10 @@ class Goals extends Component  {
   render () {
     return (
       <div className="goals">
-
+        <h1>My Goals</h1>
+        <input 
+        className='textGoal' type='text' placeholder='Type your goal'>
+        </input>
         <ul>
           {this.state.goalsList.map(item => {
             return (
