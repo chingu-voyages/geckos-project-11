@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './stylesheets/Goals.scss';
+import '../stylesheets/Goals.scss';
 
 class Goals extends Component  {
   constructor(props) {
