@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Goals.scss';
 
 class Goals extends Component  {
   constructor(props) {
