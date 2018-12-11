@@ -16,7 +16,12 @@ class Goals extends Component  {
   
   generateList = e => {
     let goal = this.state.goalsList;
-    if(e.charCode == 13) {
+    if(goal[0] === 'I want to lose...' && e.charCode == 13) {
+        goal = [];
+        goal.push(e.target.value);
+        e.target.value = '';
+        this.setState({goalsList:goal})
+    } else if(e.charCode == 13) {
       goal.push(e.target.value)
       e.target.value = '';
       this.setState({goalsList:goal})
