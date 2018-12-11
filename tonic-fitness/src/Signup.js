@@ -10,12 +10,13 @@ const Signup = () => {
         </div>
         <div className="form-field heading-text">
           Password:
-          <input type="password" name="name" id="password" minlength="6" maxlength="20" placeholder="6-20 characters" required />
+          <input type="password" name="password" id="password" minlength="6" maxlength="20" placeholder="6-20 characters" required />
         </div>
         <div className="form-field heading-text">
           Location:
-          <input type="text" name="name" id="loc" placeholder="Where are you from?" required />
+          <input type="text" name="loc" id="loc" placeholder="Where are you from?" required />
         </div>
+        <input type="submit" name="submit" id="submit" className="heading-text" value="Get Started!" />
       </form>
     </div>
   );
