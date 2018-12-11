@@ -146,18 +146,39 @@ a:active {
     width: 100%;
   }
 
-  #signup-form {
-    margin:0;
-    padding:0;
+}
 
-    .form-field {
-      color: $color-dark;
-    }
+#signup-form {
+  margin:0;
+  padding:0;
 
-    ::placeholder {
-      color: $color-primary
-    }
+  .form-field {
+    margin: 1em auto;
+    color: $color-dark;
+    line-height: 1em;
+    font-variant: small-caps;
+  }
 
+  input {
+    margin-left: 1em;
+    font-size: 0.6em;
+  }
+
+  #name {
+    width: 230px;
+  }
+
+  #password {
+    width: 180px;
+  }
+
+  #loc {
+    width: 190px;
+  }
+
+  ::placeholder {
+    padding: 0.3em;
+    color: $color-primary
   }
 
 }
