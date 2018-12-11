@@ -10,7 +10,7 @@ const Signup = () => {
         </div>
         <div className="form-field heading-text">
           Password:
-          <input type="password" name="password" id="password" minlength="6" maxlength="20" placeholder="6-20 characters" required />
+          <input type="password" name="password" id="password" minLength="6" maxLength="20" placeholder="6-20 characters" required />
         </div>
         <div className="form-field heading-text">
           Location:
