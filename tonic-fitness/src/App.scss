@@ -151,7 +151,11 @@ a:active {
     padding:0;
 
     .form-field {
-      color: $color-primary;
+      color: $color-dark;
+    }
+
+    ::placeholder {
+      color: $color-primary
     }
 
   }
