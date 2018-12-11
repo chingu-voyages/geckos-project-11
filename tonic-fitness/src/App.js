@@ -8,7 +8,7 @@ import Signup from './Signup.js';
 import Log from './Log.js';
 import Results from './Results.js';
 
-import './App.scss';
+import './stylesheets/App.scss';
 
 class App extends Component {
   render() {
