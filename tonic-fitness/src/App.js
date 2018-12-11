@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 
-import Nav from './Nav.js';
-import Landing from './Landing.js';
-import Goals from './Goals.js';
-import Signup from './Signup.js';
-import Log from './Log.js';
-import Results from './Results.js';
+import Nav from './components/Nav.js';
+import Landing from './components/Landing.js';
+import Goals from './components/Goals.js';
+import Signup from './components/Signup.js';
+import Log from './components/Log.js';
+import Results from './components/Results.js';
 
-import './App.scss';
+import './stylesheets/App.scss';
 
 class App extends Component {
   render() {
