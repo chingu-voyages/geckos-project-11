@@ -161,7 +161,9 @@ a:active {
 
   input {
     margin-left: 1em;
+    padding: 0.2em;
     font-size: 0.6em;
+    border-radius: 0.4em;
   }
 
   #name {
@@ -179,9 +181,13 @@ a:active {
   #submit {
     width: 100%;
     margin: 0;
-    padding: 0;
+    padding: 0.2em 0;
     color: $color-primary;
-    font-size: 2em;
+    font-size: 1.2em;
+    font-variant: small-caps;
+    letter-spacing: 0.3em;
+    border-image: 0;
+    border-radius: 0.4em;
   }
 
   #submit:hover {
