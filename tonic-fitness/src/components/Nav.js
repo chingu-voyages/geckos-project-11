@@ -1,13 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Login from './Login';
-
-const openLogin = () => {
-  let loginContainer = document.getElementById("login-container");
-  loginContainer.classList.toggle("hide");
-}
-
 const Nav = () => {
   return (
     <nav id="nav-container">
@@ -16,16 +9,12 @@ const Nav = () => {
           <h1 id="icon">Tonic Fitness</h1>
         </Link>
         <div className="login">
-          <span className="login-item"
-                onClick= {openLogin}
-                >Sign in</span>
-          <span className="login-item"
-                onClick= {openLogin}
-                >Sign up</span>
-        </div>
+          <Link to="/login/signup"
+                className="login-item">Sign up</Link>
+              <Link to="/login/signin"
+                className="login-item">Sign in</Link>
+            </div>
       </header>
-      <Login
-        closeLogin={openLogin} />
     </nav>
   );
 }
