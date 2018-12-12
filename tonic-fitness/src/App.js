@@ -12,35 +12,7 @@ import './stylesheets/App.scss';
 
 class App extends Component {
 
-  //Store last location for Login modal,
-  //This is needed in order to allow the path
-  //to change and render Login but keep the
-  //current page displayed underneath (modal style)
-  previousLocation = this.props.location;
-
-  componentWillUpdate(nextProps) {
-    //Destructure this.props
-    let { location } = this.props;
-
-    //Set perviousLocation if not currently in the modal
-    if (nextProps.history.action !== "POP" &&
-        (!location.state || !location.state.modal)
-    ) {
-      this.previousLocation = this.props.location;
-    }
-  }
-
   render() {
-    let { location } = this.props;
-
-    //Boolean to determine if the Login modal
-    //is showing
-    let modalShowing = !!(
-      location.state &&
-      location.state.modal &&
-      this.previousLocation !== location
-    );
-
     return (
       <div id="app-container">
         <Nav />
@@ -50,8 +22,7 @@ class App extends Component {
           <Route path='/log' component={Log}/>
           <Route path='/results' component={Results}/>
         </Switch>
-        {/* Code below displays Login modal if boolean above === true */}
-        {modalShowing ? <Route path="/login" component={Login} /> : null}
+          <Route path="/login" component={Login} />
       </div>
     );
   }
