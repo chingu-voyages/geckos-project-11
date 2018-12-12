@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 
 //Base Login component, decides which to display
 const Login = () => {
@@ -8,12 +8,14 @@ const Login = () => {
     <aside id="login-container"
            className="flex-col">
       <div className="nav">
-        <span className="nav-item">Sign Up</span>
-        <span className="nav-item">Sign In</span>
+        <Link to="/login/signup" className="nav-item">Sign Up</Link>
+        <Link to="/login/signin" className="nav-item">Sign In</Link>
       </div>
       <div className="body flex-col">
         <button className="close">
-          X close
+          <Link to="/">
+            X close
+          </Link>
         </button>
         <Switch>
 
