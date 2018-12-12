@@ -7,6 +7,7 @@ import Goals from './components/Goals.js';
 import Signup from './components/Signup.js';
 import Log from './components/Log.js';
 import Results from './components/Results.js';
+import axios from "axios";
 
 import './stylesheets/App.scss';
 
