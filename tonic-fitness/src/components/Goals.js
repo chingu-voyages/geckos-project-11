@@ -41,6 +41,7 @@ class Goals extends Component  {
     return this.setState({goalsList:updatedList});
   }
 
+
   render () {
     const {goalsList} = this.state;
     return (
