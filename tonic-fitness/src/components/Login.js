@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { Route, Switch } from 'react-router-dom';
+
 import Signup from './Signup.js';
+import Signin from './Signin.js';
 
 const Login = (props) => {
   return (
@@ -15,7 +18,10 @@ const Login = (props) => {
                 onClick={props.closeLogin}>
           X close
         </button>
-        <Signup />
+        <Switch>
+          <Route path="/Login/Signup" component={Signup} />
+          <Route path="/Login/Signin" component={Signin} />
+        </Switch>
       </div>
     </aside>
   );
