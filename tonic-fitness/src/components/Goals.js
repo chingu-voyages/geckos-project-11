@@ -11,7 +11,6 @@ class Goals extends Component  {
         'I want to fit into...'
       ]
     }
-    this.generateList = this.generateList.bind(this);
   }
 
   optionSelected = () => {
@@ -24,7 +23,7 @@ class Goals extends Component  {
     let goalType = this.optionSelected() + '';
     if((goal[0] === 'I want to lose...' || goal[0] === 'By XX-XX-XXXX' || goal[0] === 'I want to fit into...') && e.charCode === 13) {
         goal = [];
-        goal.push(e.target.value);
+        goal.push({[goalType]: e.target.value, ['id']:0});
         e.target.value = '';
         this.setState({goalsList:goal});
       } else if (e.charCode === 13) {
@@ -42,18 +41,29 @@ class Goals extends Component  {
   }
 
 
+
   render () {
     const {goalsList} = this.state;
     return (
       <div className="goals">
         <h1>My Goals</h1>
         <input
-        className='textGoal' type='text' placeholder='Type your goal' onKeyPress={this.generateList}>
+        className='textGoal' type='text' placeholder='Type your goal'
+        onKeyPress={this.generateList}>
         </input>
+        <select className='selection' onClick={this.optionSelected}>
+          <option value='weight'>Weight loss</option>
+          <option value='date' >Target date</option>
+          <option value='misc'>Misc</option>
+          </select>
         <ul>
           {goalsList.map(item => {
             return (
-            <li>{item}</li>
+              <div>
+                <li onClick={(this.deleteGoal.bind(this, item.id))}>{item.weight}</li>
+                <li onClick={(this.deleteGoal.bind(this, item.id))}>{item.date}</li>
+                <li onClick={(this.deleteGoal.bind(this, item.id))}>{item.misc}</li>
+              </div>
             )
           })}
         </ul>
