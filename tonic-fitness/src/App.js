@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Nav from './components/Nav.js';
 import Landing from './components/Landing.js';
 import Goals from './components/Goals.js';
-import Signup from './components/Signup.js';
+import Login from './components/Login.js';
 import Log from './components/Log.js';
 import Results from './components/Results.js';
 
@@ -18,7 +18,6 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Landing} />
           <Route path='/goals' component={Goals}/>
-          <Route path='/signup' component={Signup}/>
           <Route path='/log' component={Log}/>
           <Route path='/results' component={Results}/>
         </Switch>

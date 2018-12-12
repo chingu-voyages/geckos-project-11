@@ -2,9 +2,60 @@ import React from 'react';
 
 import { Route, Switch } from 'react-router-dom';
 
-import Signup from './Signup.js';
-import Signin from './Signin.js';
+//SIGNUP COMPONENT
+const Signup = (location) => {
+  const { state = {} } = location;
+  const { modal } = state;
+  return (
+    <div className={modal ? "login-body flex-col" : "hide"}>
+      <form action="" method="post" id="signup-form">
+        <div className="form-field heading-text">
+          Name:
+          <input type="text" name="name" id="name" placeholder="Skinnyboy Thompson" required />
+        </div>
+        <div className="form-field heading-text">
+          Password:
+          <input type="password" name="password" id="password" minLength="6" maxLength="20" placeholder="6-20 characters" required />
+        </div>
+        <div className="form-field heading-text">
+          Location:
+          <input type="text" name="loc" id="loc" placeholder="Where are you from?" required />
+        </div>
+        <input type="submit" name="submit" id="submit" className="heading-text" value="Get Started!" />
+      </form>
+    </div>
+  );
+}
 
+
+//SIGNIN COMPONENT
+const Signin = (location) => {
+  const { state = {} } = location;
+  const { modal } = state;
+  return (
+    <div className={modal ? "login-body flex-col" : "hide"}>
+      <form action="" method="post" id="signup-form">
+        <div className="form-field heading-text">
+          Name:
+          <input type="text" name="name" id="name" placeholder="Skinnyboy Thompson" required />
+        </div>
+        <div className="form-field heading-text">
+          Password:
+          <input type="password" name="password" id="password" minLength="6" maxLength="20" placeholder="6-20 characters" required />
+        </div>
+        <div className="form-field heading-text">
+          Location:
+          <input type="text" name="loc" id="loc" placeholder="Where are you from?" required />
+        </div>
+        <input type="submit" name="submit" id="submit" className="heading-text" value="Get Started!" />
+      </form>
+    </div>
+  );
+}
+
+
+
+//Base Login component, decides which to display
 const Login = (props) => {
   return (
     <aside id="login-container"
