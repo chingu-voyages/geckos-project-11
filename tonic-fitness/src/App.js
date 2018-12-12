@@ -4,7 +4,6 @@ import { Switch, Route } from 'react-router-dom';
 import Nav from './components/Nav.js';
 import Landing from './components/Landing.js';
 import Goals from './components/Goals.js';
-import Login from './components/Login.js';
 import Log from './components/Log.js';
 import Results from './components/Results.js';
 
