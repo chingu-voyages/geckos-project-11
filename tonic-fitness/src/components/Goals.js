@@ -14,18 +14,31 @@ class Goals extends Component  {
     this.generateList = this.generateList.bind(this);
   }
 
+  optionSelected = () => {
+    let selected = document.querySelector('.selection');
+    return selected[selected.selectedIndex].value;
+  }
+
   generateList = e => {
     let goal = this.state.goalsList;
-    if(goal[0] === 'I want to lose...' && e.charCode === 13) {
+    let goalType = this.optionSelected() + '';
+    if((goal[0] === 'I want to lose...' || goal[0] === 'By XX-XX-XXXX' || goal[0] === 'I want to fit into...') && e.charCode === 13) {
         goal = [];
         goal.push(e.target.value);
         e.target.value = '';
-        this.setState({goalsList:goal})
-    } else if(e.charCode === 13) {
-      goal.push(e.target.value)
-      e.target.value = '';
-      this.setState({goalsList:goal})
+        this.setState({goalsList:goal});
+      } else if (e.charCode === 13) {
+          goal.push({[goalType]: e.target.value, ['id']:goal.length});
+          e.target.value = '';
+          this.setState({goalsList:goal});
+          console.log(goal);
     }
+  }
+
+  deleteGoal = id => {
+    let goal = this.state.goalsList;
+    let updatedList = goal.filter(item => item.id !== id);
+    return this.setState({goalsList:updatedList});
   }
 
   render () {
