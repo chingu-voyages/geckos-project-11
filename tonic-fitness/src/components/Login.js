@@ -7,6 +7,10 @@ const Login = () => {
   return (
     <aside id="login-container"
            className="flex-col">
+      <Link to="/">
+        <div className="invisible-close">
+        </div></Link>
+
       <div className="nav">
         <Link to="/login/signup" className="nav-item">Sign Up</Link>
         <Link to="/login/signin" className="nav-item">Sign In</Link>
@@ -64,51 +68,5 @@ const Login = () => {
     </aside>
   );
 }
-
-
-//SIGNUP COMPONENT
-// const Signup = () => {
-//   return (
-//     <div className="login-body flex-col">
-//       <form action="" method="post" id="signup-form">
-//         <div className="form-field heading-text">
-//           Name:
-//           <input type="text" name="name" id="name" placeholder="Skinnyboy Thompson" required />
-//         </div>
-//         <div className="form-field heading-text">
-//           Password:
-//           <input type="password" name="password" id="password" minLength="6" maxLength="20" placeholder="6-20 characters" required />
-//         </div>
-//         <div className="form-field heading-text">
-//           Location:
-//           <input type="text" name="loc" id="loc" placeholder="Where are you from?" required />
-//         </div>
-//         <input type="submit" name="submit" id="submit" className="heading-text" value="Get Started!" />
-//       </form>
-//     </div>
-//   );
-// }
-
-
-// //SIGNIN COMPONENT
-// const Signin = () => {
-//   return (
-//     <div className="login-body flex-col">
-//       <form action="" method="post" id="signup-form">
-//         <div className="form-field heading-text">
-//           Name:
-//           <input type="text" name="name" id="name" placeholder="Skinnyboy Thompson" required />
-//         </div>
-//         <div className="form-field heading-text">
-//           Password:
-//           <input type="password" name="password" id="password" minLength="6" maxLength="20" placeholder="6-20 characters" required />
-//         </div>
-//         <input type="submit" name="submit" id="submit" className="heading-text" value="Log In" />
-//       </form>
-//     </div>
-//   );
-// }
-
-
 
 export default Login;
