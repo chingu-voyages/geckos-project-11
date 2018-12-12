@@ -13,19 +13,22 @@ class Goals extends Component  {
     }
   }
 
+  optionSelected = () => {
+    let selected = document.querySelector('.selection');
+    return selected[selected.selectedIndex].value;
+  }
   
   generateList = e => {
     let goal = this.state.goalsList;
-   
-    if(goal[0] === 'I want to lose...' && e.charCode === 13) {
+    let goalType = this.optionSelected() + '';
+    if((goal[0] === 'I want to lose...' || goal[0] === 'By XX-XX-XXXX' || goal[0] === 'I want to fit into...') && e.charCode === 13) {
         goal = [];
-        goal.push(e.target.value);
+        goal.push({[goalType]: e.target.value});
         e.target.value = '';
-        this.setState({goalsList:goal})
-    } else if(e.charCode === 13) {
-      goal.push(e.target.value)
-      e.target.value = '';
-      this.setState({goalsList:goal})
+        this.setState({goalsList:goal});
+    } else if (e.charCode === 13) {
+      goal.push({[goalType]: e.target.value});
+      this.setState({goalsList:goal});
     }
   }
  
@@ -35,9 +38,7 @@ class Goals extends Component  {
     return this.setState({goalsList:updatedList});
   }
 
-  optionSelected = e => {
-    return e.target.value + '';
-  }
+
 
   render () {
     const {goalsList} = this.state;
@@ -48,7 +49,7 @@ class Goals extends Component  {
         className='textGoal' type='text' placeholder='Type your goal' 
         onKeyPress={this.generateList}>
         </input>
-        <select onClick={this.optionSelected}>
+        <select className='selection' onClick={this.optionSelected}>
           <option value='weight'>Weight loss</option>
           <option value='date' >Target date</option>
           <option value='misc'>Misc</option>
@@ -56,7 +57,11 @@ class Goals extends Component  {
         <ul>
           {goalsList.map(item => {
             return (
-            <li onClick={(this.deleteGoal)}>{item}</li>
+              <div>
+                <li onClick={(this.deleteGoal)}>{item.weight}</li>
+                <li onClick={(this.deleteGoal)}>{item.date}</li>
+                <li onClick={(this.deleteGoal)}>{item.misc}</li>
+              </div>
             )
           })}
         </ul>
