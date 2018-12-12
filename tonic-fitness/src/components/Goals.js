@@ -12,23 +12,30 @@ class Goals extends Component  {
       ]
     }
     this.generateList = this.generateList.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
 
   
   generateList = e => {
     let goal = this.state.goalsList;
-    if(goal[0] === 'I want to lose...' && e.charCode == 13) {
+    if(goal[0] === 'I want to lose...' && e.charCode === 13) {
         goal = [];
         goal.push(e.target.value);
         e.target.value = '';
         this.setState({goalsList:goal})
-    } else if(e.charCode == 13) {
+    } else if(e.charCode === 13) {
       goal.push(e.target.value)
       e.target.value = '';
       this.setState({goalsList:goal})
     }
   }
  
+  deleteItem = e => {
+    let goal = this.state.goalsList;
+    let updatedList = goal.filter(item => item !== e.target.textContent);
+    return this.setState({goalsList:updatedList});
+  }
+
   render () {
     const {goalsList} = this.state;
     return (
@@ -40,7 +47,7 @@ class Goals extends Component  {
         <ul>
           {goalsList.map(item => {
             return (
-            <li>{item}</li>
+            <li onClick={(this.deleteItem)}>{item}</li>
             )
           })}
         </ul>
