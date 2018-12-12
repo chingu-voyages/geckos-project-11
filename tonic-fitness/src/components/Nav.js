@@ -9,9 +9,15 @@ const Nav = () => {
           <h1 id="icon">Tonic Fitness</h1>
         </Link>
         <div className="login">
-          <Link to="/login/Signup"
+          <Link to={{
+                  pathname: "/login/signup",
+                  state: { modal: true }
+                  }}
                 className="login-item">Sign up</Link>
-          <Link to="/login/Signin"
+          <Link to={{
+                  pathname: "/login/signin",
+                  state: { modal: true }
+                  }}
                 className="login-item">Sign in</Link>
         </div>
       </header>

@@ -50,6 +50,7 @@ class App extends Component {
           <Route path='/log' component={Log}/>
           <Route path='/results' component={Results}/>
         </Switch>
+        {/* Code below displays Login modal if boolean above === true */}
         {modalShowing ? <Route path="/login" component={Login} /> : null}
       </div>
     );
