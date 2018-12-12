@@ -23,18 +23,20 @@ class Goals extends Component  {
     let goalType = this.optionSelected() + '';
     if((goal[0] === 'I want to lose...' || goal[0] === 'By XX-XX-XXXX' || goal[0] === 'I want to fit into...') && e.charCode === 13) {
         goal = [];
-        goal.push({[goalType]: e.target.value});
+        goal.push({[goalType]: e.target.value, ['id']:0});
         e.target.value = '';
         this.setState({goalsList:goal});
-    } else if (e.charCode === 13) {
-      goal.push({[goalType]: e.target.value});
-      this.setState({goalsList:goal});
+      } else if (e.charCode === 13) {
+          goal.push({[goalType]: e.target.value, ['id']:goal.length});
+          e.target.value = '';
+          this.setState({goalsList:goal});
+          console.log(goal);
     }
   }
  
-  deleteGoal = e => {
+  deleteGoal = id => {
     let goal = this.state.goalsList;
-    let updatedList = goal.filter(item => item !== e.target.textContent);
+    let updatedList = goal.filter(item => item.id !== id);
     return this.setState({goalsList:updatedList});
   }
 
@@ -58,9 +60,9 @@ class Goals extends Component  {
           {goalsList.map(item => {
             return (
               <div>
-                <li onClick={(this.deleteGoal)}>{item.weight}</li>
-                <li onClick={(this.deleteGoal)}>{item.date}</li>
-                <li onClick={(this.deleteGoal)}>{item.misc}</li>
+                <li onClick={(this.deleteGoal.bind(this, item.id))}>{item.weight}</li>
+                <li onClick={(this.deleteGoal.bind(this, item.id))}>{item.date}</li>
+                <li onClick={(this.deleteGoal.bind(this, item.id))}>{item.misc}</li>
               </div>
             )
           })}
