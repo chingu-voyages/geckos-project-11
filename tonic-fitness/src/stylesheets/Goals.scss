@@ -1,0 +1,28 @@
+// Variables
+$color-primary: #5eb8ff;
+$color-secondary: #0288d1;
+$color-dark : #005b9f;
+$font-main: 'IBM Plex Sans', sans-serif;
+$font-header: 'IBM Plex Sans Condensed', sans-serif;
+
+.goals {
+    background-color: $color-primary;
+    font-family: $font-main;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+}
+
+h1 {
+    font-family: $font-header;
+    text-align: center;
+}
+
+input {
+    margin-left: 42%;
+    width: 300px;
+}
+ul {
+    text-align: center;
+    list-style-type: none;
+}

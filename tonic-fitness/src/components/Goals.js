@@ -14,21 +14,36 @@ class Goals extends Component  {
     this.generateList = this.generateList.bind(this);
   }
 
+<<<<<<< HEAD
 
   generateList = e => {
     let goal = this.state.goalsList;
     if(goal[0] === 'I want to lose...' && e.charCode === 13) {
+=======
+  
+  generateList = e => {
+    let goal = this.state.goalsList;
+    if(goal[0] === 'I want to lose...' && e.charCode == 13) {
+>>>>>>> c64c5b4bff51d9876b1acd044a89fe670d13248f
         goal = [];
         goal.push(e.target.value);
         e.target.value = '';
         this.setState({goalsList:goal})
+<<<<<<< HEAD
     } else if(e.charCode === 13) {
+=======
+    } else if(e.charCode == 13) {
+>>>>>>> c64c5b4bff51d9876b1acd044a89fe670d13248f
       goal.push(e.target.value)
       e.target.value = '';
       this.setState({goalsList:goal})
     }
   }
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> c64c5b4bff51d9876b1acd044a89fe670d13248f
   render () {
     const {goalsList} = this.state;
     return (
