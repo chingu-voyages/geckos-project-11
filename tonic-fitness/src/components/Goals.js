@@ -30,7 +30,7 @@ class Goals extends Component  {
     }
   }
  
-  deleteItem = e => {
+  deleteGoal = e => {
     let goal = this.state.goalsList;
     let updatedList = goal.filter(item => item !== e.target.textContent);
     return this.setState({goalsList:updatedList});
@@ -42,12 +42,13 @@ class Goals extends Component  {
       <div className="goals">
         <h1>My Goals</h1>
         <input
-        className='textGoal' type='text' placeholder='Type your goal' onKeyPress={this.generateList}>
+        className='textGoal' type='text' placeholder='Type your goal' 
+        onKeyPress={this.generateList}>
         </input>
         <ul>
           {goalsList.map(item => {
             return (
-            <li onClick={(this.deleteItem)}>{item}</li>
+            <li onClick={(this.deleteGoal)}>{item}</li>
             )
           })}
         </ul>
