@@ -11,13 +11,12 @@ class Goals extends Component  {
         'I want to fit into...'
       ]
     }
-    this.generateList = this.generateList.bind(this);
-    this.deleteItem = this.deleteItem.bind(this);
   }
 
   
   generateList = e => {
     let goal = this.state.goalsList;
+   
     if(goal[0] === 'I want to lose...' && e.charCode === 13) {
         goal = [];
         goal.push(e.target.value);
@@ -36,6 +35,10 @@ class Goals extends Component  {
     return this.setState({goalsList:updatedList});
   }
 
+  optionSelected = e => {
+    return e.target.value + '';
+  }
+
   render () {
     const {goalsList} = this.state;
     return (
@@ -45,6 +48,11 @@ class Goals extends Component  {
         className='textGoal' type='text' placeholder='Type your goal' 
         onKeyPress={this.generateList}>
         </input>
+        <select onClick={this.optionSelected}>
+          <option value='weight'>Weight loss</option>
+          <option value='date' >Target date</option>
+          <option value='misc'>Misc</option>
+          </select>
         <ul>
           {goalsList.map(item => {
             return (
