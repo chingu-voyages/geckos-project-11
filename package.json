@@ -2,5 +2,9 @@
   "devDependencies": {
     "node-sass": "^4.10.0",
     "sass-loader": "^7.1.0"
-  }
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "proxy": "http://localhost:5000/api/hello"
 }
