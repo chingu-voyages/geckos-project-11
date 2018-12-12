@@ -17,11 +17,7 @@ class Goals extends Component  {
     let selected = document.querySelector('.selection');
     return selected[selected.selectedIndex].value;
   }
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> 9f61c4fa49632ae40032020e76fbf85e57f9f5d6
   generateList = e => {
     let goal = this.state.goalsList;
     let goalType = this.optionSelected() + '';
@@ -37,11 +33,7 @@ class Goals extends Component  {
           console.log(goal);
     }
   }
-<<<<<<< HEAD
 
-=======
- 
->>>>>>> 9f61c4fa49632ae40032020e76fbf85e57f9f5d6
   deleteGoal = id => {
     let goal = this.state.goalsList;
     let updatedList = goal.filter(item => item.id !== id);
@@ -56,11 +48,9 @@ class Goals extends Component  {
       <div className="goals">
         <h1>My Goals</h1>
         <input
-<<<<<<< HEAD
+
         className='textGoal' type='text' placeholder='Type your goal'
-=======
-        className='textGoal' type='text' placeholder='Type your goal' 
->>>>>>> 9f61c4fa49632ae40032020e76fbf85e57f9f5d6
+
         onKeyPress={this.generateList}>
         </input>
         <select className='selection' onClick={this.optionSelected}>
