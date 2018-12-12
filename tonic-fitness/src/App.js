@@ -10,6 +10,22 @@ import Results from './components/Results.js';
 import './stylesheets/App.scss';
 
 class App extends Component {
+
+  //Store last location for Login modal
+  previousLocation = this.props.location;
+
+  componentWillUpdate(nextProps) {
+    //Destructure this.props
+    let { location } = this.props;
+
+    //Set perviousLocation if not currently in the modal
+    if (nextProps.history.action !== "POP" &&
+        (!location.state || !location.state.modal)
+    ) {
+      this.previousLocation = this.props.location;
+    }
+  }
+
   render() {
     return (
       <div id="app-container">
