@@ -142,6 +142,63 @@ a:active {
     cursor: pointer;
   }
 
+  .login-body {
+    width: 100%;
+  }
+
+}
+
+#signup-form {
+  margin:0;
+  padding:0;
+
+  .form-field {
+    margin: 1em auto;
+    color: $color-dark;
+    line-height: 1em;
+    font-variant: small-caps;
+  }
+
+  input {
+    margin-left: 1em;
+    padding: 0.2em;
+    font-size: 0.6em;
+    border-radius: 0.4em;
+  }
+
+  #name {
+    width: 230px;
+  }
+
+  #password {
+    width: 180px;
+  }
+
+  #loc {
+    width: 190px;
+  }
+
+  #submit {
+    width: 100%;
+    margin: 0;
+    padding: 0.2em 0;
+    color: $color-primary;
+    font-size: 1.2em;
+    font-variant: small-caps;
+    letter-spacing: 0.3em;
+    border-image: 0;
+    border-radius: 0.4em;
+  }
+
+  #submit:hover {
+    box-shadow: 4px 3px 20px #000;
+  }
+
+  ::placeholder {
+    padding: 0.3em;
+    color: $color-primary
+  }
+
 }
 
 

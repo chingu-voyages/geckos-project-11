@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import Nav from './components/Nav.js';
 import Landing from './components/Landing.js';
@@ -21,7 +21,6 @@ class App extends Component {
           <Route path='/signup' component={Signup}/>
           <Route path='/log' component={Log}/>
           <Route path='/results' component={Results}/>
-          <Landing linkGoals={<Link path='/goals'></Link>}/>
         </Switch>
       </div>
     );
