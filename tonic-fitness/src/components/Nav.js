@@ -9,11 +9,11 @@ const Nav = () => {
           <h1 id="icon">Tonic Fitness</h1>
         </Link>
         <div className="login">
-          <Link to="/login"
+          <Link to="/login/signup"
                 className="login-item">Sign up</Link>
-          <Link to="/login"
+              <Link to="/login/signin"
                 className="login-item">Sign in</Link>
-        </div>
+            </div>
       </header>
     </nav>
   );

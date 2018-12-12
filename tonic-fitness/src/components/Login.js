@@ -6,7 +6,7 @@ import { Route, Switch } from 'react-router-dom';
 const Login = () => {
   return (
     <aside id="login-container"
-           className="hide flex-col">
+           className="flex-col">
       <div className="nav">
         <span className="nav-item">Sign Up</span>
         <span className="nav-item">Sign In</span>
