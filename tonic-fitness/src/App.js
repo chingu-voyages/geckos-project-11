@@ -15,7 +15,7 @@ class App extends Component {
     super(props);
     this.state = {
       user: [
-        'test','test2'
+        
       ]
     }
 
@@ -27,15 +27,16 @@ class App extends Component {
 
   render() {
     const user = this.state.user;
+    const {weight, date, misc} = this.state.user;
     return (
       <div id="app-container">
         <Nav />
         <Switch>
           <Route exact path='/' component={Landing} />
-          <Route path='/goals' render={(props) => <Goals {...props} renderApp={() => this.renderApp}/>}/>
+          <Route path='/goals' render={(props) => <Goals {...props} renderApp={(e)=> this.renderApp(e)}/>}/>
           <Route path='/log' component={Log}/>
           <Route path='/results' 
-          render={(props) => <Results {...props} user={user}/>}/>
+          render={(props) => <Results {...props} user={user} weight={weight} date={date} misc={misc}/>}/>
         </Switch>
           <Route path="/login" component={Login} />
           

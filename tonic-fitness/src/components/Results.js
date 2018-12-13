@@ -4,7 +4,17 @@ const Results = (props) => {
     return (
         <div>
             Results page.
-            {props.user}
+            {props.user.map(item => {
+                return (
+                <div>
+                    <ul>
+                        <li>
+                            {item.weight}
+                        </li>
+                    </ul>
+                </div>
+                )
+            })}
         </div>
     )
 }

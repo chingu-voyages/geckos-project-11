@@ -25,12 +25,14 @@ class Goals extends Component  {
         goal = [];
         goal.push({[goalType]: e.target.value, ['id']:0});
         e.target.value = '';
+        this.props.renderApp(goal);
         this.setState({goalsList:goal});
       } else if (e.charCode === 13) {
           goal.push({[goalType]: e.target.value, ['id']:goal.length});
           e.target.value = '';
+          this.props.renderApp(goal);
           this.setState({goalsList:goal});
-          console.log(goal);
+          
     }
   }
  
