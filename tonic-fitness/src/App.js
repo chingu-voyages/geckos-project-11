@@ -21,6 +21,10 @@ class App extends Component {
 
   }
 
+  renderApp = (e) => {
+    this.setState({user:e});
+  }
+
   render() {
     const user = this.state.user;
     return (
@@ -28,7 +32,7 @@ class App extends Component {
         <Nav />
         <Switch>
           <Route exact path='/' component={Landing} />
-          <Route path='/goals' component={Goals}/>
+          <Route path='/goals' render={(props) => <Goals {...props} renderApp={() => this.renderApp}/>}/>
           <Route path='/log' component={Log}/>
           <Route path='/results' 
           render={(props) => <Results {...props} user={user}/>}/>
