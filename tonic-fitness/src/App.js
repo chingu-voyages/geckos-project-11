@@ -11,8 +11,18 @@ import Results from './components/Results.js';
 import './stylesheets/App.scss';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      user: [
+        'test','test2'
+      ]
+    }
+
+  }
 
   render() {
+    const user = this.state.user;
     return (
       <div id="app-container">
         <Nav />
@@ -20,9 +30,11 @@ class App extends Component {
           <Route exact path='/' component={Landing} />
           <Route path='/goals' component={Goals}/>
           <Route path='/log' component={Log}/>
-          <Route path='/results' component={Results}/>
+          <Route path='/results' 
+          render={(props) => <Results {...props} user={user}/>}/>
         </Switch>
           <Route path="/login" component={Login} />
+          
       </div>
     );
   }
