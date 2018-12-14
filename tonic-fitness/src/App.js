@@ -11,18 +11,35 @@ import Results from './components/Results.js';
 import './stylesheets/App.scss';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      user: [
+        
+      ]
+    }
+
+  }
+
+  renderApp = (e) => {
+    this.setState({user:e});
+  }
 
   render() {
+    const user = this.state.user;
+    const {weight, date, misc} = this.state.user;
     return (
       <div id="app-container">
         <Nav />
         <Switch>
           <Route exact path='/' component={Landing} />
-          <Route path='/goals' component={Goals}/>
+          <Route path='/goals' render={(props) => <Goals {...props} renderApp={(e)=> this.renderApp(e)}/>}/>
           <Route path='/log' component={Log}/>
-          <Route path='/results' component={Results}/>
+          <Route path='/results' 
+          render={(props) => <Results {...props} user={user} weight={weight} date={date} misc={misc}/>}/>
         </Switch>
           <Route path="/login" component={Login} />
+          
       </div>
     );
   }
