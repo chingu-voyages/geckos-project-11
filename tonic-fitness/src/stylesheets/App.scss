@@ -229,6 +229,10 @@ a:active {
     border: 1px solid #000;
   }
 
+  .fas {
+    font-size: 3em;
+  }
+
 }
 
 /* MEDIA QUERIES */
@@ -253,6 +257,10 @@ a:active {
 
     .display {
       width: 80%;
+    }
+
+    .fas {
+      font-size: 8em;
     }
 
   }
