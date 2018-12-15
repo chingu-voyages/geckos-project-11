@@ -40,7 +40,7 @@ a:active {
 
 .heading-text {
   font-family: $font-header;
-  font-size: 2em;
+  font-size: 1em;
   color: #fff;
 }
 
@@ -220,12 +220,12 @@ a:active {
 #landing-container {
   grid-column: c1 / c2;
   grid-row: r2 / r3;
-  height: 1000px;
+  height: 100vh;
   background-color: $color-secondary;
 
   .display {
     width: 90%;
-    padding: 5em;
+    padding: 1em 0.2em;
     border: 1px solid #000;
   }
 
@@ -239,7 +239,12 @@ a:active {
 
 @media only screen and (min-width:600px) {
 
-  /* Nav */
+/* General */
+.heading-text {
+  font-size: 2em;
+}
+
+/* Nav */
 
 #nav-container {
 
@@ -253,17 +258,20 @@ a:active {
 
 }
 
-  #landing-container {
+/* Landing */
 
-    .display {
-      width: 80%;
-    }
+#landing-container {
 
-    .fas {
-      font-size: 8em;
-    }
-
+  .display {
+    width: 80%;
+    padding: 2em;
   }
+
+  .fas {
+    font-size: 8em;
+  }
+
+}
 
 
 
