@@ -69,7 +69,7 @@ a:active {
   }
 
   #icon {
-    font-size: 3em;
+    font-size: 2em;
     color: $color-primary;
     font-family: $font-header;
   }
@@ -77,6 +77,10 @@ a:active {
   .login {
     color: $color-primary;
     font-family: $font-header;
+  }
+
+  .login-item {
+    font-size: 0.9em;
   }
 
   .login-item:hover {
@@ -220,9 +224,39 @@ a:active {
   background-color: $color-secondary;
 
   .display {
-    width: 80%;
+    width: 90%;
     padding: 5em;
     border: 1px solid #000;
   }
+
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (min-width:600px) {
+
+  /* Nav */
+
+#nav-container {
+
+  #icon {
+    font-size: 3em;
+  }
+
+  .login-item {
+    font-size: 1.2em;
+  }
+
+}
+
+  #landing-container {
+
+    .display {
+      width: 80%;
+    }
+
+  }
+
+
 
 }
