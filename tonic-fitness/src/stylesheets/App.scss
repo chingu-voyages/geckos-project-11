@@ -137,7 +137,7 @@ a:active {
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-    width: 600px;
+    width: 100vw;
     z-index: 2;
   }
 
@@ -244,6 +244,7 @@ a:active {
   font-size: 2em;
 }
 
+
 /* Nav */
 
 #nav-container {
@@ -257,6 +258,30 @@ a:active {
   }
 
 }
+
+
+/* Login */
+
+#login-container {
+
+  .body {
+    width: 600px;
+    height: 400px;
+  }
+
+  .close {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    z-index: 3;
+  }
+
+  .nav {
+    width: 600px;
+  }
+
+}
+
 
 /* Landing */
 
