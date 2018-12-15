@@ -40,7 +40,7 @@ a:active {
 
 .heading-text {
   font-family: $font-header;
-  font-size: 2em;
+  font-size: 1em;
   color: #fff;
 }
 
@@ -69,7 +69,7 @@ a:active {
   }
 
   #icon {
-    font-size: 3em;
+    font-size: 2em;
     color: $color-primary;
     font-family: $font-header;
   }
@@ -77,6 +77,10 @@ a:active {
   .login {
     color: $color-primary;
     font-family: $font-header;
+  }
+
+  .login-item {
+    font-size: 0.9em;
   }
 
   .login-item:hover {
@@ -133,7 +137,7 @@ a:active {
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-    width: 600px;
+    width: 100vw;
     z-index: 2;
   }
 
@@ -216,13 +220,84 @@ a:active {
 #landing-container {
   grid-column: c1 / c2;
   grid-row: r2 / r3;
-  height: 1000px;
+  height: 100vh;
   background-color: $color-secondary;
 
   .display {
-    width: 80%;
-    padding: 5em;
+    width: 90%;
+    padding: 1em 0.2em;
     border: 1px solid #000;
   }
+
+  .fas {
+    font-size: 3em;
+  }
+
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (min-width:600px) {
+
+/* General */
+.heading-text {
+  font-size: 2em;
+}
+
+
+/* Nav */
+
+#nav-container {
+
+  #icon {
+    font-size: 3em;
+  }
+
+  .login-item {
+    font-size: 1.2em;
+  }
+
+}
+
+
+/* Login */
+
+#login-container {
+
+  .body {
+    width: 600px;
+    height: 400px;
+  }
+
+  .close {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    z-index: 3;
+  }
+
+  .nav {
+    width: 600px;
+  }
+
+}
+
+
+/* Landing */
+
+#landing-container {
+
+  .display {
+    width: 80%;
+    padding: 2em;
+  }
+
+  .fas {
+    font-size: 8em;
+  }
+
+}
+
+
 
 }
