@@ -41,12 +41,14 @@ class Goals extends Component  {
     return this.setState({goalsList:updatedList});
   }
 
+// current weight
 
+// weight loss goal
 
   render () {
     const {goalsList} = this.state;
     return (
-      <div className="goals">
+      <div id="goals">
         <h1>My Goals</h1>
         <input
         className='textGoal' type='text' placeholder='Type your goal'
@@ -68,6 +70,20 @@ class Goals extends Component  {
             )
           })}
         </ul>
+        <section id="landing-container" className="flex-col">
+        <div className="display flex-row">
+          <article className="flex-col"> 
+              <i className="fas fa-list-ol"></i>   
+            <p className="heading-text"> Current Weight: <span></span>
+            </p>
+          </article>
+          <article className="flex-col">   
+              <i className="fas fa-chart-bar"></i>     
+            <p className="heading-text"> Pounds to lose: <span></span>
+            </p>
+          </article>
+        </div>
+      </section>
       </div>
     );
   }
