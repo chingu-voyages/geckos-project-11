@@ -11,7 +11,7 @@ class Goals extends Component  {
       ],
       UI: {
         weight: '',
-        goal: '',
+        lose: '',
         by: ''
       }
     }
@@ -24,19 +24,22 @@ class Goals extends Component  {
 
   generateList = e => {
     let goal = this.state.goalsList;
+    let currentUI = this.state.UI;
+
     let goalType = this.optionSelected() + '';
     if((goal[0] === 'I want to lose...' || goal[0] === 'By XX-XX-XXXX' || goal[0] === 'I want to fit into...') && e.charCode === 13) {
         goal = [];
         goal.push({[goalType]: e.target.value, ['id']:0});
+        this.updateUI(goalType, e.target.value);
         e.target.value = '';
         this.props.renderApp(goal);
         this.setState({goalsList:goal});
       } else if (e.charCode === 13) {
           goal.push({[goalType]: e.target.value, ['id']:goal.length});
+          this.updateUI(goalType, e.target.value);
           e.target.value = '';
           this.props.renderApp(goal);
-          this.setState({goalsList:goal});
-
+          this.setState({goalsList:goal});  
     }
   }
 
@@ -46,6 +49,14 @@ class Goals extends Component  {
     return this.setState({goalsList:updatedList});
   }
 
+  updateUI = (e, userInput) => {
+    let currentUI = this.state.UI;
+    currentUI[e] = userInput;
+    console.log(currentUI)
+    console.log(e)
+    console.log(userInput)
+    this.setState({UI: currentUI});
+  }
 
 // current weight
 
@@ -84,7 +95,7 @@ class Goals extends Component  {
           </article>
           <article className="flex-col">   
               <i className="fas fa-running"></i>     
-            <p className="heading-text"> Ideal Weight: <span className='goal'>{this.state.UI.goal}</span>
+            <p className="heading-text"> Ideal Weight: <span className='goal'>{this.state.UI.lose}</span>
             </p>
           </article>
           <article className="flex-col">   
