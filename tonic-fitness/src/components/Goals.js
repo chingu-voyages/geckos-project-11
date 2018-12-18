@@ -55,17 +55,16 @@ class Goals extends Component  {
         onKeyPress={this.generateList}>
         </input>
         <select className='selection' onClick={this.optionSelected}>
-          <option value='weight'>Weight loss</option>
-          <option value='date' >Target date</option>
-          <option value='misc'>Misc</option>
+          <option value='weight'>Current Weight</option>
+          <option value='lose' >Ideal Weight</option>
+          <option value='by'>By</option>
           </select>
         <ul>
           {goalsList.map(item => {
             return (
               <div>
                 <li onClick={(this.deleteGoal.bind(this, item.id))}>{item.weight}</li>
-                <li onClick={(this.deleteGoal.bind(this, item.id))}>{item.date}</li>
-                <li onClick={(this.deleteGoal.bind(this, item.id))}>{item.misc}</li>
+                <li onClick={(this.deleteGoal.bind(this, item.id))}>{item.lose}</li>
               </div>
             )
           })}
@@ -73,13 +72,18 @@ class Goals extends Component  {
         <section id="landing-container" className="flex-col">
         <div className="display flex-row">
           <article className="flex-col"> 
-              <i className="fas fa-list-ol"></i>   
-            <p className="heading-text"> Current Weight: <span></span>
+              <i className="fas fa-weight"></i>   
+            <p className="heading-text"> Current Weight: <span className='currentWeight'></span>
             </p>
           </article>
           <article className="flex-col">   
-              <i className="fas fa-chart-bar"></i>     
-            <p className="heading-text"> Pounds to lose: <span></span>
+              <i className="fas fa-running"></i>     
+            <p className="heading-text"> Ideal Weight: <span className='currentGoal'></span>
+            </p>
+          </article>
+          <article className="flex-col">   
+              <i className="fas fa-clock"></i>     
+            <p className="heading-text"> By: <span className='currentGoal'></span>
             </p>
           </article>
         </div>
