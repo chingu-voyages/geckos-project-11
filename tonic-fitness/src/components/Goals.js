@@ -8,7 +8,12 @@ class Goals extends Component  {
         'I want to lose...',
         'By XX-XX-XXXX',
         'I want to fit into...'
-      ]
+      ],
+      UI: {
+        weight: '',
+        goal: '',
+        by: ''
+      }
     }
   }
 
@@ -40,6 +45,7 @@ class Goals extends Component  {
     let updatedList = goal.filter(item => item.id !== id);
     return this.setState({goalsList:updatedList});
   }
+
 
 // current weight
 
@@ -73,17 +79,17 @@ class Goals extends Component  {
         <div className="display flex-row">
           <article className="flex-col"> 
               <i className="fas fa-weight"></i>   
-            <p className="heading-text"> Current Weight: <span className='currentWeight'></span>
+            <p className="heading-text"> Current Weight: <span className='weight'>{this.state.UI.weight}</span>
             </p>
           </article>
           <article className="flex-col">   
               <i className="fas fa-running"></i>     
-            <p className="heading-text"> Ideal Weight: <span className='currentGoal'></span>
+            <p className="heading-text"> Ideal Weight: <span className='goal'>{this.state.UI.goal}</span>
             </p>
           </article>
           <article className="flex-col">   
               <i className="fas fa-clock"></i>     
-            <p className="heading-text"> By: <span className='currentGoal'></span>
+            <p className="heading-text"> By: <span className='by'>{this.state.UI.by}</span>
             </p>
           </article>
         </div>
