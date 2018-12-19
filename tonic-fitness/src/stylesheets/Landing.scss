@@ -1,0 +1,42 @@
+//Import variabls and general style
+@import 'App.scss';
+
+/* Landing */
+
+#landing-container {
+  grid-column: c1 / c2;
+  grid-row: r2 / r3;
+  height: 100vh;
+  background-color: $color-secondary;
+
+  .display {
+    width: 90%;
+    padding: 1em 0.2em;
+    border: 1px solid #000;
+  }
+
+  .fas {
+    font-size: 3em;
+  }
+
+}
+
+/* Media Queries */
+
+@media only screen and (min-width:600px) {
+
+#landing-container {
+
+  .display {
+    width: 80%;
+    padding: 2em;
+  }
+
+  .fas {
+    font-size: 8em;
+  }
+
+}
+
+
+}

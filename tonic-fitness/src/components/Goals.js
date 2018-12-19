@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../stylesheets/Goals.scss';
 
 class Goals extends Component  {
   constructor(props) {
@@ -25,12 +24,14 @@ class Goals extends Component  {
         goal = [];
         goal.push({[goalType]: e.target.value, ['id']:0});
         e.target.value = '';
+        this.props.renderApp(goal);
         this.setState({goalsList:goal});
       } else if (e.charCode === 13) {
           goal.push({[goalType]: e.target.value, ['id']:goal.length});
           e.target.value = '';
+          this.props.renderApp(goal);
           this.setState({goalsList:goal});
-          console.log(goal);
+
     }
   }
 
@@ -48,9 +49,7 @@ class Goals extends Component  {
       <div className="goals">
         <h1>My Goals</h1>
         <input
-
         className='textGoal' type='text' placeholder='Type your goal'
-
         onKeyPress={this.generateList}>
         </input>
         <select className='selection' onClick={this.optionSelected}>
