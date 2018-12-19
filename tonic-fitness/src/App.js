@@ -8,6 +8,7 @@ import Landing from './components/Landing.js';
 import Goals from './components/Goals.js';
 import Log from './components/Log.js';
 import Results from './components/Results.js';
+import axios from "axios";
 
 //Stylesheets
 import './stylesheets/App.scss';
