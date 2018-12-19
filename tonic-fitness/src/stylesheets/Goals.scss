@@ -11,12 +11,12 @@ $font-header: 'IBM Plex Sans Condensed', sans-serif;
     grid-column: c1 / c2;
     grid-row: r2 / r3;
     height: 100vh;
-   
+
     h1 {
         font-family: $font-header;
         text-align: center;
     }
-    
+
     input {
         margin-left: 42%;
         width: 300px;
@@ -30,7 +30,6 @@ $font-header: 'IBM Plex Sans Condensed', sans-serif;
         grid-row: r2 / r3;
         height: 74.7vh;
         background-color: $color-secondary;
-    }      
-    
-}
+    }
 
+}

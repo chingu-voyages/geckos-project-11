@@ -43,21 +43,21 @@ class Goals extends Component  {
           <option value='goal' >Ideal Weight</option>
           <option value='by'>By</option>
           </select>
-        
+
         <section id="landing-container" className="flex-col">
         <div className="display flex-row">
-          <article className="flex-col"> 
-              <i className="fas fa-weight"></i>   
+          <article className="flex-col">
+              <i className="fas fa-weight"></i>
             <p className="heading-text"> Current Weight: <span className='weight'>{UI.weight}</span>
             </p>
           </article>
-          <article className="flex-col">   
-              <i className="fas fa-running"></i>     
+          <article className="flex-col">
+              <i className="fas fa-running"></i>
             <p className="heading-text"> Ideal Weight: <span className='goal'>{UI.goal}</span>
             </p>
           </article>
-          <article className="flex-col">   
-              <i className="fas fa-clock"></i>     
+          <article className="flex-col">
+              <i className="fas fa-clock"></i>
             <p className="heading-text"> By: <span className='by'>{UI.by}</span>
             </p>
           </article>
