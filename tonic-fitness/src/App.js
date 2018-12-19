@@ -35,7 +35,7 @@ class App extends Component {
 
   render() {
     const user = this.state.user;
-    const {weight, date, misc} = this.state.user;
+    const {weight, goal, by} = this.state.user;
     return (
       <div id="app-container">
         <Nav />
@@ -44,7 +44,7 @@ class App extends Component {
           <Route path='/goals' render={(props) => <Goals {...props} renderApp={(e)=> this.renderApp(e)}/>}/>
           <Route path='/log' component={Log}/>
           <Route path='/results'
-          render={(props) => <Results {...props} user={user} weight={weight} date={date} misc={misc}/>}/>
+          render={(props) => <Results {...props} user={user} weight={weight} goal={goal} by={by}/>}/>
         </Switch>
           <Route path="/login" component={Login} />
 
