@@ -6,7 +6,7 @@ class Goals extends Component  {
     this.state = {
       UI: {
         weight: '',
-        lose: '',
+        goal: '',
         by: ''
       }
     }
@@ -17,9 +17,8 @@ class Goals extends Component  {
     return selected[selected.selectedIndex].value;
   }
 
-  generateList = e => {
+  updateGoals = e => {
     let uiGoals = this.state.UI;
-
     let goalType = this.optionSelected() + '';
     if(e.charCode === 13) {
         uiGoals[goalType] = e.target.value;
@@ -30,24 +29,18 @@ class Goals extends Component  {
   }
 
 
-  updateUI = (e, userInput) => {
-    let currentUI = this.state.UI;
-    currentUI[e] = userInput;
-    this.setState({UI: currentUI});
-  }
-
   render () {
-    const {goalsList} = this.state;
+    const {UI} = this.state;
     return (
       <div id="goals">
         <h1>My Goals</h1>
         <input
         className='textGoal' type='text' placeholder='Type your goal'
-        onKeyPress={this.generateList}>
+        onKeyPress={this.updateGoals}>
         </input>
         <select className='selection' onClick={this.optionSelected}>
           <option value='weight'>Current Weight</option>
-          <option value='lose' >Ideal Weight</option>
+          <option value='goal' >Ideal Weight</option>
           <option value='by'>By</option>
           </select>
         
@@ -55,17 +48,17 @@ class Goals extends Component  {
         <div className="display flex-row">
           <article className="flex-col"> 
               <i className="fas fa-weight"></i>   
-            <p className="heading-text"> Current Weight: <span className='weight'>{this.state.UI.weight}</span>
+            <p className="heading-text"> Current Weight: <span className='weight'>{UI.weight}</span>
             </p>
           </article>
           <article className="flex-col">   
               <i className="fas fa-running"></i>     
-            <p className="heading-text"> Ideal Weight: <span className='goal'>{this.state.UI.lose}</span>
+            <p className="heading-text"> Ideal Weight: <span className='goal'>{UI.goal}</span>
             </p>
           </article>
           <article className="flex-col">   
               <i className="fas fa-clock"></i>     
-            <p className="heading-text"> By: <span className='by'>{this.state.UI.by}</span>
+            <p className="heading-text"> By: <span className='by'>{UI.by}</span>
             </p>
           </article>
         </div>
