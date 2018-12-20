@@ -1,0 +1,31 @@
+//Import variabls and general style
+@import 'App.scss';
+
+#log {
+    background-color: $color-secondary;
+    font-family: $font-main;
+    grid-column: c1 / c2;
+    grid-row: r2 / r3;
+    height: 100vh;
+
+    h1 {
+        font-family: $font-header;
+        text-align: center;
+    }
+
+    input {
+        margin-left: 42%;
+        width: 300px;
+    }
+    ul {
+        text-align: center;
+        list-style-type: none;
+    }
+    #landing-container {
+        grid-column: c1 / c2;
+        grid-row: r2 / r3;
+        height: 74.7vh;
+        background-color: $color-secondary;
+    }
+
+}
