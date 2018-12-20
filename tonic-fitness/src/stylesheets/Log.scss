@@ -14,13 +14,21 @@
   }
 
   .cal-entry {
-    width: 80%;
+    width: 70%;
     margin: 2em auto;
     border: 2px solid #000;
   }
 
   .cal-entry-item {
     margin: 1em;
+  }
+
+  .cal-entry-item-title {
+    margin-right: 1em;
+  }
+
+  .far {
+    font-size: 4em;
   }
 
 }
