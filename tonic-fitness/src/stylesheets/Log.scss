@@ -40,4 +40,16 @@
     border: 0;
   }
 
+  .entry-log {
+    width: 35%;
+    margin: 1em auto;
+    background-color: $color-primary;
+    border: 2px solid #000;
+    border-radius: 1em;
+  }
+
+  .log-entry-item {
+    font-size: 1.2em;
+  }
+
 }

@@ -78,6 +78,12 @@ class Log extends Component  {
             <i class="far fa-plus-square"></i>
           </button>
         </section>
+
+        <section className="entry-log flex-row">
+          <h4 className="log-entry-item title">Day: {this.state.entry.day} </h4>
+          <h4 className="log-entry-item title">Meal: {this.state.entry.meal} </h4>
+          <h4 className="log-entry-item title">Cals: {this.state.entry.calories} </h4>
+        </section>
       </div>
     )
   }
