@@ -17,13 +17,16 @@ class Log extends Component  {
         }
       ]
     }
+
+    //Bindings
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   //Form inputd are pushed up into state so that React
   //has total control of the data
   handleInputChange(e) {
     const target = e.target;
-    const value = target.type;
+    const value = target.value;
     const inputName = target.name;
 
     //Copy entry from state and then add changes
@@ -46,7 +49,10 @@ class Log extends Component  {
         <section className="cal-entry flex-row">
           <div className="cal-entry-item flex-row">
             <h4 className="cal-entry-item-title">Day: </h4>
-            <input type="text" name="date" />
+            <input type="text"
+                   name="day"
+                   value={this.state.entry.day}
+                   onChange={this.handleInputChange} />
           </div>
           <div className="cal-entry-item flex-row">
             <h4 className="cal-entry-item-title">Meal: </h4>
