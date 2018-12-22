@@ -31,6 +31,7 @@ class Log extends Component  {
     //Bindings
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleAddEntry = this.handleAddEntry.bind(this);
+    this.handleRemoveEntry = this.handleRemoveEntry.bind(this);
   }
 
   //Form inputd are pushed up into state so that React
@@ -71,6 +72,16 @@ class Log extends Component  {
         meal: '',
         calories: ''
       }
+    })
+  }
+
+  handleRemoveEntry(e) {
+    const selectedEntry = e.key;
+    const currentLog = this.state.log;
+    const changeLog = currentLog.splice({selectedEntry}, 1);
+
+    this.setState ({
+      log: changeLog
     })
   }
 
