@@ -76,9 +76,8 @@ class Log extends Component  {
   }
 
   handleRemoveEntry(e) {
-    const selectedEntry = e.key;
-    const currentLog = this.state.log;
-    const changeLog = currentLog.splice({selectedEntry}, 1);
+    const getLog = this.state.log;
+    const changeLog = getLog.filter(entry => entry !== e);
 
     this.setState ({
       log: changeLog
@@ -123,7 +122,7 @@ class Log extends Component  {
           </div>
           <button name="add"
                   className="entry-button"
-                  onClick={() => {this.handleAddEntry()}}>
+                  onClick={this.handleAddEntry}>
             <i className="far fa-plus-square"></i>
           </button>
         </section>
@@ -131,7 +130,8 @@ class Log extends Component  {
         {/* Map over this.state.log and display each entry */}
         {this.state.log.map((currentEntry, index) => (
             <section className="entry-log flex-row"
-                     key={index}>
+                     key={index}
+                     onClick={() => {this.handleRemoveEntry(currentEntry)}} >
               <h4 className="log-entry-item title"> {currentEntry.day} </h4>
               <h4 className="log-entry-item title"> {currentEntry.meal} - {currentEntry.calories} calories </h4>
             </section>
