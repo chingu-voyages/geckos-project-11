@@ -30,6 +30,7 @@ class Log extends Component  {
 
     //Bindings
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleAddEntry = this.handleAddEntry.bind(this);
   }
 
   //Form inputd are pushed up into state so that React
@@ -43,8 +44,33 @@ class Log extends Component  {
     let entryCopy = Object.assign({}, this.state.entry);
     entryCopy[inputName] = value;
 
+    //Replace object in state with updated object
     this.setState ({
       entry: entryCopy
+    })
+  }
+
+  handleAddEntry(e) {
+    const currentDay = this.state.entry.day;
+    const currentMeal = this.state.entry.meal;
+    const currentCalories = this.state.entry.calories;
+
+    //Build new object to push into this.state.log
+    const newEntry = {
+      day: {currentDay},
+      meal: {currentMeal},
+      calories: {currentCalories}
+    }
+
+    //Push into this.state.log
+    this.state.log.push(newEntry);
+
+    this.setState ({
+      entry: {
+        day: '',
+        meal: '',
+        calories: ''
+      }
     })
   }
 
@@ -89,12 +115,11 @@ class Log extends Component  {
           </button>
         </section>
 
-        {
-          this.state.log.map((currentEntry, index) => (
+        {/* Map over this.state.log and display each entry */}
+        {this.state.log.map((currentEntry, index) => (
             <section className="entry-log flex-row">
-              <h4 className="log-entry-item title">Day: {currentEntry.day} </h4>
-              <h4 className="log-entry-item title">Meal: {currentEntry.meal} </h4>
-              <h4 className="log-entry-item title">Cals: {currentEntry.calories} </h4>
+              <h4 className="log-entry-item title"> {currentEntry.day} </h4>
+              <h4 className="log-entry-item title"> {currentEntry.meal} - {currentEntry.calories} calories </h4>
             </section>
           ))
         }
