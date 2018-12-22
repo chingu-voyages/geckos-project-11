@@ -4,11 +4,13 @@ class Log extends Component  {
   constructor(props) {
     super(props);
     this.state = {
-      UI: {
-        weight: '',
-        goal: '',
-        by: ''
-      }
+      log: [
+        {
+          day: '',
+          meal: '',
+          calories: ''
+        }
+      ]
     }
   }
 
