@@ -2,7 +2,7 @@
 @import 'App.scss';
 
 #log {
-  background-color: $color-secondary;
+  background-color: #fff;
   font-family: $font-main;
   grid-column: c1 / c2;
   grid-row: r2 / r3;
@@ -15,20 +15,23 @@
 
   .cal-entry {
     width: 70%;
-    margin: 2em auto;
+    margin: 1em auto;
+    background-color: $color-secondary;
     border: 2px solid #000;
+    border-radius: 1em;
   }
 
   .cal-entry-item {
-    margin: 1em;
+    margin: 0.5em;
   }
 
   .cal-entry-item-title {
     margin-right: 1em;
+    font-size: 1.2em;
   }
 
   .far {
-    font-size: 4em;
+    font-size: 3em;
   }
 
 }
