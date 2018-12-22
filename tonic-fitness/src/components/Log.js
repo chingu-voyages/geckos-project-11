@@ -10,6 +10,7 @@ class Log extends Component  {
         calories: ''
       },
       log: [
+        /* These are fakes for testing, will be replaced with actual user info from database */
         {
           day: 'November 23',
           meal: 'Breakfast',
@@ -34,8 +35,7 @@ class Log extends Component  {
     this.handleRemoveEntry = this.handleRemoveEntry.bind(this);
   }
 
-  //Form inputd are pushed up into state so that React
-  //has total control of the data
+  /* Form inputs are pushed up into this.state.entry so that React has total control of the data */
   handleInputChange(e) {
     const target = e.target;
     const value = target.value;
@@ -51,6 +51,9 @@ class Log extends Component  {
     })
   }
 
+  /*Commits info from termporary this.state.entry to
+  permanent entry in this.state.log and resets input
+  fields in entry */
   handleAddEntry(e) {
     const currentDay = this.state.entry.day;
     const currentMeal = this.state.entry.meal;
@@ -75,6 +78,7 @@ class Log extends Component  {
     })
   }
 
+  /* Removes entry from this.state.log and visible list of entries on page */
   handleRemoveEntry(e) {
     const getLog = this.state.log;
     const changeLog = getLog.filter(entry => entry !== e);
