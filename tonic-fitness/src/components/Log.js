@@ -49,14 +49,16 @@ class Log extends Component  {
         <section className="cal-entry flex-row">
           <div className="cal-entry-item flex-row">
             <h4 className="cal-entry-item-title">Day: </h4>
-            <input type="text"
-                   name="day"
+            <input name="day"
+                   type="text"
                    value={this.state.entry.day}
                    onChange={this.handleInputChange} />
           </div>
           <div className="cal-entry-item flex-row">
             <h4 className="cal-entry-item-title">Meal: </h4>
-            <select name="meal">
+            <select name="meal"
+                    value={this.state.entry.meal}
+                    onChange={this.handleInputChange} >
               <option value="breakfast">Breakfast</option>
               <option value="lunch">Lunch</option>
               <option value="dinner">Dinner</option>
@@ -66,7 +68,11 @@ class Log extends Component  {
           </div>
           <div className="cal-entry-item flex-row">
             <h4 className="cal-entry-item-title">Calories: </h4>
-            <input type="number" name="calories" placeholder="Number Only"/>
+            <input name="calories"
+                   type="number"
+                   placeholder="Number Only"
+                   value={this.state.entry.calories}
+                   onChange={this.handleInputChange} />
           </div>
           <button name="add" className="entry-button">
             <i class="far fa-plus-square"></i>
