@@ -11,9 +11,19 @@ class Log extends Component  {
       },
       log: [
         {
-          day: '',
-          meal: '',
-          calories: ''
+          day: 'November 23',
+          meal: 'Breakfast',
+          calories: '1200'
+        },
+        {
+          day: 'November 23',
+          meal: 'Lunch',
+          calories: '2000'
+        },
+        {
+          day: 'November 23',
+          meal: 'Dinner',
+          calories: '2200'
         }
       ]
     }
@@ -59,11 +69,11 @@ class Log extends Component  {
             <select name="meal"
                     value={this.state.entry.meal}
                     onChange={this.handleInputChange} >
-              <option value="breakfast">Breakfast</option>
-              <option value="lunch">Lunch</option>
-              <option value="dinner">Dinner</option>
-              <option value="snack">Snack</option>
-              <option value="other">Other</option>
+              <option value="Breakfast">Breakfast</option>
+              <option value="Lunch">Lunch</option>
+              <option value="Dinner">Dinner</option>
+              <option value="Snack">Snack</option>
+              <option value="Other">Other</option>
             </select>
           </div>
           <div className="cal-entry-item flex-row">
@@ -79,11 +89,15 @@ class Log extends Component  {
           </button>
         </section>
 
-        <section className="entry-log flex-row">
-          <h4 className="log-entry-item title">Day: {this.state.entry.day} </h4>
-          <h4 className="log-entry-item title">Meal: {this.state.entry.meal} </h4>
-          <h4 className="log-entry-item title">Cals: {this.state.entry.calories} </h4>
-        </section>
+        {
+          this.state.log.map((currentEntry, index) => (
+            <section className="entry-log flex-row">
+              <h4 className="log-entry-item title">Day: {currentEntry.day} </h4>
+              <h4 className="log-entry-item title">Meal: {currentEntry.meal} </h4>
+              <h4 className="log-entry-item title">Cals: {currentEntry.calories} </h4>
+            </section>
+          ))
+        }
       </div>
     )
   }
