@@ -57,9 +57,9 @@ class Log extends Component  {
 
     //Build new object to push into this.state.log
     const newEntry = {
-      day: {currentDay},
-      meal: {currentMeal},
-      calories: {currentCalories}
+      day: `${currentDay}`,
+      meal: `${currentMeal}`,
+      calories: `${currentCalories}`
     }
 
     //Push into this.state.log
@@ -110,14 +110,17 @@ class Log extends Component  {
                    value={this.state.entry.calories}
                    onChange={this.handleInputChange} />
           </div>
-          <button name="add" className="entry-button">
-            <i class="far fa-plus-square"></i>
+          <button name="add"
+                  className="entry-button"
+                  onClick={() => {this.handleAddEntry()}}>
+            <i className="far fa-plus-square"></i>
           </button>
         </section>
 
         {/* Map over this.state.log and display each entry */}
         {this.state.log.map((currentEntry, index) => (
-            <section className="entry-log flex-row">
+            <section className="entry-log flex-row"
+                     key={index}>
               <h4 className="log-entry-item title"> {currentEntry.day} </h4>
               <h4 className="log-entry-item title"> {currentEntry.meal} - {currentEntry.calories} calories </h4>
             </section>
