@@ -21,7 +21,6 @@
     width: 70%;
     margin: 1em auto;
     background-color: $color-primary;
-    // border: 2px solid #000;
     border-radius: 0.4em;
     box-shadow: 3px 3px 10px #262525;
   }
@@ -50,9 +49,9 @@
     width: 35%;
     margin: 1em auto;
     background-color: $color-primary;
-    // border: 2px solid #000;
     border-radius: 0.4em;
     box-shadow: 3px 3px 10px #262525;
+    transition-duration: 150ms;
   }
 
   .entry-log:hover {
