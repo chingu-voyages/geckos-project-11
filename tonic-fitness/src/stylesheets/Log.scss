@@ -20,7 +20,7 @@
   .cal-entry {
     width: 70%;
     margin: 1em auto;
-    background-color: $color-secondary;
+    background-color: $color-primary;
     // border: 2px solid #000;
     border-radius: 0.4em;
     box-shadow: 3px 3px 10px #262525;
@@ -41,7 +41,7 @@
 
   .entry-button {
     padding: 0;
-    background-color: $color-secondary;
+    background-color: $color-primary;
     border: 0;
     transform: rotate(45deg);
   }

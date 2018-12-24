@@ -6,23 +6,31 @@ class Log extends Component  {
     this.state = {
       entry: {
         day: '',
+        month: '',
+        year: '',
         meal: '',
         calories: ''
       },
       log: [
         /* These are fakes for testing, will be replaced with actual user info from database */
         {
-          day: 'November 23',
+          day: '23',
+          month: '12',
+          year: '2018',
           meal: 'Breakfast',
           calories: '1200'
         },
         {
-          day: 'November 23',
+          day: '23',
+          month: '12',
+          year: '2018',
           meal: 'Lunch',
           calories: '2000'
         },
         {
-          day: 'November 23',
+          day: '23',
+          month: '12',
+          year: '2018',
           meal: 'Dinner',
           calories: '2200'
         }
@@ -56,12 +64,16 @@ class Log extends Component  {
   fields in entry */
   handleAddEntry(e) {
     const currentDay = this.state.entry.day;
+    const currentMonth = this.state.entry.month;
+    const currentYear = this.state.entry.year;
     const currentMeal = this.state.entry.meal;
     const currentCalories = this.state.entry.calories;
 
     //Build new object to push into this.state.log
     const newEntry = {
       day: `${currentDay}`,
+      month: `${currentMonth}`,
+      year: `${currentYear}`,
       meal: `${currentMeal}`,
       calories: `${currentCalories}`
     }
@@ -97,11 +109,28 @@ class Log extends Component  {
           Fill in your calorie entry below and click to add it to your log
         </h2>
         <section className="cal-entry flex-row">
+
           <div className="cal-entry-item flex-row">
-            <h4 className="cal-entry-item-title">Day: </h4>
-            <input name="day"
-                   type="text"
+            <h4 className="cal-entry-item-title">Date: </h4>
+            <input name="month"
+                   type="number"
+                   min="1"
+                   max="12"
+                   placeholder="M"
+                   value={this.state.entry.month}
+                   onChange={this.handleInputChange} />
+                 <input name="day"
+                   type="number"
+                   min="1"
+                   max="31"
+                   placeholder="D"
                    value={this.state.entry.day}
+                   onChange={this.handleInputChange} />
+            <input name="year"
+                   type="number"
+                   min="2017"
+                   placeholder="Y"
+                   value={this.state.entry.year}
                    onChange={this.handleInputChange} />
           </div>
           <div className="cal-entry-item flex-row">
@@ -135,7 +164,9 @@ class Log extends Component  {
         {this.state.log.map((currentEntry, index) => (
             <section className="entry-log flex-row"
                      key={index} >
-              <h4 className="log-entry-item title"> {currentEntry.day} </h4>
+              <h4 className="log-entry-item title"> {currentEntry.month} / </h4>
+              <h4 className="log-entry-item title"> {currentEntry.day} / </h4>
+              <h4 className="log-entry-item title"> {currentEntry.year} / </h4>
               <h4 className="log-entry-item title"> {currentEntry.meal} - {currentEntry.calories} calories </h4>
                 <button name="add"
                         className="remove-button"
@@ -151,3 +182,12 @@ class Log extends Component  {
 }
 
 export default Log;
+
+
+// <div className="cal-entry-item flex-row">
+//   <h4 className="cal-entry-item-title">Day: </h4>
+//   <input name="day"
+//          type="text"
+//          value={this.state.entry.day}
+//          onChange={this.handleInputChange} />
+// </div>
