@@ -127,17 +127,21 @@ class Log extends Component  {
           <button name="add"
                   className="entry-button"
                   onClick={this.handleAddEntry}>
-            <i className="far fa-plus-square"></i>
+            <i className="far fa-times-circle"></i>
           </button>
         </section>
 
         {/* Map over this.state.log and display each entry */}
         {this.state.log.map((currentEntry, index) => (
             <section className="entry-log flex-row"
-                     key={index}
-                     onClick={() => {this.handleRemoveEntry(currentEntry)}} >
+                     key={index} >
               <h4 className="log-entry-item title"> {currentEntry.day} </h4>
               <h4 className="log-entry-item title"> {currentEntry.meal} - {currentEntry.calories} calories </h4>
+                <button name="add"
+                        className="remove-button"
+                        onClick={() => {this.handleRemoveEntry(currentEntry)}} >
+                  <i className="far fa-times-circle"></i>
+                </button>
             </section>
           ))
         }
