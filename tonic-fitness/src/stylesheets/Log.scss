@@ -8,6 +8,10 @@
   grid-row: r2 / r3;
   height: 100vh;
 
+  button:hover {
+    cursor: pointer;
+  }
+
   .title {
     font-family: $font-header;
     text-align: center;
@@ -17,8 +21,9 @@
     width: 70%;
     margin: 1em auto;
     background-color: $color-secondary;
-    border: 2px solid #000;
-    border-radius: 1em;
+    // border: 2px solid #000;
+    border-radius: 0.4em;
+    box-shadow: 3px 3px 10px #262525;
   }
 
   .cal-entry-item {
@@ -41,16 +46,17 @@
     transform: rotate(45deg);
   }
 
-  button:hover {
-    cursor: pointer;
-  }
-
   .entry-log {
     width: 35%;
     margin: 1em auto;
     background-color: $color-primary;
-    border: 2px solid #000;
-    border-radius: 1em;
+    // border: 2px solid #000;
+    border-radius: 0.4em;
+    box-shadow: 3px 3px 10px #262525;
+  }
+
+  .entry-log:hover {
+    box-shadow: 1px 1px 5px #000;
   }
 
   .log-entry-item {
