@@ -119,7 +119,7 @@ class Log extends Component  {
                    placeholder="M"
                    value={this.state.entry.month}
                    onChange={this.handleInputChange} />
-                 <input name="day"
+            <input name="day"
                    type="number"
                    min="1"
                    max="31"
@@ -162,22 +162,22 @@ class Log extends Component  {
 
         {/* Map over this.state.log and display each entry */}
         {this.state.log.map((currentEntry, index) => (
-            <section className="entry-log flex-row"
-                     key={index} >
-              <div className="flex-row">
-                <h4 className="log-entry-item title"> {currentEntry.month} </h4>
-                <h4 className="log-entry-item title"> / </h4>
-                <h4 className="log-entry-item title"> {currentEntry.day} </h4>
-                <h4 className="log-entry-item title"> / </h4>
-                <h4 className="log-entry-item title"> {currentEntry.year} </h4>
-                <h4 className="log-entry-item title"> {currentEntry.meal} - {currentEntry.calories} calories </h4>
-              </div>
-                <button name="add"
-                        className="remove-button"
-                        onClick={() => {this.handleRemoveEntry(currentEntry)}} >
-                  <i className="far fa-times-circle"></i>
-                </button>
-            </section>
+          <section className="entry-log flex-row"
+                   key={index} >
+            <div className="flex-row">
+              <h4 className="log-entry-item title"> {currentEntry.month} </h4>
+              <h4 className="log-entry-item title"> / </h4>
+              <h4 className="log-entry-item title"> {currentEntry.day} </h4>
+              <h4 className="log-entry-item title"> / </h4>
+              <h4 className="log-entry-item title"> {currentEntry.year} </h4>
+              <h4 className="log-entry-item title"> {currentEntry.meal} - {currentEntry.calories} calories </h4>
+            </div>
+            <button name="add"
+                    className="remove-button"
+                    onClick={() => {this.handleRemoveEntry(currentEntry)}} >
+              <i className="far fa-times-circle"></i>
+            </button>
+          </section>
           ))
         }
       </div>
@@ -186,12 +186,3 @@ class Log extends Component  {
 }
 
 export default Log;
-
-
-// <div className="cal-entry-item flex-row">
-//   <h4 className="cal-entry-item-title">Day: </h4>
-//   <input name="day"
-//          type="text"
-//          value={this.state.entry.day}
-//          onChange={this.handleInputChange} />
-// </div>
