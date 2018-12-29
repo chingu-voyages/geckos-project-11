@@ -7,7 +7,7 @@ class Login extends Component  {
   constructor(props) {
     super(props);
     this.state = {
-      user: {
+      localEntry: {
         username: '',
         email: '',
         password: '',
@@ -64,23 +64,46 @@ class Login extends Component  {
                   <form action="" method="post" id="signup-form">
                     <div className="form-field heading-text">
                       Username:
-                      <input type="text" name="name" id="name" placeholder="Skinnyboy Thompson" required />
+                      <input type="text"
+                             name="username"
+                             value={this.state.localEntry.username}
+                             onChange={this.handleInputChange}
+                             placeholder="Skinnyboy Thompson" required />
                     </div>
                     <div className="form-field heading-text">
                       Email:
-                      <input type="text" name="name" id="name" placeholder="me@theplace.io" required />
+                      <input type="text"
+                             name="email"
+                             value={this.state.localEntry.email}
+                             onChange={this.handleInputChange} placeholder="me@theplace.io" required />
                     </div>
                     <div className="form-field heading-text">
                       Password:
-                      <input type="password" name="password" id="password" minLength="6" maxLength="20" placeholder="6-30 characters" required />
+                      <input type="password"
+                             name="password"
+                             value={this.state.localEntry.password}
+                             onChange={this.handleInputChange}
+                             minLength="6"
+                             maxLength="20"
+                             placeholder="6-30 characters" required />
                     </div>
                     <div className="form-field heading-text">
                       Confirm Password:
-                      <input type="password" name="confirmPass" id="password" minLength="6" maxLength="20" placeholder="6-30 characters" required />
+                      <input type="password"
+                             name="confirmPass"
+                             value={this.state.localEntry.confirmPass}
+                             onChange={this.handleInputChange}
+                             minLength="6"
+                             maxLength="20"
+                             placeholder="6-30 characters" required />
                     </div>
                     <div className="form-field heading-text">
                       Location:
-                      <input type="text" name="loc" id="loc" placeholder="Where are you from?" required />
+                      <input type="text"
+                             name="location"
+                             value={this.state.localEntry.location}
+                             onChange={this.handleInputChange}
+                             placeholder="Where are you from?" required />
                     </div>
                     <input type="submit" name="submit" id="submit" className="heading-text" value="Get Started!" />
                   </form>
