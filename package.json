@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start":"concurrently \"nodemon server.js\" \"cd tonic-fitness && npm start\"",
+    "start": "concurrently \"nodemon server.js\" \"cd tonic-fitness && npm start\"",
     "server": "nodemon server.js"
   },
   "author": "",
