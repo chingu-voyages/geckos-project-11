@@ -61,7 +61,7 @@ class Login extends Component  {
               //Render SignUp on path match
               render={() =>
                 <div className="login-body flex-col">
-                  <form action="" method="post" id="signup-form">
+                  <form action="" method="post" id="signup-form" className="flex-col">
                     <div className="form-field heading-text">
                       Username:
                       <input type="text"
@@ -107,8 +107,8 @@ class Login extends Component  {
                     </div>
                     <input type="submit"
                            name="submit"
-                           id="submit"
-                           className="heading-text"
+                           id="newUserSubmit"
+                           className="heading-text submit-button"
                            value={!this.state.localEntry.username ? 'Welcome Friend!' : `Welcome ${this.state.localEntry.username}!`} />
                   </form>
                 </div>
@@ -118,7 +118,7 @@ class Login extends Component  {
               //Render SignIn on path match
               render={() =>
                 <div className="login-body flex-col">
-                  <form action="" method="post" id="signup-form">
+                  <form action="" method="post" id="signup-form" className="flex-col">
                     <div className="form-field heading-text">
                       Name:
                       <input type="text"
@@ -139,8 +139,8 @@ class Login extends Component  {
                     </div>
                     <input type="submit"
                            name="submit"
-                           id="submit"
-                           className="heading-text"
+                           id="loginSubmit"
+                           className="heading-text submit-button"
                            value={!this.state.localEntry.username ? 'Welcome Back Friend!' : `Welcome Back ${this.state.localEntry.username}!`} />
                   </form>
                 </div>

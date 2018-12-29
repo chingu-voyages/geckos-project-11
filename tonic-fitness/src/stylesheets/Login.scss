@@ -14,15 +14,16 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #ffffffa0;
+    background-color: #4F4F4Fa0;
   }
 
   .body {
     position: relative;
-    width: 600px;
-    height: 400px;
+    width: 90%;
+    height: 80%;
     background-color: #fff;
     box-shadow: 5px 5px 25px #000;
+    overflow-y: scroll;
   }
 
   .close {
@@ -41,7 +42,7 @@
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: 90%;
     z-index: 2;
   }
 
@@ -65,37 +66,28 @@
 }
 
 #signup-form {
-  margin:0;
-  padding:0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 
   .form-field {
+    width: 90%;
     margin: 1em auto;
     color: $color-dark;
-    line-height: 1em;
+    line-height: 1.2em;
     font-variant: small-caps;
   }
 
   input {
-    margin-left: 1em;
+    width: 100%;
+    margin: 0;
     padding: 0.2em;
-    font-size: 0.6em;
+    font-size: 0.9em;
     border-radius: 0.4em;
   }
 
-  #name {
-    width: 230px;
-  }
-
-  #password {
-    width: 180px;
-  }
-
-  #loc {
-    width: 190px;
-  }
-
-  #submit {
-    width: 100%;
+  .submit-button {
+    width: 95%;
     margin: 0;
     padding: 0.2em 0;
     color: $color-primary;
@@ -106,7 +98,7 @@
     border-radius: 0.4em;
   }
 
-  #submit:hover {
+  .submit-button:hover {
     box-shadow: 4px 3px 20px #000;
   }
 
