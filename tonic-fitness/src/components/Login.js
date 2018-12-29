@@ -105,7 +105,11 @@ class Login extends Component  {
                              onChange={this.handleInputChange}
                              placeholder="Where are you from?" required />
                     </div>
-                    <input type="submit" name="submit" id="submit" className="heading-text" value="Get Started!" />
+                    <input type="submit"
+                           name="submit"
+                           id="submit"
+                           className="heading-text"
+                           value={!this.state.localEntry.username ? 'Welcome Friend!' : `Welcome ${this.state.localEntry.username}!`} />
                   </form>
                 </div>
               } />
