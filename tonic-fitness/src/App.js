@@ -36,6 +36,7 @@ class App extends Component {
   //
   //Add user to database when SignUp form is submitted
   createUser = (e) => {
+    e.preventDefault();
     if (!this.state.currentUser) {
       const _username = e.username;
       const _email = e.email;

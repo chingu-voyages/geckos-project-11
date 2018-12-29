@@ -3,7 +3,21 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const users = require("./routes/api/users");
+const cors = require('cors');
 const app = express();
+
+//CORS workaround for localhost
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (origin === ("http://localhost:3000" || "http://192.168.1.80:3000/") ){
+      callback(null, true)
+    } else {
+      callback(new Error("Not Allowed By CORS"))
+    }
+  }
+}
+app.use(cors(corsOptions))
+
 // Bodyparser middleware
 app.use(
   bodyParser.urlencoded({
@@ -11,6 +25,7 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+
 // DB Config
 const db = require("./config/keys").mongoURI;
 // Connect to MongoDB
