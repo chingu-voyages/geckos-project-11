@@ -16,6 +16,7 @@ import './stylesheets/Nav.scss';
 import './stylesheets/Landing.scss';
 import './stylesheets/Login.scss';
 import './stylesheets/Goals.scss';
+import './stylesheets/Log.scss';
 
 
 class App extends Component {
