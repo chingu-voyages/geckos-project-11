@@ -11,6 +11,7 @@ class Login extends Component  {
         username: '',
         email: '',
         password: '',
+        confirmPass: '',
         location: ''
       },
     }
@@ -46,12 +47,20 @@ class Login extends Component  {
                 <div className="login-body flex-col">
                   <form action="" method="post" id="signup-form">
                     <div className="form-field heading-text">
-                      Name:
+                      Username:
                       <input type="text" name="name" id="name" placeholder="Skinnyboy Thompson" required />
                     </div>
                     <div className="form-field heading-text">
+                      Email:
+                      <input type="text" name="name" id="name" placeholder="me@theplace.io" required />
+                    </div>
+                    <div className="form-field heading-text">
                       Password:
-                      <input type="password" name="password" id="password" minLength="6" maxLength="20" placeholder="6-20 characters" required />
+                      <input type="password" name="password" id="password" minLength="6" maxLength="20" placeholder="6-30 characters" required />
+                    </div>
+                    <div className="form-field heading-text">
+                      Confirm Password:
+                      <input type="password" name="confirmPass" id="password" minLength="6" maxLength="20" placeholder="6-30 characters" required />
                     </div>
                     <div className="form-field heading-text">
                       Location:
