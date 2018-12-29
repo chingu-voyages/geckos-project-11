@@ -121,13 +121,27 @@ class Login extends Component  {
                   <form action="" method="post" id="signup-form">
                     <div className="form-field heading-text">
                       Name:
-                      <input type="text" name="name" id="name" placeholder="Skinnyboy Thompson" required />
+                      <input type="text"
+                             name="username"
+                             value={this.state.localEntry.username}
+                             onChange={this.handleInputChange}
+                             placeholder="Skinnyboy Thompson" required />
                     </div>
                     <div className="form-field heading-text">
                       Password:
-                      <input type="password" name="password" id="password" minLength="6" maxLength="20" placeholder="6-20 characters" required />
+                      <input type="password"
+                             name="password"
+                             value={this.state.localEntry.password}
+                             onChange={this.handleInputChange}
+                             minLength="6"
+                             maxLength="20"
+                             placeholder="6-20 characters" required />
                     </div>
-                    <input type="submit" name="submit" id="submit" className="heading-text" value="Log In" />
+                    <input type="submit"
+                           name="submit"
+                           id="submit"
+                           className="heading-text"
+                           value={!this.state.localEntry.username ? 'Welcome Back Friend!' : `Welcome Back ${this.state.localEntry.username}!`} />
                   </form>
                 </div>
               } />
