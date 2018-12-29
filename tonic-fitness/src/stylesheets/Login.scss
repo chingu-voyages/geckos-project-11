@@ -83,6 +83,7 @@
     margin: 0;
     padding: 0.2em;
     font-size: 0.9em;
+    font-family:  monospace;
     border-radius: 0.4em;
   }
 
@@ -154,6 +155,10 @@
   input {
     margin: 0.2em;
     font-size: 1em;
+  }
+
+  .submit-button {
+    font-size: 1.6em;
   }
 
 }
