@@ -118,8 +118,14 @@
 #login-container {
 
   .body {
-    width: 600px;
-    height: 400px;
+    height: auto;
+    max-width: 800px;
+    max-height: 900px;
+  }
+
+  .nav {
+    max-width: 800px;
+    max-height: 900px;
   }
 
   .close {
@@ -129,8 +135,25 @@
     z-index: 3;
   }
 
-  .nav {
-    width: 600px;
+}
+
+.login-body {
+  margin: 1.2em auto;
+}
+
+#signup-form {
+
+  .form-field {
+    line-height: 1em;
+  }
+
+  .heading-text {
+    font-size: 1.2em;
+  }
+
+  input {
+    margin: 0.2em;
+    font-size: 1em;
   }
 
 }
