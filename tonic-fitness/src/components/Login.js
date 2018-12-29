@@ -17,7 +17,23 @@ class Login extends Component  {
     }
 
     //Bindings
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
 
+  /* Form inputs are pushed up into this.state.entry so that React has total control of the data */
+  handleInputChange(e) {
+    const target = e.target;
+    const value = target.value;
+    const inputName = target.name;
+
+    //Copy entry from state and then add changes
+    let entryCopy = Object.assign({}, this.state.localEntry);
+    entryCopy[inputName] = value;
+
+    //Replace object in state with updated object
+    this.setState ({
+      localEntry: entryCopy
+    })
   }
 
   render() {
