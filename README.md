@@ -27,3 +27,4 @@ Our project uses the following:
 * SCSS
 * JavaScript
 * HTML
+
