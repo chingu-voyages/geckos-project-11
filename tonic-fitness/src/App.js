@@ -23,12 +23,40 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
+      currentUser: null,
       user: [
 
       ]
     }
 
   }
+
+  //
+  /* API CALLS  */
+  //
+  //Add user to database when SignUp form is submitted
+  createUser = (e) => {
+    if (!this.state.currentUser) {
+      const _username = e.username;
+      const _email = e.email;
+      const _password1 = e.password;
+      const _password2 = e.confirmPass;
+      const _location = e.location;
+
+      axios.post("http://localhost:5000/api/register", {
+        name: _username,
+        email: _email,
+        password: _password1,
+        password2: _password2,
+        location: _location
+      })
+      .then(res => console.log(res.status))
+      .catch(err => alert(err));
+    } else {
+      alert("User Already Logged In");
+    }
+  }
+
 
   renderApp = (e) => {
     this.setState({user:e});
@@ -41,14 +69,20 @@ class App extends Component {
       <div id="app-container">
         <Nav />
         <Switch>
-          <Route exact path='/' component={Landing} />
-          <Route path='/goals' render={(props) => <Goals {...props} renderApp={(e)=> this.renderApp(e)}/>}/>
-          <Route path='/log' component={Log}/>
+          <Route exact path='/'
+                 component={Landing} />
+          <Route path='/goals'
+                 render={(props) => <Goals {...props} renderApp={(e)=> this.renderApp(e)}/>}/>
+          <Route path='/log'
+                 component={Log}/>
           <Route path='/results'
-          render={(props) => <Results {...props} user={user} weight={weight} goal={goal} by={by}/>}/>
+                 render={(props) => <Results {...props} user={user}
+                 weight={weight}
+                 goal={goal}
+                 by={by}/>}/>
         </Switch>
-          <Route path="/login" component={Login} />
-
+          <Route path="/login"
+                 render={(props) => <Login handleCreateUser={this.createUser} />}/>
       </div>
     );
   }
