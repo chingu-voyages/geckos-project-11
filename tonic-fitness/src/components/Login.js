@@ -62,7 +62,9 @@ class Login extends Component  {
               //Render SignUp on path match
               render={() =>
                 <div className="login-body flex-col">
-                  <form id="signup-form" className="flex-col">
+                  <form id="signup-form"
+                        className="flex-col"
+                        onSubmit={handleCreateUser}>
                     <div className="form-field heading-text">
                       Username:
                       <input type="text"
@@ -111,7 +113,7 @@ class Login extends Component  {
                            id="newUserSubmit"
                            className="heading-text submit-button"
                            value={!this.state.localEntry.username ? 'Welcome Friend!' : `Welcome ${this.state.localEntry.username}!`}
-                           onClick={handleCreateUser} />
+                           />
                   </form>
                 </div>
               } />
@@ -144,7 +146,7 @@ class Login extends Component  {
                            id="loginSubmit"
                            className="heading-text submit-button"
                            value={!this.state.localEntry.username ? 'Welcome Back Friend!' : `Welcome Back ${this.state.localEntry.username}!`}
-                           onClick={handleCreateUser}/>
+                           />
                   </form>
                 </div>
               } />

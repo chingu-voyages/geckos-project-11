@@ -9,7 +9,7 @@ const app = express();
 //CORS workaround for localhost
 const corsOptions = {
   origin: function (origin, callback) {
-    if (origin === ("http://localhost:3000" || "http://192.168.1.80:3000/") ){
+    if (origin === "http://localhost:3000" ){
       callback(null, true)
     } else {
       callback(new Error("Not Allowed By CORS"))

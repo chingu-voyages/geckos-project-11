@@ -38,21 +38,26 @@ class App extends Component {
   createUser = (e) => {
     e.preventDefault();
     if (!this.state.currentUser) {
-      const _username = e.username;
-      const _email = e.email;
-      const _password1 = e.password;
-      const _password2 = e.confirmPass;
-      const _location = e.location;
+      const _username = e.target.username.value;
+      const _email = e.target.email.value;
+      const _password1 = e.target.password.value;
+      const _password2 = e.target.confirmPass.value;
+      const _location = e.target.location.value;
+      console.log(_username);
+      console.log(_email);
+      console.log(_password1);
+      console.log(_password2);
+      console.log(_location);
 
-      axios.post("http://localhost:5000/api/register", {
+      axios.post("http://localhost:5000/api/users/register", {
         name: _username,
         email: _email,
         password: _password1,
         password2: _password2,
         location: _location
       })
-      .then(res => console.log(res.status))
-      .catch(err => alert(err));
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
     } else {
       alert("User Already Logged In");
     }
