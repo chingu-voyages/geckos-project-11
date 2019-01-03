@@ -4,7 +4,7 @@ class Log extends Component  {
   constructor(props) {
     super(props);
     this.state = {
-      entry: {
+      localEntry: {
         day: '',
         month: '',
         year: '',
@@ -50,24 +50,24 @@ class Log extends Component  {
     const inputName = target.name;
 
     //Copy entry from state and then add changes
-    let entryCopy = Object.assign({}, this.state.entry);
+    let entryCopy = Object.assign({}, this.state.localEntry);
     entryCopy[inputName] = value;
 
     //Replace object in state with updated object
     this.setState ({
-      entry: entryCopy
+      localEntry: entryCopy
     })
   }
 
-  /*Commits info from termporary this.state.entry to
+  /*Commits info from termporary this.state.localEntry to
   permanent entry in this.state.log and resets input
-  fields in entry */
+  fields in localEntry */
   handleAddEntry(e) {
-    const currentDay = this.state.entry.day;
-    const currentMonth = this.state.entry.month;
-    const currentYear = this.state.entry.year;
-    const currentMeal = this.state.entry.meal;
-    const currentCalories = this.state.entry.calories;
+    const currentDay = this.state.localEntry.day;
+    const currentMonth = this.state.localEntry.month;
+    const currentYear = this.state.localEntry.year;
+    const currentMeal = this.state.localEntry.meal;
+    const currentCalories = this.state.localEntry.calories;
 
     //Build new object to push into this.state.log
     const newEntry = {
@@ -82,8 +82,10 @@ class Log extends Component  {
     this.state.log.push(newEntry);
 
     this.setState ({
-      entry: {
+      localEntry: {
         day: '',
+        month: '',
+        year: '',
         meal: '',
         calories: ''
       }
@@ -117,26 +119,26 @@ class Log extends Component  {
                    min="1"
                    max="12"
                    placeholder="M"
-                   value={this.state.entry.month}
+                   value={this.state.localEntry.month}
                    onChange={this.handleInputChange} />
             <input name="day"
                    type="number"
                    min="1"
                    max="31"
                    placeholder="D"
-                   value={this.state.entry.day}
+                   value={this.state.localEntry.day}
                    onChange={this.handleInputChange} />
             <input name="year"
                    type="number"
                    min="2017"
                    placeholder="Y"
-                   value={this.state.entry.year}
+                   value={this.state.localEntry.year}
                    onChange={this.handleInputChange} />
           </div>
           <div className="cal-entry-item flex-row">
             <h4 className="cal-entry-item-title">Meal: </h4>
             <select name="meal"
-                    value={this.state.entry.meal}
+                    value={this.state.localEntry.meal}
                     onChange={this.handleInputChange} >
               <option value="Breakfast">Breakfast</option>
               <option value="Lunch">Lunch</option>
@@ -150,7 +152,7 @@ class Log extends Component  {
             <input name="calories"
                    type="number"
                    placeholder="Number Only"
-                   value={this.state.entry.calories}
+                   value={this.state.localEntry.calories}
                    onChange={this.handleInputChange} />
           </div>
           <button name="add"
