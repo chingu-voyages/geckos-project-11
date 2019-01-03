@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Switch, Route } from 'react-router-dom';
 import axios from "axios";
 
@@ -69,14 +68,10 @@ class App extends Component {
 
   //Handle error from API call and inform user
   handleAPIError = (error) => {
-    const errorDialog = (
-      <div className="error-popup flex-col">
-        <h3 className="heading-text">{error}</h3>
-      </div>
-    );
-    ReactDOM.render(
-      errorDialog , document.getElementById('root')
-    );
+    const errorPopup = document.getElementById("error-popup");
+    errorPopup.classList.remove("hide");
+    const errorDialog = document.getElementById("error-dialog");
+    errorDialog.innerText = error;
   }
 
 
@@ -104,8 +99,8 @@ class App extends Component {
                  goal={goal}
                  by={by}/>}/>
         </Switch>
-          <Route path="/login"
-                 render={(props) => <Login handleCreateUser={this.createUser} />}/>
+        <Route path="/login"
+               render={(props) => <Login handleCreateUser={this.createUser} />}/>
       </div>
     );
   }

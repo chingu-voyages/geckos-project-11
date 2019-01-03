@@ -2,8 +2,14 @@ import React from 'react';
 
 const Error = (props) => {
   return (
-    <div className="error-popup flex-col">
-      <h3 className="heading-text">{props.error}</h3>
+    <div id="error-popup" className="hide flex-row">
+      <div className="invisible-close"
+           onClick={() => {
+             const errorPopup = document.getElementById("error-popup");
+             errorPopup.classList.add("hide");
+           }}>
+      </div>
+      <h3 id="error-dialog" className="heading-text flex-col">""</h3>
     </div>
   );
 }
