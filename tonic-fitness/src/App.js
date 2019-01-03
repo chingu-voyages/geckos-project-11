@@ -14,6 +14,7 @@ import Results from './components/Results.js';
 //Stylesheets
 import './stylesheets/App.scss';
 import './stylesheets/Nav.scss';
+import './stylesheets/Error.scss';
 import './stylesheets/Landing.scss';
 import './stylesheets/Login.scss';
 import './stylesheets/Goals.scss';

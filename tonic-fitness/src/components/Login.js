@@ -42,10 +42,6 @@ class Login extends Component  {
     return (
       <aside id="login-container"
              className="flex-col">
-        <Link to="/">
-          <div className="invisible-close">
-          </div></Link>
-
         <div className="nav">
           <Link to="/login/signup" className="nav-item">Sign Up</Link>
           <Link to="/login/signin" className="nav-item">Sign In</Link>
@@ -56,8 +52,8 @@ class Login extends Component  {
               X close
             </Link>
           </button>
+          
           <Switch>
-
             <Route path="/login/signup"
               //Render SignUp on path match
               render={() =>

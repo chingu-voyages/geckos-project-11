@@ -4,9 +4,11 @@
 /* Login */
 
 #login-container {
-  position: fixed;
-  width: 100vw;
+  grid-column: c1 / c2;
+  grid-row: r2 / r3;
+  width: 100%;
   height: 100vh;
+  background-color: $color-secondary;
 
   .body {
     position: relative;
