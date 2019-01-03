@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Switch, Route } from 'react-router-dom';
+import axios from "axios";
 
 //Components
 import Nav from './components/Nav.js';
+import Error from './components/Error.js';
 import Login from './components/Login.js';
 import Landing from './components/Landing.js';
 import Goals from './components/Goals.js';
 import Log from './components/Log.js';
 import Results from './components/Results.js';
-import axios from "axios";
 
 //Stylesheets
 import './stylesheets/App.scss';
@@ -69,7 +70,7 @@ class App extends Component {
   //Handle error from API call and inform user
   handleAPIError = (error) => {
     const errorDialog = (
-      <div className="error-popup">
+      <div className="error-popup flex-col">
         <h3 className="heading-text">{error}</h3>
       </div>
     );
@@ -89,6 +90,7 @@ class App extends Component {
     return (
       <div id="app-container">
         <Nav />
+        <Error />
         <Switch>
           <Route exact path='/'
                  component={Landing} />
