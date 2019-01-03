@@ -4,7 +4,6 @@ import axios from "axios";
 
 //Components
 import Nav from './components/Nav.js';
-import Error from './components/Error.js';
 import Login from './components/Login.js';
 import Landing from './components/Landing.js';
 import Goals from './components/Goals.js';
@@ -14,7 +13,6 @@ import Results from './components/Results.js';
 //Stylesheets
 import './stylesheets/App.scss';
 import './stylesheets/Nav.scss';
-import './stylesheets/Error.scss';
 import './stylesheets/Landing.scss';
 import './stylesheets/Login.scss';
 import './stylesheets/Goals.scss';
@@ -69,9 +67,7 @@ class App extends Component {
 
   //Handle error from API call and inform user
   handleAPIError = (error) => {
-    const errorPopup = document.getElementById("error-popup");
-    errorPopup.classList.remove("hide");
-    const errorDialog = document.getElementById("error-dialog");
+    const errorDialog = document.getElementById("submit-error");
     errorDialog.innerText = error;
   }
 
@@ -86,7 +82,6 @@ class App extends Component {
     return (
       <div id="app-container">
         <Nav />
-        <Error />
         <Switch>
           <Route exact path='/'
                  component={Landing} />

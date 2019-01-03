@@ -52,7 +52,7 @@ class Login extends Component  {
               X close
             </Link>
           </button>
-          
+
           <Switch>
             <Route path="/login/signup"
               //Render SignUp on path match
@@ -104,6 +104,7 @@ class Login extends Component  {
                              onChange={this.handleInputChange}
                              placeholder="Where are you from?" required />
                     </div>
+                    <h4 id="submit-error"> </h4>
                     <input type="submit"
                            name="submit"
                            id="newUserSubmit"
@@ -137,6 +138,7 @@ class Login extends Component  {
                              maxLength="20"
                              placeholder="6-20 characters" required />
                     </div>
+                    <h4 id="submit-error"> </h4>
                     <input type="submit"
                            name="submit"
                            id="loginSubmit"

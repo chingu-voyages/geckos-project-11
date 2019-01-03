@@ -2,7 +2,7 @@ import React from 'react';
 
 const Error = (props) => {
   return (
-    <div id="error-popup" className="flex-row">
+    <div id="error-popup" className="hide flex-row">
       <div className="invisible-close"
            onClick={() => {
              const errorPopup = document.getElementById("error-popup");
