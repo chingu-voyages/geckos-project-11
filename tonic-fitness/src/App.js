@@ -68,7 +68,7 @@ class App extends Component {
   //Handle error from API call and inform user
   handleAPIError = (error) => {
     const errorDialog = document.getElementById("submit-error");
-    errorDialog.innerText = error;
+    errorDialog.innerHTML = `<em>*${error}</em>`;
   }
 
 
