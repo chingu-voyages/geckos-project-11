@@ -51,7 +51,11 @@ class App extends Component {
         password2: _password2,
         location: _location
       })
-      .then(response => console.log(response.data))
+      .then(response => {
+        console.log(response.data);
+        const newUser = response.data.name;
+        this.setState({ currentUser: newUser });
+      })
       .catch(error => {
         //Return error data and log out reason for error
         const errorData = error.response.data;
