@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { Switch, Route } from 'react-router-dom';
 
 //Components
@@ -43,11 +44,6 @@ class App extends Component {
       const _password1 = e.target.password.value;
       const _password2 = e.target.confirmPass.value;
       const _location = e.target.location.value;
-      console.log(_username);
-      console.log(_email);
-      console.log(_password1);
-      console.log(_password2);
-      console.log(_location);
 
       axios.post("http://localhost:5000/api/users/register", {
         name: _username,
@@ -56,11 +52,30 @@ class App extends Component {
         password2: _password2,
         location: _location
       })
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+      .then(response => console.log(response.data))
+      .catch(error => {
+        //Return error data and log out reason for error
+        const errorData = error.response.data;
+        //for loop is to catch the first property of error, as we will not know the exact error and do not want to create a catch for every type of error.
+        let key="";
+        for (let i in errorData){key = i; break;};
+        this.handleAPIError(errorData[key]);
+      })
     } else {
       alert("User Already Logged In");
     }
+  }
+
+  //Handle error from API call and inform user
+  handleAPIError = (error) => {
+    const errorDialog = (
+      <div className="error-popup">
+        <h3 className="heading-text">{error}</h3>
+      </div>
+    );
+    ReactDOM.render(
+      errorDialog , document.getElementById('root')
+    );
   }
 
 

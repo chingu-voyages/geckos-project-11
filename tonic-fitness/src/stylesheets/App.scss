@@ -47,6 +47,13 @@ a:active {
   display: none;
 }
 
+.error-popup {
+  width: 80%;
+  background-color: #000;
+  color: $color-primary;
+  text-align: center;
+}
+
 
 
 /* MEDIA QUERIES */
