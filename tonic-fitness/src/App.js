@@ -37,6 +37,9 @@ class App extends Component {
   //Add user to database when SignUp form is submitted
   createUser = (e) => {
     e.preventDefault();
+    //Check to see if a user is already signed in,
+    //if not then copy information from form to pass
+    //to database
     if (!this.state.currentUser) {
       const _username = e.target.username.value;
       const _email = e.target.email.value;
@@ -44,6 +47,7 @@ class App extends Component {
       const _password2 = e.target.confirmPass.value;
       const _location = e.target.location.value;
 
+      //API post to register user
       axios.post("http://localhost:5000/api/users/register", {
         name: _username,
         email: _email,
@@ -75,6 +79,7 @@ class App extends Component {
     errorDialog.innerHTML = `<em>*${error}</em>`;
   }
 
+  
 
   renderApp = (e) => {
     this.setState({user:e});
