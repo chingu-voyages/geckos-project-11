@@ -27,7 +27,16 @@ const UserSchema = new Schema({
 const GoalSchema = new Schema({
   weight: Number,
   lose: Number,
-  date: Number,
+  by: Date,
+  user: {
+    type: Schema.ObjectId,
+    ref: 'User'
+  }
+});
+const LogSchema = new Schema({
+  date: Date,
+  meal: String,
+  calories: Number,
   user: {
     type: Schema.ObjectId,
     ref: 'User'
@@ -36,5 +45,5 @@ const GoalSchema = new Schema({
 // module.exports = User = mongoose.model("users", UserSchema);
 const User = mongoose.model("users", UserSchema);
 const Goal = mongoose.model("goals", GoalSchema);
+const Log = mongoose.model("logs", LogSchema);
 module.exports = mongoose;
-//module.exports = Goal = mongoose.model("goals", GoalSchema);
