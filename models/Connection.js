@@ -23,4 +23,13 @@ const UserSchema = new Schema({
     default: Date.now
   }
 });
-module.exports = User = mongoose.model("users", UserSchema);
+const GoalSchema = new Schema({
+  weight: Number,
+  lose: Number,
+  date: Number
+});
+// module.exports = User = mongoose.model("users", UserSchema);
+const User = mongoose.model("users", UserSchema);
+const Goal = mongoose.model("goals", GoalSchema);
+module.exports = mongoose;
+//module.exports = Goal = mongoose.model("goals", GoalSchema);
