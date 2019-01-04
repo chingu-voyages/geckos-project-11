@@ -58,7 +58,7 @@ class App extends Component {
       .then(response => {
         console.log(response.data);
         const newUser = response.data.name;
-        this.setState({ currentUser: newUser });
+        this.handleSetUser(newUser);
       })
       .catch(error => {
         //Return error data and log out reason for error
@@ -79,10 +79,21 @@ class App extends Component {
     errorDialog.innerHTML = `<em>*${error}</em>`;
   }
 
-  
+  //Handle set Current User in state
+  handleSetUser = (newUser) => {
+    this.setState({ currentUser: newUser });
+  }
 
   renderApp = (e) => {
     this.setState({user:e});
+  }
+
+  componentDidUpdate() {
+    if (!!this.state.currentUser) {
+      const logins = document.getElementById("top-right-of-nav");
+      logins.innerHTML =
+      `<h3> Welcome ${this.state.currentUser}! </h3>`;
+    }
   }
 
   render() {
