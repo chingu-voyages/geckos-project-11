@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+var ObjectId = Schema.ObjectId;
 // Create Schema
 const UserSchema = new Schema({
   name: {
@@ -26,7 +27,11 @@ const UserSchema = new Schema({
 const GoalSchema = new Schema({
   weight: Number,
   lose: Number,
-  date: Number
+  date: Number,
+  user: {
+    type: Schema.ObjectId,
+    ref: 'User'
+  }
 });
 // module.exports = User = mongoose.model("users", UserSchema);
 const User = mongoose.model("users", UserSchema);

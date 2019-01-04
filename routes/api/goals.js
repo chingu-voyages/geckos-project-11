@@ -7,7 +7,7 @@ const Goal = mongoose.model('goals');
 
 
 //get all goals
-router.get("/goals", (req, res) => {
+router.get("/all", (req, res) => {
     Goal.find({})
     .then((goal) => {
         res.json(goal)
