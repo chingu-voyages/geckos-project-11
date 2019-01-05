@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import axios from "axios";
+import history from './History.js';
 
 //Components
 import Nav from './components/Nav.js';
@@ -59,6 +60,7 @@ class App extends Component {
         console.log(response.data);
         const newUser = response.data.name;
         this.handleSetUser(newUser);
+        this.pushNavigation('/');
       })
       .catch(error => {
         //Return error data and log out reason for error
@@ -82,6 +84,11 @@ class App extends Component {
   //Handle set Current User in state
   handleSetUser = (newUser) => {
     this.setState({ currentUser: newUser });
+  }
+
+  //Navigate to new URL
+  pushNavigation = (path) => {
+    history.push(`${path}`);
   }
 
   renderApp = (e) => {
