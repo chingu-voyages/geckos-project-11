@@ -35,12 +35,13 @@ class App extends Component {
   //
   /* API CALLS  */
   //
+  //CREATE USER
   //Add user to database when SignUp form is submitted
   createUser = (e) => {
     e.preventDefault();
-    //Check to see if a user is already signed in,
-    //if not then copy information from form to pass
-    //to database
+    /*Check to see if a user is already signed in,
+    if not then copy information from form to pass
+    to database */
     if (!this.state.currentUser) {
       const _username = e.target.username.value;
       const _email = e.target.email.value;
@@ -57,9 +58,11 @@ class App extends Component {
         location: _location
       })
       .then(response => {
-        console.log(response.data);
         const newUser = response.data.name;
+        //Next step sets new users name in state as the 'currentUser'
         this.handleSetUser(newUser);
+        //Next step 'pushes' new URL using react router history
+        //(see function declaration for details)
         this.pushNavigation('/');
       })
       .catch(error => {
@@ -81,12 +84,14 @@ class App extends Component {
     errorDialog.innerHTML = `<em>*${error}</em>`;
   }
 
-  //Handle set Current User in state
+  //Sets new user in state as this.state.currentUser
   handleSetUser = (newUser) => {
     this.setState({ currentUser: newUser });
   }
 
   //Navigate to new URL
+  /* Uses react router dom history, needs History.js and
+  needs history passed to <Router> in index.js */
   pushNavigation = (path) => {
     history.push(`${path}`);
   }
@@ -96,6 +101,9 @@ class App extends Component {
   }
 
   componentDidUpdate() {
+    /* If there is currently a user logged in (a name in
+    this.state.currentUser) that name will be displayed
+    in place of Sign Up / Sign In */
     if (!!this.state.currentUser) {
       const logins = document.getElementById("top-right-of-nav");
       logins.innerHTML =
