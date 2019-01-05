@@ -8,11 +8,6 @@ const Results = (props) => {
     let pace = Math.round(target/defecit);
     return (
         <div id='results'>
-           {props.weight}
-           {props.goal}
-           {props.by}
-
-           
 
         <section id="landing-container" className="flex-col">
         <h1>Maintenance 2000 calories</h1>
