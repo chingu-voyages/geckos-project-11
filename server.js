@@ -3,10 +3,10 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const users = require("./routes/api/users");
-const cors = require('cors');
 const goals = require("./routes/api/goals");
 const logs = require("./routes/api/logs");
 const app = express();
+const cors = require('cors');
 
 //CORS workaround for localhost
 const corsOptions = {
