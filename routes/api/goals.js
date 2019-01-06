@@ -14,6 +14,14 @@ router.get("/all", (req, res) => {
     })
 
 });
+// get goals of a user
+// path would be api/goals/user/:userID/all
+router.get('/users/:userId/all', (req,res) => {
+    Goal.find({user: req.params.userId})
+    .then((goal) => {
+      res.json(goal)
+    })
+})
 //update goal
 // router.post('/goals/:_id/updategoal', function(req,res){
 //     Goal.findOneAndUpdate({_id: req.params._id},req.body,{new: true})

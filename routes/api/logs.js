@@ -14,6 +14,14 @@ router.get("/all", (req, res) => {
     })
 
 });
+// get all logs of a user
+// path would be api/logs/user/:userID/all
+router.get('/users/:userId/all', (req,res) => {
+    Log.find({user: req.params.userId})
+    .then((log) => {
+      res.json(log)
+    })
+})
 // create log
 router.post('/new', (req, res) => {
     Log.create(req.body)
