@@ -37,14 +37,11 @@ class Login extends Component  {
   }
 
   render() {
+    const {handleCreateUser} = this.props;
 
     return (
       <aside id="login-container"
              className="flex-col">
-        <Link to="/">
-          <div className="invisible-close">
-          </div></Link>
-
         <div className="nav">
           <Link to="/login/signup" className="nav-item">Sign Up</Link>
           <Link to="/login/signin" className="nav-item">Sign In</Link>
@@ -55,13 +52,15 @@ class Login extends Component  {
               X close
             </Link>
           </button>
-          <Switch>
 
+          <Switch>
             <Route path="/login/signup"
               //Render SignUp on path match
               render={() =>
                 <div className="login-body flex-col">
-                  <form action="" method="post" id="signup-form" className="flex-col">
+                  <form id="signup-form"
+                        className="flex-col"
+                        onSubmit={handleCreateUser}>
                     <div className="form-field heading-text">
                       Username:
                       <input type="text"
@@ -105,11 +104,13 @@ class Login extends Component  {
                              onChange={this.handleInputChange}
                              placeholder="Where are you from?" required />
                     </div>
+                    <h4 id="submit-error"> </h4>
                     <input type="submit"
                            name="submit"
                            id="newUserSubmit"
                            className="heading-text submit-button"
-                           value={!this.state.localEntry.username ? 'Welcome Friend!' : `Welcome ${this.state.localEntry.username}!`} />
+                           value={!this.state.localEntry.username ? 'Welcome Friend!' : `Welcome ${this.state.localEntry.username}!`}
+                           />
                   </form>
                 </div>
               } />
@@ -118,7 +119,7 @@ class Login extends Component  {
               //Render SignIn on path match
               render={() =>
                 <div className="login-body flex-col">
-                  <form action="" method="post" id="signup-form" className="flex-col">
+                  <form id="signup-form" className="flex-col">
                     <div className="form-field heading-text">
                       Name:
                       <input type="text"
@@ -137,11 +138,13 @@ class Login extends Component  {
                              maxLength="20"
                              placeholder="6-20 characters" required />
                     </div>
+                    <h4 id="submit-error"> </h4>
                     <input type="submit"
                            name="submit"
                            id="loginSubmit"
                            className="heading-text submit-button"
-                           value={!this.state.localEntry.username ? 'Welcome Back Friend!' : `Welcome Back ${this.state.localEntry.username}!`} />
+                           value={!this.state.localEntry.username ? 'Welcome Back Friend!' : `Welcome Back ${this.state.localEntry.username}!`}
+                           />
                   </form>
                 </div>
               } />

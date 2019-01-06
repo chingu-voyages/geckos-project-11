@@ -6,6 +6,20 @@ const users = require("./routes/api/users");
 const goals = require("./routes/api/goals");
 const logs = require("./routes/api/logs");
 const app = express();
+const cors = require('cors');
+
+//CORS workaround for localhost
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (origin === "http://localhost:3000" ){
+      callback(null, true)
+    } else {
+      callback(new Error("Not Allowed By CORS"))
+    }
+  }
+}
+app.use(cors(corsOptions))
+
 // Bodyparser middleware
 app.use(
   bodyParser.urlencoded({
@@ -13,6 +27,7 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+
 // DB Config
 const db = require("./config/keys").mongoURI;
 // Connect to MongoDB
