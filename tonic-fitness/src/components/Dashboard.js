@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
     return (
-      <section id="landing-container" className="flex-col">
+      <section id="dashboard-container" className="flex-col">
         <div className="display flex-row">
           <article className="flex-col">
             <Link to="/goals">
               <i className="fas fa-list-ol"></i>
             </Link>
-            <p className="heading-text"> Set Goals
+            <p className="heading-text"> CHECK
             </p>
           </article>
           <article className="flex-col">

@@ -3,7 +3,7 @@
 
 /* Dashboard */
 
-#landing-container {
+#dashboard-container {
   grid-column: c1 / c2;
   grid-row: r2 / r3;
   height: 100vh;
@@ -25,7 +25,7 @@
 
 @media only screen and (min-width:600px) {
 
-#landing-container {
+#dashboard-container {
 
   .display {
     width: 80%;

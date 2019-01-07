@@ -100,6 +100,7 @@ class App extends Component {
         const userInfo = response.data.name;
         console.log(userInfo);
         localStorage.setItem("userName", userInfo);
+        this.handleSetUser(userInfo);
         //Next step 'pushes' new URL using react router history
         //(see function declaration for details)
         this.pushNavigation('/');
@@ -129,8 +130,10 @@ class App extends Component {
   }
 
   //Removes user info from local storage
-  handleLogoutUser = () => {
-    localStorage.removeItem("username");
+  logoutUser = () => {
+    localStorage.removeItem("userName");
+    this.handleSetUser(null);
+    this.pushNavigation(`/`);
   }
 
   //Navigate to new URL
@@ -168,14 +171,17 @@ class App extends Component {
   render() {
     const user = this.state.user;
     const {weight, goal, by} = this.state.user;
+    const { currentUser } = this.state;
+
     return (
       <div id="app-container">
-        <Nav />
+        <Nav currentUser={currentUser}
+             handleLogoutUser={this.logoutUser}/>
         <Switch>
           <Route exact path='/'
                /* Conditional, if a user is present it will display
               Dashboard, else it displays Landing */
-                 component={() => !!this.state.currentUser ? <Dashboard/> : <Landing/>} />
+                 component={() => !!currentUser ? <Dashboard/> : <Landing/>} />
           <Route path='/goals'
                  render={(props) => <Goals {...props} renderApp={(e)=> this.renderApp(e)}/>}/>
           <Route path='/log'
