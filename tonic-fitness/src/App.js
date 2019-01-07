@@ -37,7 +37,7 @@ class App extends Component {
   //
   /* API CALLS  */
   //
-  //CREATE USER
+  /* CREATE USER */
   //Add user to database when SignUp form is submitted
   createUser = (e) => {
     e.preventDefault();
@@ -80,7 +80,7 @@ class App extends Component {
     }
   }
 
-  //Login User
+  /* LOGIN USER */
   //Send login request and receive response
   loginUser = (e) => {
     e.preventDefault();
@@ -129,7 +129,8 @@ class App extends Component {
     this.setState({ currentUser: newUser });
   }
 
-  //Removes user info from local storage
+  //Removes user info from local storage and
+  //navigates back to Landing
   logoutUser = () => {
     localStorage.removeItem("userName");
     this.handleSetUser(null);
@@ -148,30 +149,17 @@ class App extends Component {
   }
 
   componentDidMount() {
+    //On app mount: if user stored in local log them in
     const getUserFromLocalStorage = localStorage.getItem("userName");
     if (!!getUserFromLocalStorage) {
       this.handleSetUser(getUserFromLocalStorage);
     };
   }
 
-  componentDidUpdate() {
-    /* If there is currently a user logged in (a name in
-    this.state.currentUser) that name will be displayed
-    in place of Sign Up / Sign In */
-    // if (!!this.state.currentUser) {
-    //   const logins = document.getElementById("top-right-of-nav");
-    //   logins.innerHTML =
-    //   `<h3> Welcome ${this.state.currentUser}! </h3> <br>
-    //    <div onClick=${this.handleLogoutUser}>Logout</div>`;
-    // } else {
-    //   return
-    // }
-  }
-
   render() {
-    const user = this.state.user;
+    //Destructuring
     const {weight, goal, by} = this.state.user;
-    const { currentUser } = this.state;
+    const { currentUser, user } = this.state;
 
     return (
       <div id="app-container">
