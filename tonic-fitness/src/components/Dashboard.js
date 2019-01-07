@@ -9,7 +9,7 @@ const Dashboard = () => {
             <Link to="/goals">
               <i className="fas fa-list-ol"></i>
             </Link>
-            <p className="heading-text"> CHECK
+            <p className="heading-text"> Set Goals
             </p>
           </article>
           <article className="flex-col">
