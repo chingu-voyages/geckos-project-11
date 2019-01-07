@@ -39,7 +39,7 @@ class App extends Component {
   //Add user to database when SignUp form is submitted
   createUser = (e) => {
     e.preventDefault();
-    /*Check to see if a user is already signed in,
+    /* Check to see if a user is already signed in,
     if not then copy information from form to pass
     to database */
     if (!this.state.currentUser) {
@@ -72,7 +72,45 @@ class App extends Component {
         let key="";
         for (let i in errorData){key = i; break;};
         this.handleAPIError(errorData[key]);
+      });
+    } else {
+      alert("User Already Logged In");
+    }
+  }
+
+  //Login User
+  //Send login request and receive response
+  loginUser = (e) => {
+    e.preventDefault();
+    /* Check to see if user is already logged in,
+    if not then proceed with login */
+    if (!this.state.currentUser) {
+      const _email = e.target.email.value;
+      const _password = e.target.password.value;
+
+      //API post to login user
+      axios.post("http://localhost:5000/api/users/login", {
+        email: _email,
+        password: _password
       })
+      .then(response => {
+        //Save to local storage
+        const userInfo = response.data.name;
+        console.log(userInfo);
+        localStorage.setItem("userName", userInfo);
+        this.handleSetUser(userInfo);
+        //Next step 'pushes' new URL using react router history
+        //(see function declaration for details)
+        this.pushNavigation('/');
+      })
+      // .catch(error => {
+      //   //Return error data and log out reason for error
+      //   const errorData = error.response.data;
+      //   //for loop is to catch the first property of error, as we will not know the exact error and do not want to create a catch for every type of error.
+      //   let key="";
+      //   for (let i in errorData){key = i; break;};
+      //   this.handleAPIError(errorData[key]);
+      // });
     } else {
       alert("User Already Logged In");
     }
@@ -98,6 +136,13 @@ class App extends Component {
 
   renderApp = (e) => {
     this.setState({user:e});
+  }
+
+  componentDidMount() {
+    const getUserFromLocalStorage = localStorage.getItem("userName");
+    if (!!getUserFromLocalStorage) {
+      this.handleSetUser(getUserFromLocalStorage);
+    };
   }
 
   componentDidUpdate() {
@@ -131,7 +176,8 @@ class App extends Component {
                  by={by}/>}/>
         </Switch>
         <Route path="/login"
-               render={(props) => <Login handleCreateUser={this.createUser} />}/>
+               render={(props) => <Login handleCreateUser={this.createUser}
+               handleLoginUser = {this.loginUser} />}/>
       </div>
     );
   }
