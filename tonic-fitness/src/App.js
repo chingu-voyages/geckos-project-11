@@ -7,6 +7,7 @@ import history from './History.js';
 import Nav from './components/Nav.js';
 import Login from './components/Login.js';
 import Landing from './components/Landing.js';
+import Dashboard from './components/Dashboard.js';
 import Goals from './components/Goals.js';
 import Log from './components/Log.js';
 import Results from './components/Results.js';
@@ -15,6 +16,7 @@ import Results from './components/Results.js';
 import './stylesheets/App.scss';
 import './stylesheets/Nav.scss';
 import './stylesheets/Landing.scss';
+import './stylesheets/Dashboard.scss';
 import './stylesheets/Login.scss';
 import './stylesheets/Goals.scss';
 import './stylesheets/Log.scss';
@@ -98,19 +100,18 @@ class App extends Component {
         const userInfo = response.data.name;
         console.log(userInfo);
         localStorage.setItem("userName", userInfo);
-        this.handleSetUser(userInfo);
         //Next step 'pushes' new URL using react router history
         //(see function declaration for details)
         this.pushNavigation('/');
       })
-      // .catch(error => {
-      //   //Return error data and log out reason for error
-      //   const errorData = error.response.data;
-      //   //for loop is to catch the first property of error, as we will not know the exact error and do not want to create a catch for every type of error.
-      //   let key="";
-      //   for (let i in errorData){key = i; break;};
-      //   this.handleAPIError(errorData[key]);
-      // });
+      .catch(error => {
+        //Return error data and log out reason for error
+        const errorData = error.response.data;
+        //for loop is to catch the first property of error, as we will not know the exact error and do not want to create a catch for every type of error.
+        let key="";
+        for (let i in errorData){key = i; break;};
+        this.handleAPIError(errorData[key]);
+      });
     } else {
       alert("User Already Logged In");
     }
@@ -125,6 +126,11 @@ class App extends Component {
   //Sets new user in state as this.state.currentUser
   handleSetUser = (newUser) => {
     this.setState({ currentUser: newUser });
+  }
+
+  //Removes user info from local storage
+  handleLogoutUser = () => {
+    localStorage.removeItem("username");
   }
 
   //Navigate to new URL
@@ -149,11 +155,14 @@ class App extends Component {
     /* If there is currently a user logged in (a name in
     this.state.currentUser) that name will be displayed
     in place of Sign Up / Sign In */
-    if (!!this.state.currentUser) {
-      const logins = document.getElementById("top-right-of-nav");
-      logins.innerHTML =
-      `<h3> Welcome ${this.state.currentUser}! </h3>`;
-    }
+    // if (!!this.state.currentUser) {
+    //   const logins = document.getElementById("top-right-of-nav");
+    //   logins.innerHTML =
+    //   `<h3> Welcome ${this.state.currentUser}! </h3> <br>
+    //    <div onClick=${this.handleLogoutUser}>Logout</div>`;
+    // } else {
+    //   return
+    // }
   }
 
   render() {
@@ -164,7 +173,9 @@ class App extends Component {
         <Nav />
         <Switch>
           <Route exact path='/'
-                 component={Landing} />
+               /* Conditional, if a user is present it will display
+              Dashboard, else it displays Landing */
+                 component={() => !!this.state.currentUser ? <Dashboard/> : <Landing/>} />
           <Route path='/goals'
                  render={(props) => <Goals {...props} renderApp={(e)=> this.renderApp(e)}/>}/>
           <Route path='/log'
