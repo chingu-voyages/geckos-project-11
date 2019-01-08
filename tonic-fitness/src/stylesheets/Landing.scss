@@ -47,9 +47,14 @@
     grid-row: r4 / r5;
   }
 
-  .landing-header {
+  .landing-box-words {
     margin-left: 0.3em;
     color: $color-secondary;
+  }
+
+  .landing-box-words-d {
+    margin: 1em;
+    color: $color-dark;
   }
 
   .landing-box-number {
