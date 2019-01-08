@@ -11,11 +11,11 @@
 
   .landing-area {
     display: grid;
-    grid-template-columns: [c1] 20% [c2] 1fr [c3] 1fr [c4] 20% [c5];
+    grid-template-columns: [c1] 8% [c2] 1fr [c3] 1fr [c4] 8% [c5];
     grid-template-rows: [r1] 10% [r2] 1fr [r3] 1fr [r4] 1fr [r5] 10% [r6];
-    grid-gap: 0.5em;
+    grid-gap: 0.4em;
     width: 100%;
-    height: 1200px;
+    height: 580px;
     margin: 0;
   }
 
@@ -53,7 +53,7 @@
   }
 
   .landing-box-words-d {
-    margin: 1em;
+    margin: 0.7em;
     color: $color-dark;
   }
 
@@ -63,7 +63,7 @@
     right: 0.1em;
     padding: 0;
     margin: 0;
-    font-size: 3em;
+    font-size: 1.5em;
     color: $color-secondary;
   }
 
@@ -78,6 +78,22 @@
 @media only screen and (min-width:600px) {
 
 #landing-container {
+
+  .landing-area {
+    grid-template-columns: [c1] 20% [c2] 1fr [c3] 1fr [c4] 20% [c5];
+    grid-template-rows: [r1] 10% [r2] 1fr [r3] 1fr [r4] 1fr [r5] 10% [r6];
+    grid-gap: 0.5em;
+    width: 100%;
+    height: 1200px;
+  }
+
+  .landing-box-number {
+    font-size: 3em;
+  }
+
+  .landing-box-words-d {
+    margin: 1em;
+  }
 
   .fas {
     font-size: 8em;
