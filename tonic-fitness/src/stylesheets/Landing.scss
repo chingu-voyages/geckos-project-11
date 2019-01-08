@@ -11,18 +11,48 @@
 
   .landing-area {
     display: grid;
-    grid-template-areas: [c1] 20% [c2] 1fr [c3] 20% [c4];
+    grid-template-columns: [c1] 20% [c2] 1fr [c3] 1fr [c4] 20% [c5];
     grid-template-rows: [r1] 10% [r2] 1fr [r3] 1fr [r4] 1fr [r5] 10% [r6];
+    grid-gap: 0.5em;
+    height: 1200px;
   }
 
   .landing-box {
+    position: relative;
+    grid-column: c2 / c3;
+    grid-row: r2 / r3;
     width: 300px;
-    height: 260px;
     border-radius: 0.3em;
     background-color: #ffffff;
   }
 
+  .landing-box:nth-of-type(2) {
+    grid-column: c3 / c4;
+    grid-row: r2 / r3;
+  }
+
+  .landing-box:nth-of-type(3) {
+    grid-column: c2 / c3;
+    grid-row: r3 / r4;
+  }
+
+  .landing-box:nth-of-type(4) {
+    grid-column: c3 / c4;
+    grid-row: r3 / r4;
+  }
+
   .landing-header {
+    margin-left: 0.3em;
+    color: $color-secondary;
+  }
+
+  .landing-box-number {
+    position: absolute;
+    bottom: 0;
+    right: 0.1em;
+    padding: 0;
+    margin: 0;
+    font-size: 3em;
     color: $color-secondary;
   }
 
