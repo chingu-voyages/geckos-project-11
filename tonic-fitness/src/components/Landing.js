@@ -5,6 +5,9 @@ const Landing = () => {
       <section id="landing-container" className="flex-col">
         <article className="landing-area">
           <div className="landing-box">
+            <h2 className="heading-text landing-header">Welcome to Tonic Fitness!</h2>
+          </div>
+          <div className="landing-box">
             <h3 className="heading-text landing-header">3 easy steps to a better you!</h3>
             <p className="landing-box-number"><strong>0</strong></p>
           </div>

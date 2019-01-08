@@ -14,31 +14,37 @@
     grid-template-columns: [c1] 20% [c2] 1fr [c3] 1fr [c4] 20% [c5];
     grid-template-rows: [r1] 10% [r2] 1fr [r3] 1fr [r4] 1fr [r5] 10% [r6];
     grid-gap: 0.5em;
+    width: 100%;
     height: 1200px;
+    margin: 0;
   }
 
   .landing-box {
     position: relative;
-    grid-column: c2 / c3;
+    grid-column: c2 / c4;
     grid-row: r2 / r3;
-    width: 300px;
     border-radius: 0.3em;
     background-color: #ffffff;
   }
 
   .landing-box:nth-of-type(2) {
-    grid-column: c3 / c4;
-    grid-row: r2 / r3;
-  }
-
-  .landing-box:nth-of-type(3) {
     grid-column: c2 / c3;
     grid-row: r3 / r4;
   }
 
-  .landing-box:nth-of-type(4) {
+  .landing-box:nth-of-type(3) {
     grid-column: c3 / c4;
     grid-row: r3 / r4;
+  }
+
+  .landing-box:nth-of-type(4) {
+    grid-column: c2 / c3;
+    grid-row: r4 / r5;
+  }
+
+  .landing-box:nth-of-type(5) {
+    grid-column: c3 / c4;
+    grid-row: r4 / r5;
   }
 
   .landing-header {
