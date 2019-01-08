@@ -48,6 +48,10 @@
     grid-row: r4 / r5;
   }
 
+  .landing-header {
+    font-size: 1.3em;
+  }
+
   .landing-box-words {
     margin-left: 0.3em;
     color: $color-secondary;
@@ -60,11 +64,11 @@
 
   .landing-box-number {
     position: absolute;
-    bottom: 0;
-    right: 0.1em;
+    bottom: 0.2em;
+    right: 0.2em;
     padding: 0;
     margin: 0;
-    font-size: 1.5em;
+    font-size: 1.8em;
     color: $color-secondary;
   }
 
@@ -88,12 +92,17 @@
     height: 1200px;
   }
 
+  .landing-header {
+    font-size: 2.2em;
+  }
+
   .landing-box-number {
     font-size: 3em;
   }
 
   .landing-box-words-d {
     margin: 1em;
+    font-size: 1.3em;
   }
 
   .fas {
