@@ -9,10 +9,21 @@
   height: 100vh;
   background-color: $color-secondary;
 
-  .display {
-    width: 90%;
-    padding: 1em 0.2em;
-    border: 1px solid #000;
+  .landing-area {
+    display: grid;
+    grid-template-areas: [c1] 20% [c2] 1fr [c3] 20% [c4];
+    grid-template-rows: [r1] 10% [r2] 1fr [r3] 1fr [r4] 1fr [r5] 10% [r6];
+  }
+
+  .landing-box {
+    width: 300px;
+    height: 260px;
+    border-radius: 0.3em;
+    background-color: #ffffff;
+  }
+
+  .landing-header {
+    color: $color-secondary;
   }
 
   .fas {
@@ -26,11 +37,6 @@
 @media only screen and (min-width:600px) {
 
 #landing-container {
-
-  .display {
-    width: 80%;
-    padding: 2em;
-  }
 
   .fas {
     font-size: 8em;

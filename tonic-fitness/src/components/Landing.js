@@ -1,10 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Landing = () => {
     return (
       <section id="landing-container" className="flex-col">
-        <h2 className="heading-text">Welcome to Tonic Fitness!</h2>
+        <article className="landing-area">
+          <div className="landing-box">
+            <h2 className="heading-text landing-header">Welcome to Tonic Fitness!</h2>
+          </div>
+        </article>
       </section>
     )
   }
