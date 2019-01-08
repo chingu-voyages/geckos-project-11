@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Landing = () => {
     return (
@@ -10,7 +11,9 @@ const Landing = () => {
             <p className="landing-box-words-d">You + these tools = Results!</p>
           </div>
           <div className="landing-box">
-            <p className="heading-text landing-box-words">Sign up for a <em>free</em> account</p>
+            <Link to="/login/signup">
+              <p className="heading-text landing-box-words">Sign up for a <em>free</em> account</p>
+            </Link>
             <p className="landing-box-number"><strong>0</strong></p>
           </div>
           <div className="landing-box">
