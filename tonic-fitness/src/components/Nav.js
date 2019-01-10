@@ -17,10 +17,10 @@ const Nav = (props) => {
                   className="login-item">Sign in</Link>
           </div>)
           :
-          (<div id="top-right-of-nav" className="login">
-            <h3> Welcome {props.currentUser}! </h3>
-            <span className="logout"
-                  onClick={props.handleLogoutUser}>Logout</span>
+          (<div id="top-right-of-nav" className="welcome">
+            <p> Welcome {props.currentUser}! </p>
+            <button className="logout"
+                  onClick={props.handleLogoutUser}>Logout</button>
           </div>)
             }
       </header>
