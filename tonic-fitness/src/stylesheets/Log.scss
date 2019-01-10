@@ -2,7 +2,8 @@
 @import 'App.scss';
 
 #log {
-  background-color: #fff;
+  background-image: $trans-background,
+                    radial-gradient(ellipse at 50%, $color-secondary 60%, $color-dark );
   font-family: $font-main;
   grid-column: c1 / c2;
   grid-row: r2 / r3;
