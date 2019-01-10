@@ -4,29 +4,31 @@ import { Link } from 'react-router-dom';
 const Landing = () => {
     return (
       <section id="landing-container" className="flex-col">
-        <div className="display flex-row">
-          <article className="flex-col">
-            <Link to="/goals">
-              <i className="fas fa-list-ol"></i>
+        <article className="landing-area">
+          <div className="landing-box">
+            <h2 className="heading-text landing-header landing-box-words">Welcome to Tonic Fitness!</h2>
+            <p className="landing-box-words-d">We offer 3 easy to use features for creating goals, logging your caloric intake, and tracking you results.</p>
+            <p className="landing-box-words-d">You + these tools = Results!</p>
+          </div>
+          <div className="landing-box">
+            <Link to="/login/signup">
+              <p className="heading-text landing-box-words">Sign up for a <em>free</em> account</p>
             </Link>
-            <p className="heading-text"> Set Goals
-            </p>
-          </article>
-          <article className="flex-col">
-            <Link to="/log">
-              <i className="fas fa-apple-alt"></i>
-            </Link>
-            <p className="heading-text"> Log Food
-            </p>
-          </article>
-          <article className="flex-col">
-            <Link to="results">
-              <i className="fas fa-chart-bar"></i>
-            </Link>
-            <p className="heading-text"> See Results!
-            </p>
-          </article>
-        </div>
+            <p className="landing-box-number"><strong>0</strong></p>
+          </div>
+          <div className="landing-box">
+            <p className="heading-text landing-box-words">Create weight based goals</p>
+            <p className="landing-box-number"><strong>1</strong></p>
+          </div>
+          <div className="landing-box">
+            <p className="heading-text landing-box-words">Log calorie intake</p>
+            <p className="landing-box-number"><strong>2</strong></p>
+          </div>
+          <div className="landing-box">
+            <p className="heading-text landing-box-words">Track your results</p>
+            <p className="landing-box-number"><strong>3</strong></p>
+          </div>
+        </article>
       </section>
     )
   }

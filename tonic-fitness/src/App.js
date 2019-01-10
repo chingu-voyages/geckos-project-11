@@ -7,6 +7,7 @@ import history from './History.js';
 import Nav from './components/Nav.js';
 import Login from './components/Login.js';
 import Landing from './components/Landing.js';
+import Dashboard from './components/Dashboard.js';
 import Goals from './components/Goals.js';
 import Log from './components/Log.js';
 import Results from './components/Results.js';
@@ -15,6 +16,7 @@ import Results from './components/Results.js';
 import './stylesheets/App.scss';
 import './stylesheets/Nav.scss';
 import './stylesheets/Landing.scss';
+import './stylesheets/Dashboard.scss';
 import './stylesheets/Login.scss';
 import './stylesheets/Goals.scss';
 import './stylesheets/Log.scss';
@@ -35,11 +37,11 @@ class App extends Component {
   //
   /* API CALLS  */
   //
-  //CREATE USER
+  /* CREATE USER */
   //Add user to database when SignUp form is submitted
   createUser = (e) => {
     e.preventDefault();
-    /*Check to see if a user is already signed in,
+    /* Check to see if a user is already signed in,
     if not then copy information from form to pass
     to database */
     if (!this.state.currentUser) {
@@ -72,7 +74,45 @@ class App extends Component {
         let key="";
         for (let i in errorData){key = i; break;};
         this.handleAPIError(errorData[key]);
+      });
+    } else {
+      alert("User Already Logged In");
+    }
+  }
+
+  /* LOGIN USER */
+  //Send login request and receive response
+  loginUser = (e) => {
+    e.preventDefault();
+    /* Check to see if user is already logged in,
+    if not then proceed with login */
+    if (!this.state.currentUser) {
+      const _email = e.target.email.value;
+      const _password = e.target.password.value;
+
+      //API post to login user
+      axios.post("http://localhost:5000/api/users/login", {
+        email: _email,
+        password: _password
       })
+      .then(response => {
+        //Save to local storage
+        const userInfo = response.data.name;
+        console.log(userInfo);
+        localStorage.setItem("userName", userInfo);
+        this.handleSetUser(userInfo);
+        //Next step 'pushes' new URL using react router history
+        //(see function declaration for details)
+        this.pushNavigation('/');
+      })
+      .catch(error => {
+        //Return error data and log out reason for error
+        const errorData = error.response.data;
+        //for loop is to catch the first property of error, as we will not know the exact error and do not want to create a catch for every type of error.
+        let key="";
+        for (let i in errorData){key = i; break;};
+        this.handleAPIError(errorData[key]);
+      });
     } else {
       alert("User Already Logged In");
     }
@@ -89,6 +129,14 @@ class App extends Component {
     this.setState({ currentUser: newUser });
   }
 
+  //Removes user info from local storage and
+  //navigates back to Landing
+  logoutUser = () => {
+    localStorage.removeItem("userName");
+    this.handleSetUser(null);
+    this.pushNavigation(`/`);
+  }
+
   //Navigate to new URL
   /* Uses react router dom history, needs History.js and
   needs history passed to <Router> in index.js */
@@ -100,26 +148,28 @@ class App extends Component {
     this.setState({user:e});
   }
 
-  componentDidUpdate() {
-    /* If there is currently a user logged in (a name in
-    this.state.currentUser) that name will be displayed
-    in place of Sign Up / Sign In */
-    if (!!this.state.currentUser) {
-      const logins = document.getElementById("top-right-of-nav");
-      logins.innerHTML =
-      `<h3> Welcome ${this.state.currentUser}! </h3>`;
-    }
+  componentDidMount() {
+    //On app mount: if user stored in local log them in
+    const getUserFromLocalStorage = localStorage.getItem("userName");
+    if (!!getUserFromLocalStorage) {
+      this.handleSetUser(getUserFromLocalStorage);
+    };
   }
 
   render() {
-    const user = this.state.user;
+    //Destructuring
     const {weight, goal, by} = this.state.user;
+    const { currentUser, user } = this.state;
+
     return (
       <div id="app-container">
-        <Nav />
+        <Nav currentUser={currentUser}
+             handleLogoutUser={this.logoutUser}/>
         <Switch>
           <Route exact path='/'
-                 component={Landing} />
+               /* Conditional, if a user is present it will display
+              Dashboard, else it displays Landing */
+                 component={() => !!currentUser ? <Dashboard/> : <Landing/>} />
           <Route path='/goals'
                  render={(props) => <Goals {...props} renderApp={(e)=> this.renderApp(e)}/>}/>
           <Route path='/log'
@@ -131,7 +181,8 @@ class App extends Component {
                  by={by}/>}/>
         </Switch>
         <Route path="/login"
-               render={(props) => <Login handleCreateUser={this.createUser} />}/>
+               render={(props) => <Login handleCreateUser={this.createUser}
+               handleLoginUser = {this.loginUser} />}/>
       </div>
     );
   }

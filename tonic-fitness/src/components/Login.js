@@ -37,7 +37,7 @@ class Login extends Component  {
   }
 
   render() {
-    const {handleCreateUser} = this.props;
+    const {handleCreateUser, handleLoginUser} = this.props;
 
     return (
       <aside id="login-container"
@@ -119,14 +119,17 @@ class Login extends Component  {
               //Render SignIn on path match
               render={() =>
                 <div className="login-body flex-col">
-                  <form id="signup-form" className="flex-col">
+                  <form id="signup-form"
+                        className="flex-col"
+                        onSubmit={handleLoginUser} >
                     <div className="form-field heading-text">
-                      Name:
+                      Email:
                       <input type="text"
-                             name="username"
-                             value={this.state.localEntry.username}
+                             name="email"
+                             value={this.state.localEntry.email}
                              onChange={this.handleInputChange}
-                             placeholder="Skinnyboy Thompson" required />
+                             placeholder="me@theplace.io"
+                             required />
                     </div>
                     <div className="form-field heading-text">
                       Password:
