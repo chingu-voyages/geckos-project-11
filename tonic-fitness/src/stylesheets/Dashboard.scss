@@ -12,12 +12,12 @@
 
   .display {
     display: grid;
-    grid-template-columns: [c1] 8% [c2] 1fr [c3] 1fr [c4] 1fr [c5] 8% [c6];
-    grid-template-rows: [r1] 10% [r2] 1fr [r3] 10% [r4];
-    grid-gap: 0.4em;
+    grid-template-columns: [c1] 8% [c2] 1fr [c3] 8% [c4];
+    grid-template-rows: [r1] 10% [r2] 1fr [r3] 1fr [r4] 1fr [r5] 10% [r6];
+    grid-gap: 1em;
     width: 90%;
-    height: 200px;
     max-width: 800px;
+    margin: 1em auto;
     border-radius: 0.3em;
   }
 
@@ -25,20 +25,20 @@
     position: relative;
     grid-column: c2 / c3;
     grid-row: r2 / r3;
-    padding-top: 1em;
+    padding: 1em;
     border-radius: 0.3em;
     background-color: #ffffff;
     box-shadow: 1px 1px 20px $color-dark;
   }
 
   .landing-box:nth-of-type(2) {
-    grid-column: c3 / c4;
-    grid-row: r2 / r3;
+    grid-column: c2 / c3;
+    grid-row: r3 / r4;
   }
 
   .landing-box:nth-of-type(3) {
-    grid-column: c4 / c5;
-    grid-row: r2 / r3;
+    grid-column: c2 / c3;
+    grid-row: r4 / r5;
   }
 
   p {
@@ -60,7 +60,6 @@
 
   .display {
     max-width: 1000px;
-    max-height: 400px;
   }
 
   .fas {
