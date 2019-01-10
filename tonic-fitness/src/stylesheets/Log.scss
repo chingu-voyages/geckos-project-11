@@ -21,7 +21,7 @@
   .cal-entry {
     width: 70%;
     margin: 1em auto;
-    background-color: $color-primary;
+    background-color: #fff;
     border-radius: 0.4em;
     box-shadow: 3px 3px 10px #262525;
   }
@@ -41,7 +41,7 @@
 
   .entry-button {
     padding: 0;
-    background-color: $color-primary;
+    background-color: #fff;
     border: 0;
     transform: rotate(45deg);
   }
@@ -49,7 +49,7 @@
   .entry-log {
     width: 35%;
     margin: 1em auto;
-    background-color: $color-primary;
+    background-color: #fff;
     border-radius: 0.4em;
     box-shadow: 3px 3px 10px #262525;
     transition-duration: 150ms;
@@ -70,7 +70,7 @@
   .remove-button {
     width: 1em;
     margin: 1em;
-    background-color: $color-primary;
+    background-color: #fff;
     border: none;
   }
 

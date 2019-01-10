@@ -174,7 +174,7 @@ class Log extends Component  {
               <h4 className="log-entry-item title"> {currentEntry.year} </h4>
               <h4 className="log-entry-item title"> {currentEntry.meal} - {currentEntry.calories} calories </h4>
             </div>
-            <button name="add"
+            <button name="remove"
                     className="remove-button"
                     onClick={() => {this.handleRemoveEntry(currentEntry)}} >
               <i className="far fa-times-circle"></i>
