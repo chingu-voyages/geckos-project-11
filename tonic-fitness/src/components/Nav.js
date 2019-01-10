@@ -8,7 +8,8 @@ const Nav = (props) => {
         <Link to="/">
           <h1 id="icon">Tonic Fitness</h1>
         </Link>
-        {(!props.currentUser) ?
+        {/* Ternary to display Login options if no user logged in or Welcome {name} is user is signed in */
+          (!props.currentUser) ?
           (<div id="top-right-of-nav" className="login">
             <Link to="/login/signup"
                   className="login-item">Sign up</Link>
