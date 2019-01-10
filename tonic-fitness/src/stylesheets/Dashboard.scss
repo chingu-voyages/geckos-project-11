@@ -6,17 +6,48 @@
 #dashboard-container {
   grid-column: c1 / c2;
   grid-row: r2 / r3;
-  height: 100vh;
-  background-color: $color-secondary;
+  height: calc(100vh - 100px);
+  background-image: $trans-background,
+                    radial-gradient(ellipse at 50%, $color-secondary 60%, $color-dark );
 
   .display {
+    display: grid;
+    grid-template-columns: [c1] 8% [c2] 1fr [c3] 1fr [c4] 1fr [c5] 8% [c6];
+    grid-template-rows: [r1] 10% [r2] 1fr [r3] 10% [r4];
+    grid-gap: 0.4em;
     width: 90%;
-    padding: 1em 0.2em;
-    border: 1px solid #000;
+    height: 200px;
+    max-width: 800px;
+    border-radius: 0.3em;
+  }
+
+  .landing-box {
+    position: relative;
+    grid-column: c2 / c3;
+    grid-row: r2 / r3;
+    padding-top: 1em;
+    border-radius: 0.3em;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 20px $color-dark;
+  }
+
+  .landing-box:nth-of-type(2) {
+    grid-column: c3 / c4;
+    grid-row: r2 / r3;
+  }
+
+  .landing-box:nth-of-type(3) {
+    grid-column: c4 / c5;
+    grid-row: r2 / r3;
+  }
+
+  p {
+    color: $color-secondary;
   }
 
   .fas {
     font-size: 3em;
+    color: $color-secondary;
   }
 
 }
@@ -28,8 +59,8 @@
 #dashboard-container {
 
   .display {
-    width: 80%;
-    padding: 2em;
+    max-width: 1000px;
+    max-height: 400px;
   }
 
   .fas {
