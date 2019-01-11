@@ -81,6 +81,7 @@ class Log extends Component  {
     //Push into this.state.log
     this.state.log.push(newEntry);
 
+    //Reset local log
     this.setState ({
       localEntry: {
         day: '',
@@ -107,13 +108,14 @@ class Log extends Component  {
 
     return (
       <div id="log">
-        <h2 className="title flex-col">
+        <h2 className="title header">
           Fill in your calorie entry below and click to add it to your log
         </h2>
-        <section className="cal-entry flex-row">
 
+        <section className="cal-entry flex-col">
+
+          <h4 className="cal-entry-item-title">Date: </h4>
           <div className="cal-entry-item flex-row">
-            <h4 className="cal-entry-item-title">Date: </h4>
             <input name="month"
                    type="number"
                    min="1"
@@ -135,8 +137,8 @@ class Log extends Component  {
                    value={this.state.localEntry.year}
                    onChange={this.handleInputChange} />
           </div>
+          <h4 className="cal-entry-item-title">Meal: </h4>
           <div className="cal-entry-item flex-row">
-            <h4 className="cal-entry-item-title">Meal: </h4>
             <select name="meal"
                     value={this.state.localEntry.meal}
                     onChange={this.handleInputChange} >
@@ -147,8 +149,8 @@ class Log extends Component  {
               <option value="Other">Other</option>
             </select>
           </div>
+          <h4 className="cal-entry-item-title">Calories: </h4>
           <div className="cal-entry-item flex-row">
-            <h4 className="cal-entry-item-title">Calories: </h4>
             <input name="calories"
                    type="number"
                    placeholder="Number Only"
