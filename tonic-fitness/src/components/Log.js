@@ -166,14 +166,16 @@ class Log extends Component  {
 
         {/* Map over this.state.log and display each entry */}
         {this.state.log.map((currentEntry, index) => (
-          <section className="entry-log flex-row"
+          <section className="entry-log flex-col"
                    key={index} >
-            <div className="flex-row">
-              <h4 className="log-entry-item title"> {currentEntry.month} </h4>
-              <h4 className="log-entry-item title"> / </h4>
-              <h4 className="log-entry-item title"> {currentEntry.day} </h4>
-              <h4 className="log-entry-item title"> / </h4>
-              <h4 className="log-entry-item title"> {currentEntry.year} </h4>
+            <div className="flex-col">
+              <span className="flex-row">
+                <h4 className="log-entry-item title"> {currentEntry.month} </h4>
+                <h4 className="log-entry-item title"> / </h4>
+                <h4 className="log-entry-item title"> {currentEntry.day} </h4>
+                <h4 className="log-entry-item title"> / </h4>
+                <h4 className="log-entry-item title"> {currentEntry.year} </h4>
+              </span>
               <h4 className="log-entry-item title"> {currentEntry.meal} - {currentEntry.calories} calories </h4>
             </div>
             <button name="remove"
