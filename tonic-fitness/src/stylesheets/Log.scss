@@ -33,6 +33,13 @@
     background-color: #fff;
     border-radius: 0.4em;
     box-shadow: 3px 3px 10px #262525;
+    background: radial-gradient(
+                circle at top left,
+                #fff 30px,
+                transparent 30px,
+                transparent 45px,
+                #fff 45px
+    );
   }
 
   .cal-entry-item {
@@ -66,6 +73,13 @@
     background-color: #fff;
     border-radius: 0.4em;
     box-shadow: 3px 3px 10px #262525;
+    background: radial-gradient(
+                circle at top left,
+                #fff 25px,
+                transparent 25px,
+                transparent 35px,
+                #fff 35px
+    );
     transition-duration: 150ms;
   }
 
