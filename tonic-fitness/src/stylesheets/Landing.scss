@@ -7,8 +7,8 @@
   grid-column: c1 / c2;
   grid-row: r2 / r3;
   height: 100vh;
-  background-color: $color-secondary;
-  background-image: url("https://www.transparenttextures.com/patterns/escheresque-dark.png");
+  background-image: $trans-background,
+                    radial-gradient(ellipse at 50%, $color-secondary 60%, $color-dark );
 
   .landing-area {
     display: grid;
@@ -16,8 +16,9 @@
     grid-template-rows: [r1] 10% [r2] 1fr [r3] 1fr [r4] 1fr [r5] 10% [r6];
     grid-gap: 0.4em;
     width: 100%;
+    max-width: 1300px;
     height: 580px;
-    margin: 0;
+    margin: 1em 0;
   }
 
   .landing-box {
