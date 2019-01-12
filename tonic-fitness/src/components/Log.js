@@ -33,6 +33,48 @@ class Log extends Component  {
           year: '2018',
           meal: 'Dinner',
           calories: '2200'
+        },
+        {
+          day: '23',
+          month: '12',
+          year: '2018',
+          meal: 'Lunch',
+          calories: '2000'
+        },
+        {
+          day: '23',
+          month: '12',
+          year: '2018',
+          meal: 'Lunch',
+          calories: '2000'
+        },
+        {
+          day: '23',
+          month: '12',
+          year: '2018',
+          meal: 'Lunch',
+          calories: '2000'
+        },
+        {
+          day: '23',
+          month: '12',
+          year: '2018',
+          meal: 'Lunch',
+          calories: '2000'
+        },
+        {
+          day: '23',
+          month: '12',
+          year: '2018',
+          meal: 'Lunch',
+          calories: '2000'
+        },
+        {
+          day: '23',
+          month: '12',
+          year: '2018',
+          meal: 'Lunch',
+          calories: '2000'
         }
       ]
     }
@@ -165,27 +207,29 @@ class Log extends Component  {
         </section>
 
         {/* Map over this.state.log and display each entry */}
-        {this.state.log.map((currentEntry, index) => (
-          <section className="entry-log flex-col"
-                   key={index} >
-            <div className="flex-col">
-              <span className="flex-row">
-                <h4 className="log-entry-item title"> {currentEntry.month} </h4>
-                <h4 className="log-entry-item title"> / </h4>
-                <h4 className="log-entry-item title"> {currentEntry.day} </h4>
-                <h4 className="log-entry-item title"> / </h4>
-                <h4 className="log-entry-item title"> {currentEntry.year} </h4>
-              </span>
-              <h4 className="log-entry-item title"> {currentEntry.meal} - {currentEntry.calories} calories </h4>
-            </div>
-            <button name="remove"
-                    className="remove-button"
-                    onClick={() => {this.handleRemoveEntry(currentEntry)}} >
-              <i className="far fa-times-circle"></i>
-            </button>
-          </section>
-          ))
-        }
+        <section className="entry-log-area">
+          {this.state.log.map((currentEntry, index) => (
+            <article className="entry-log flex-col"
+                     key={index} >
+              <div className="flex-col">
+                <span className="flex-row">
+                  <h4 className="log-entry-item title"> {currentEntry.month} </h4>
+                  <h4 className="log-entry-item title"> / </h4>
+                  <h4 className="log-entry-item title"> {currentEntry.day} </h4>
+                  <h4 className="log-entry-item title"> / </h4>
+                  <h4 className="log-entry-item title"> {currentEntry.year} </h4>
+                </span>
+                <h4 className="log-entry-item title"> {currentEntry.meal} - {currentEntry.calories} calories </h4>
+              </div>
+              <button name="remove"
+                      className="remove-button"
+                      onClick={() => {this.handleRemoveEntry(currentEntry)}} >
+                <i className="far fa-times-circle"></i>
+              </button>
+            </article>
+            ))
+          }
+        </section>
       </div>
     )
   }

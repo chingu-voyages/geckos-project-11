@@ -89,6 +89,16 @@
     border: none;
   }
 
+  .entry-log-area {
+    max-height: 570px;
+    max-width: 450px;
+    margin: 2em auto;
+    overflow-y: scroll;
+    background-color: #000;
+    border: 1px solid $color-dark;
+    border-radius: 0.3em;
+  }
+
 }
 
 /* Media Queries */
@@ -106,5 +116,35 @@
   }
 
 }
+
+}
+
+@media only screen and (min-width:800px) {
+  #log {
+      display: grid;
+      grid-template-columns: [c1] 5% [c2] 1fr [c3] 1fr [c4] 5% [c5];
+      grid-template-rows: [r1] 50px [r2] 100px [r3] 1fr [r4] 200px [r5];
+      grid-gap: 25px;
+
+      .cal-entry {
+        max-height: 400px;
+      }
+
+      .header {
+        grid-column: c1 / c5;
+        grid-row: r2 / r3;
+      }
+
+      .cal-entry {
+        grid-column: c2 / c3;
+        grid-row: r3 / r4;
+      }
+
+      .entry-log-area {
+        grid-column: c3 / c4;
+        grid-row: r3 / r4;
+      }
+
+  }
 
 }
