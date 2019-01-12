@@ -208,6 +208,7 @@ class Log extends Component  {
 
         {/* Map over this.state.log and display each entry */}
         <section className="entry-log-area">
+          <h4 className="log-entry-item title">Log Entries </h4>
           {this.state.log.map((currentEntry, index) => (
             <article className="entry-log flex-col"
                      key={index} >

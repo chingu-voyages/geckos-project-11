@@ -90,7 +90,7 @@
   }
 
   .entry-log-area {
-    max-height: 570px;
+    max-height: 400px;
     max-width: 450px;
     margin: 2em auto;
     overflow-y: scroll;
@@ -143,6 +143,8 @@
       .entry-log-area {
         grid-column: c3 / c4;
         grid-row: r3 / r4;
+        width: 100%;
+        margin: 0;
       }
 
   }
