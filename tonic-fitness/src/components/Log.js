@@ -10,31 +10,7 @@ class Log extends Component  {
         year: '',
         meal: '',
         calories: ''
-      },
-      log: [
-        /* These are fakes for testing, will be replaced with actual user info from database */
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Breakfast',
-          calories: '1200'
-        },
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Lunch',
-          calories: '2000'
-        },
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Dinner',
-          calories: '2200'
-        }
-      ]
+      }
     }
 
     //Bindings
@@ -63,11 +39,11 @@ class Log extends Component  {
   permanent entry in this.state.log and resets input
   fields in localEntry */
   handleAddEntry(e) {
-    const currentDay = this.state.localEntry.day;
-    const currentMonth = this.state.localEntry.month;
-    const currentYear = this.state.localEntry.year;
-    const currentMeal = this.state.localEntry.meal;
-    const currentCalories = this.state.localEntry.calories;
+    const currentDay = this.props.localEntry.day;
+    const currentMonth = this.props.localEntry.month;
+    const currentYear = this.props.localEntry.year;
+    const currentMeal = this.props.localEntry.meal;
+    const currentCalories = this.props.localEntry.calories;
 
     //Build new object to push into this.state.log
     const newEntry = {
@@ -78,7 +54,7 @@ class Log extends Component  {
       calories: `${currentCalories}`
     }
 
-    //Push into this.state.log
+    //Push into this.state.log// function from aap.js to post it to db
     this.state.log.push(newEntry);
 
     this.setState ({
