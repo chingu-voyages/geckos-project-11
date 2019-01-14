@@ -11,6 +11,7 @@ import Dashboard from './components/Dashboard.js';
 import Goals from './components/Goals.js';
 import Log from './components/Log.js';
 import Results from './components/Results.js';
+import Footer from './components/Footer.js';
 
 //Stylesheets
 import './stylesheets/App.scss';
@@ -20,6 +21,7 @@ import './stylesheets/Dashboard.scss';
 import './stylesheets/Login.scss';
 import './stylesheets/Goals.scss';
 import './stylesheets/Log.scss';
+import './stylesheets/Footer.scss';
 
 
 class App extends Component {
@@ -183,6 +185,7 @@ class App extends Component {
         <Route path="/login"
                render={(props) => <Login handleCreateUser={this.createUser}
                handleLoginUser = {this.loginUser} />}/>
+             <Footer />
       </div>
     );
   }

@@ -1,0 +1,11 @@
+//Import variabls and general style
+@import 'App.scss';
+
+#footer {
+  grid-column: c1 / c2;
+  grid-row: r3 / r4;
+  background-color: #000;
+  color: $color-primary;
+  font-size: 1.2em;
+
+}
