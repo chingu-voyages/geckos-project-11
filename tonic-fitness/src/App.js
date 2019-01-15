@@ -29,10 +29,18 @@ class App extends Component {
     super(props);
     this.state = {
       currentUser: null,
+      currentUserID: null,
       user: [
 
       ],
       logs: [
+        {
+          month: '12',
+          day: '23',
+          year: '2018',
+          meal: 'breakfast',
+          calories: '124'
+        },
 
       ],
     }
@@ -66,8 +74,9 @@ class App extends Component {
       })
       .then(response => {
         const newUser = response.data.name;
+        const newUserID = response.data.id;
         //Next step sets new users name in state as the 'currentUser'
-        this.handleSetUser(newUser);
+        this.handleSetUser(newUser, newUserID);
         //Next step 'pushes' new URL using react router history
         //(see function declaration for details)
         this.pushNavigation('/');
@@ -102,12 +111,12 @@ class App extends Component {
       })
       .then(response => {
         //Save to local storage
-        const userInfo = response.data.name;
-        const userId = response.data.id;
-        console.log(userInfo);
-        localStorage.setItem("userName", userInfo);
-        localStorage.setItem("userId", userId);
-        this.handleSetUser(userInfo);
+        const userName = response.data.name;
+        const userID = response.data.id;
+        console.log(userID);
+        localStorage.setItem("userName", userName);
+        localStorage.setItem("userId", userID);
+        this.handleSetUser(userName, userID);
         //Next step 'pushes' new URL using react router history
         //(see function declaration for details)
         this.pushNavigation('/');
@@ -139,12 +148,12 @@ class App extends Component {
   }
     /*Create logs*/
     postUserLogs = (userId) => {
-      
+
       const _currentDay       = userId.target.day.value;
       const _currentMonth     = userId.target.month.value;
       const _currentYear      = userId.target.year.value;
       const _currentMeal      = userId.target.meal.value;
-      const _currentCalories  = userId.target.calories.value; 
+      const _currentCalories  = userId.target.calories.value;
       const _user             = userId;
       axios.post("http://localhost:5000/api/logs/new",{
       currentDay : _currentDay,
@@ -154,10 +163,8 @@ class App extends Component {
       currentCalories : _currentCalories,
       user : _user
     }).then((response)=>{
-      this.pushNavigation('/');
-
+      this.pushNavigation('/log');
     }).catch((err) => {
-    
     })
     }
 
@@ -168,15 +175,16 @@ class App extends Component {
   }
 
   //Sets new user in state as this.state.currentUser
-  handleSetUser = (newUser) => {
-    this.setState({ currentUser: newUser });
+  handleSetUser = (newUser, newUserID) => {
+    this.setState({ currentUser: newUser,
+                    currentUserID: newUserID});
   }
 
   //Removes user info from local storage and
   //navigates back to Landing
   logoutUser = () => {
     localStorage.removeItem("userName");
-    this.handleSetUser(null);
+    this.handleSetUser(null, null);
     this.pushNavigation(`/`);
   }
 
@@ -202,7 +210,7 @@ class App extends Component {
   render() {
     //Destructuring
     const {weight, goal, by} = this.state.user;
-    const { currentUser, user } = this.state;
+    const { currentUser, user, logs } = this.state;
 
     return (
       <div id="app-container">
@@ -216,7 +224,8 @@ class App extends Component {
           <Route path='/goals'
                  render={(props) => <Goals {...props} renderApp={(e)=> this.renderApp(e)}/>}/>
           <Route path='/log'
-                 component={Log}/>
+                 render={(props) => <Log {...props}
+                 userLogs={logs} />} />
           <Route path='/results'
                  render={(props) => <Results {...props} user={user}
                  weight={weight}

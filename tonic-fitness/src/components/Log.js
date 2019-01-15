@@ -5,82 +5,12 @@ class Log extends Component  {
     super(props);
     this.state = {
       localEntry: {
-        day: '',
         month: '',
+        day: '',
         year: '',
         meal: '',
         calories: ''
-<<<<<<< HEAD
       },
-      log: [
-        /* These are fakes for testing, will be replaced with actual user info from database */
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Breakfast',
-          calories: '1200'
-        },
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Lunch',
-          calories: '2000'
-        },
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Dinner',
-          calories: '2200'
-        },
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Lunch',
-          calories: '2000'
-        },
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Lunch',
-          calories: '2000'
-        },
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Lunch',
-          calories: '2000'
-        },
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Lunch',
-          calories: '2000'
-        },
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Lunch',
-          calories: '2000'
-        },
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Lunch',
-          calories: '2000'
-        }
-      ]
-=======
-      }
->>>>>>> 6e59c8a1c3a3ff46f8616093eb732b33ab45ca0d
     }
 
     //Bindings
@@ -151,6 +81,9 @@ class Log extends Component  {
 
 
   render() {
+    //Destructuring
+    const { userLogs } = this.props;
+    const { localEntry } = this.state;
 
     return (
       <div id="log">
@@ -167,26 +100,26 @@ class Log extends Component  {
                    min="1"
                    max="12"
                    placeholder="M"
-                   value={this.state.localEntry.month}
+                   value={localEntry.month}
                    onChange={this.handleInputChange} />
             <input name="day"
                    type="number"
                    min="1"
                    max="31"
                    placeholder="D"
-                   value={this.state.localEntry.day}
+                   value={localEntry.day}
                    onChange={this.handleInputChange} />
             <input name="year"
                    type="number"
                    min="2017"
                    placeholder="Y"
-                   value={this.state.localEntry.year}
+                   value={localEntry.year}
                    onChange={this.handleInputChange} />
           </div>
           <h4 className="cal-entry-item-title">Meal: </h4>
           <div className="cal-entry-item flex-row">
             <select name="meal"
-                    value={this.state.localEntry.meal}
+                    value={localEntry.meal}
                     onChange={this.handleInputChange} >
               <option value="Breakfast">Breakfast</option>
               <option value="Lunch">Lunch</option>
@@ -200,7 +133,7 @@ class Log extends Component  {
             <input name="calories"
                    type="number"
                    placeholder="Number Only"
-                   value={this.state.localEntry.calories}
+                   value={localEntry.calories}
                    onChange={this.handleInputChange} />
           </div>
           <button name="add"
@@ -213,7 +146,7 @@ class Log extends Component  {
         {/* Map over this.state.log and display each entry */}
         <section className="entry-log-area">
           <h4 className="log-entry-item title">Log Entries </h4>
-          {this.state.log.map((currentEntry, index) => (
+          {userLogs.map((currentEntry, index) => (
             <article className="entry-log flex-col"
                      key={index} >
               <div className="flex-col">
