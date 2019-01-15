@@ -31,7 +31,10 @@ class App extends Component {
       currentUser: null,
       user: [
 
-      ]
+      ],
+      logs: [
+
+      ],
     }
 
   }
@@ -100,8 +103,10 @@ class App extends Component {
       .then(response => {
         //Save to local storage
         const userInfo = response.data.name;
+        const userId = response.data.id;
         console.log(userInfo);
         localStorage.setItem("userName", userInfo);
+        localStorage.setItem("userId", userId);
         this.handleSetUser(userInfo);
         //Next step 'pushes' new URL using react router history
         //(see function declaration for details)
@@ -119,6 +124,42 @@ class App extends Component {
       alert("User Already Logged In");
     }
   }
+
+  /* Log API calls*/
+  /*Get all logs the user*/
+  getUserLogs = (userId) => {
+    axios.get("http://localhost:5000/api/logs/:userId/all", {
+
+    })
+    .then(response => {
+      this.setState({
+        logs: response.data
+      })
+    })
+  }
+    /*Create logs*/
+    postUserLogs = (userId) => {
+      
+      const _currentDay       = userId.target.day.value;
+      const _currentMonth     = userId.target.month.value;
+      const _currentYear      = userId.target.year.value;
+      const _currentMeal      = userId.target.meal.value;
+      const _currentCalories  = userId.target.calories.value; 
+      const _user             = userId;
+      axios.post("http://localhost:5000/api/logs/new",{
+      currentDay : _currentDay,
+      currentMonth : _currentMonth,
+      currentYear : _currentYear,
+      currentMeal : _currentMeal,
+      currentCalories : _currentCalories,
+      user : _user
+    }).then((response)=>{
+      this.pushNavigation('/');
+
+    }).catch((err) => {
+    
+    })
+    }
 
   //Handle error from API call and inform user
   handleAPIError = (error) => {
