@@ -39,11 +39,11 @@ class Log extends Component  {
   permanent entry in this.state.log and resets input
   fields in localEntry */
   handleAddEntry(e) {
-    const currentDay = this.props.localEntry.day;
-    const currentMonth = this.props.localEntry.month;
-    const currentYear = this.props.localEntry.year;
-    const currentMeal = this.props.localEntry.meal;
-    const currentCalories = this.props.localEntry.calories;
+    const currentDay = this.state.localEntry.day;
+    const currentMonth = this.state.localEntry.month;
+    const currentYear = this.state.localEntry.year;
+    const currentMeal = this.state.localEntry.meal;
+    const currentCalories = this.state.localEntry.calories;
 
     //Build new object to push into this.state.log
     const newEntry = {
@@ -55,7 +55,7 @@ class Log extends Component  {
     }
 
     //Push into this.state.log// function from aap.js to post it to db
-    this.state.log.push(newEntry);
+    this.props.postLog(newEntry);
 
     //Reset local log
     this.setState ({
@@ -73,7 +73,6 @@ class Log extends Component  {
   handleRemoveEntry(e) {
     const getLog = this.state.log;
     const changeLog = getLog.filter(entry => entry !== e);
-
     this.setState ({
       log: changeLog
     })

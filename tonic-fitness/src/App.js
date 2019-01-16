@@ -29,7 +29,7 @@ class App extends Component {
     super(props);
     this.state = {
       currentUser: null,
-      currentUserID: null,
+      currentUserId: null,
       user: [
 
       ],
@@ -74,9 +74,11 @@ class App extends Component {
       })
       .then(response => {
         const newUser = response.data.name;
-        const newUserID = response.data.id;
-        //Next step sets new users name in state as the 'currentUser'
-        this.handleSetUser(newUser, newUserID);
+        const newUserId = response.data.id;
+        //Set user and ID in state
+        this.handleSetUser(newUser, newUserId);
+        //Get user logs
+        this.getUserLogs(newUserId);
         //Next step 'pushes' new URL using react router history
         //(see function declaration for details)
         this.pushNavigation('/');
@@ -112,11 +114,14 @@ class App extends Component {
       .then(response => {
         //Save to local storage
         const userName = response.data.name;
-        const userID = response.data.id;
-        console.log(userID);
+        const userId = response.data.id;
+        console.log(userId);
         localStorage.setItem("userName", userName);
-        localStorage.setItem("userId", userID);
-        this.handleSetUser(userName, userID);
+        localStorage.setItem("userId", userId);
+        //Set user and ID in state
+        this.handleSetUser(userName, userId);
+        //Get user logs
+        this.getUserLogs(userId);
         //Next step 'pushes' new URL using react router history
         //(see function declaration for details)
         this.pushNavigation('/');
@@ -135,32 +140,37 @@ class App extends Component {
   }
 
   /* Log API calls*/
-  /*Get all logs the user*/
+  /*Get all the users logs*/
   getUserLogs = (userId) => {
-    axios.get("http://localhost:5000/api/logs/:userId/all", {
-
+    const _userId = userId;
+    axios.get(`http://localhost:5000/api/logs/:userId/all`, {
+      userId: _userId
     })
     .then(response => {
       this.setState({
         logs: response.data
-      })
+      });
+      console.log(this.state.logs)
+    })
+    .catch(err => {
+      console.log(err);
     })
   }
     /*Create logs*/
-    postUserLogs = (userId) => {
+    postUserLogs = (newEntry) => {
+      const _currentDay       = newEntry.day;
+      const _currentMonth     = newEntry.month;
+      const _currentYear      = newEntry.year;
+      const _currentMeal      = newEntry.meal;
+      const _currentCalories  = newEntry.calories;
+      const _user             = this.state.currentUserId;
 
-      const _currentDay       = userId.target.day.value;
-      const _currentMonth     = userId.target.month.value;
-      const _currentYear      = userId.target.year.value;
-      const _currentMeal      = userId.target.meal.value;
-      const _currentCalories  = userId.target.calories.value;
-      const _user             = userId;
       axios.post("http://localhost:5000/api/logs/new",{
-      currentDay : _currentDay,
-      currentMonth : _currentMonth,
-      currentYear : _currentYear,
-      currentMeal : _currentMeal,
-      currentCalories : _currentCalories,
+      day: _currentDay,
+      month: _currentMonth,
+      year: _currentYear,
+      meal: _currentMeal,
+      calories: _currentCalories,
       user : _user
     }).then((response)=>{
       this.pushNavigation('/log');
@@ -175,15 +185,16 @@ class App extends Component {
   }
 
   //Sets new user in state as this.state.currentUser
-  handleSetUser = (newUser, newUserID) => {
+  handleSetUser = (newUser, newUserId) => {
     this.setState({ currentUser: newUser,
-                    currentUserID: newUserID});
+                    currentUserId: newUserId});
   }
 
   //Removes user info from local storage and
   //navigates back to Landing
   logoutUser = () => {
     localStorage.removeItem("userName");
+    localStorage.removeItem("userId");
     this.handleSetUser(null, null);
     this.pushNavigation(`/`);
   }
@@ -202,8 +213,10 @@ class App extends Component {
   componentDidMount() {
     //On app mount: if user stored in local log them in
     const getUserFromLocalStorage = localStorage.getItem("userName");
+    const getIdFromLocalStorage = localStorage.getItem("userId");
     if (!!getUserFromLocalStorage) {
-      this.handleSetUser(getUserFromLocalStorage);
+      this.handleSetUser(getUserFromLocalStorage, getIdFromLocalStorage);
+      this.getUserLogs(getIdFromLocalStorage);
     };
   }
 
@@ -225,7 +238,8 @@ class App extends Component {
                  render={(props) => <Goals {...props} renderApp={(e)=> this.renderApp(e)}/>}/>
           <Route path='/log'
                  render={(props) => <Log {...props}
-                 userLogs={logs} />} />
+                 userLogs={logs}
+                 postLog={this.postUserLogs} />} />
           <Route path='/results'
                  render={(props) => <Results {...props} user={user}
                  weight={weight}
