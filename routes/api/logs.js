@@ -30,5 +30,13 @@ router.post('/new', (req, res) => {
             res.json(log)
         })
 });
+//remove log
+router.post('/remove', (req, res) => {
+  const refID = req.body.refID;
+    Log.deleteOne({ "_id.$oid" : refID })
+    .then((log) => {
+        res.json(log)
+    })
+});
 
 module.exports = router;

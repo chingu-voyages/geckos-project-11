@@ -81,7 +81,7 @@ class Log extends Component  {
 
   render() {
     //Destructuring
-    const { userLogs } = this.props;
+    const { userLogs, removeLog } = this.props;
     const { localEntry } = this.state;
 
     return (
@@ -161,7 +161,7 @@ class Log extends Component  {
               </div>
               <button name="remove"
                       className="remove-button"
-                      onClick={() => {this.handleRemoveEntry(currentEntry)}} >
+                      onClick={() => {removeLog(currentEntry.id)}} >
                 <i className="far fa-times-circle"></i>
               </button>
             </article>

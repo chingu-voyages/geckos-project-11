@@ -146,7 +146,7 @@ class App extends Component {
       console.log(err);
     })
   }
-    /*Create logs*/
+    /*Create Log*/
     postUserLogs = (newEntry) => {
       const _currentMonth     = newEntry.month;
       const _currentDay       = newEntry.day;
@@ -168,6 +168,19 @@ class App extends Component {
     }).catch((err) => {
       console.log(err);
     })
+    }
+    /*Remove Log*/
+    removeUserLog = (id) => {
+      axios.post("http://localhost:5000/api/logs/remove", {
+        refID: id
+      })
+      .then(res => {
+        this.getUserLogs(this.state.userId);
+        this.pushNavigation('/log');
+      })
+      .catch(err => {
+        console.log(err);
+      })
     }
 
   //Handle error from API call and inform user
@@ -231,7 +244,8 @@ class App extends Component {
           <Route path='/log'
                  render={(props) => <Log {...props}
                  userLogs={logs}
-                 postLog={this.postUserLogs} />} />
+                 postLog={this.postUserLogs}
+                 removeLog={this.removeUserLog}/>} />
           <Route path='/results'
                  render={(props) => <Results {...props} user={user}
                  weight={weight}
