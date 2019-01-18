@@ -45,7 +45,7 @@ class Goals extends Component  {
             <option value='by'>By</option>
             </select>
         </section>
-        <section id="landing-container" className="flex-col">
+        <section className="goal-display">
           <div className="flex-row">
             <article className="flex-col">
                 <i className="fas fa-weight"></i>
