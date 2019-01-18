@@ -7,6 +7,7 @@ const goals = require("./routes/api/goals");
 const logs = require("./routes/api/logs");
 const app = express();
 const cors = require('cors');
+require("dotenv").config();
 
 //CORS workaround for localhost
 const corsOptions = {
