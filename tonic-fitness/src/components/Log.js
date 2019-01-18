@@ -120,6 +120,7 @@ class Log extends Component  {
             <select name="meal"
                     value={localEntry.meal}
                     onChange={this.handleInputChange} >
+              <option>Choose Meal</option>
               <option value="Breakfast">Breakfast</option>
               <option value="Lunch">Lunch</option>
               <option value="Dinner">Dinner</option>
