@@ -5,9 +5,9 @@ class Goals extends Component  {
     super(props);
     this.state = {
       UI: {
-        weight: '',
-        goal: '',
-        by: ''
+        weight: '[input above]',
+        goal: '[input above]',
+        by: '[input above]'
       }
     }
   }
@@ -46,23 +46,21 @@ class Goals extends Component  {
             </select>
         </section>
         <section className="goal-display">
-          <div className="flex-row">
-            <article className="flex-col">
-                <i className="fas fa-weight"></i>
-              <p className="heading-text"> Current Weight: <span className='weight'>{UI.weight}</span>
-              </p>
-            </article>
-            <article className="flex-col">
-                <i className="fas fa-running"></i>
-              <p className="heading-text"> Ideal Weight: <span className='goal'>{UI.goal}</span>
-              </p>
-            </article>
-            <article className="flex-col">
-                <i className="fas fa-clock"></i>
-              <p className="heading-text"> By: <span className='by'>{UI.by}</span>
-              </p>
-            </article>
-          </div>
+          <article className="flex-col">
+              <i className="fas fa-weight"></i>
+            <p className="heading-text"> Current Weight: <span className='weight'>{UI.weight}</span>
+            </p>
+          </article>
+          <article className="flex-col">
+              <i className="fas fa-running"></i>
+            <p className="heading-text"> Ideal Weight: <span className='goal'>{UI.goal}</span>
+            </p>
+          </article>
+          <article className="flex-col">
+              <i className="fas fa-clock"></i>
+            <p className="heading-text"> By: <span className='by'>{UI.by}</span>
+            </p>
+          </article>
         </section>
       </div>
     );
