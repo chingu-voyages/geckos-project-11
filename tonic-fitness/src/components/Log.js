@@ -5,87 +5,20 @@ class Log extends Component  {
     super(props);
     this.state = {
       localEntry: {
-        day: '',
         month: '',
+        day: '',
         year: '',
         meal: '',
         calories: ''
       },
-      log: [
-        /* These are fakes for testing, will be replaced with actual user info from database */
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Breakfast',
-          calories: '1200'
-        },
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Lunch',
-          calories: '2000'
-        },
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Dinner',
-          calories: '2200'
-        },
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Lunch',
-          calories: '2000'
-        },
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Lunch',
-          calories: '2000'
-        },
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Lunch',
-          calories: '2000'
-        },
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Lunch',
-          calories: '2000'
-        },
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Lunch',
-          calories: '2000'
-        },
-        {
-          day: '23',
-          month: '12',
-          year: '2018',
-          meal: 'Lunch',
-          calories: '2000'
-        }
-      ]
     }
 
     //Bindings
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleAddEntry = this.handleAddEntry.bind(this);
-    this.handleRemoveEntry = this.handleRemoveEntry.bind(this);
   }
 
-  /* Form inputs are pushed up into this.state.entry so that React has total control of the data */
+  /* Form inputs are pushed up into this.state.localEntry so that React has total control of the data */
   handleInputChange(e) {
     const target = e.target;
     const value = target.value;
@@ -101,29 +34,27 @@ class Log extends Component  {
     })
   }
 
-  /*Commits info from termporary this.state.localEntry to
-  permanent entry in this.state.log and resets input
-  fields in localEntry */
+  /*Commits info from temporary this.state.localEntry to permanent entry in DB log through postUserLogs function in app.js and resets input fields in localEntry */
   handleAddEntry(e) {
-    const currentDay = this.state.localEntry.day;
     const currentMonth = this.state.localEntry.month;
+    const currentDay = this.state.localEntry.day;
     const currentYear = this.state.localEntry.year;
     const currentMeal = this.state.localEntry.meal;
     const currentCalories = this.state.localEntry.calories;
 
-    //Build new object to push into this.state.log
+    //Build new object to pass to postUserLogs function in app.js
     const newEntry = {
-      day: `${currentDay}`,
       month: `${currentMonth}`,
+      day: `${currentDay}`,
       year: `${currentYear}`,
       meal: `${currentMeal}`,
       calories: `${currentCalories}`
     }
 
-    //Push into this.state.log
-    this.state.log.push(newEntry);
+    //Pass newEntry object to postUserLogs function in app.js
+    this.props.postLog(newEntry);
 
-    //Reset local log
+    //Reset log entry form
     this.setState ({
       localEntry: {
         day: '',
@@ -135,18 +66,11 @@ class Log extends Component  {
     })
   }
 
-  /* Removes entry from this.state.log and visible list of entries on page */
-  handleRemoveEntry(e) {
-    const getLog = this.state.log;
-    const changeLog = getLog.filter(entry => entry !== e);
-
-    this.setState ({
-      log: changeLog
-    })
-  }
-
 
   render() {
+    //Destructuring
+    const { userLogs, removeLog } = this.props;
+    const { localEntry } = this.state;
 
     return (
       <div id="log">
@@ -163,27 +87,28 @@ class Log extends Component  {
                    min="1"
                    max="12"
                    placeholder="M"
-                   value={this.state.localEntry.month}
+                   value={localEntry.month}
                    onChange={this.handleInputChange} />
             <input name="day"
                    type="number"
                    min="1"
                    max="31"
                    placeholder="D"
-                   value={this.state.localEntry.day}
+                   value={localEntry.day}
                    onChange={this.handleInputChange} />
             <input name="year"
                    type="number"
                    min="2017"
                    placeholder="Y"
-                   value={this.state.localEntry.year}
+                   value={localEntry.year}
                    onChange={this.handleInputChange} />
           </div>
           <h4 className="cal-entry-item-title">Meal: </h4>
           <div className="cal-entry-item flex-row">
             <select name="meal"
-                    value={this.state.localEntry.meal}
+                    value={localEntry.meal}
                     onChange={this.handleInputChange} >
+              <option>Choose Meal</option>
               <option value="Breakfast">Breakfast</option>
               <option value="Lunch">Lunch</option>
               <option value="Dinner">Dinner</option>
@@ -196,7 +121,7 @@ class Log extends Component  {
             <input name="calories"
                    type="number"
                    placeholder="Number Only"
-                   value={this.state.localEntry.calories}
+                   value={localEntry.calories}
                    onChange={this.handleInputChange} />
           </div>
           <button name="add"
@@ -209,7 +134,7 @@ class Log extends Component  {
         {/* Map over this.state.log and display each entry */}
         <section className="entry-log-area">
           <h4 className="log-entry-item title">Log Entries </h4>
-          {this.state.log.map((currentEntry, index) => (
+          {userLogs.map((currentEntry, index) => (
             <article className="entry-log flex-col"
                      key={index} >
               <div className="flex-col">
@@ -224,7 +149,7 @@ class Log extends Component  {
               </div>
               <button name="remove"
                       className="remove-button"
-                      onClick={() => {this.handleRemoveEntry(currentEntry)}} >
+                      onClick={() => {removeLog(currentEntry.id)}} >
                 <i className="far fa-times-circle"></i>
               </button>
             </article>

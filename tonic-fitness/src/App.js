@@ -29,15 +29,18 @@ class App extends Component {
     super(props);
     this.state = {
       currentUser: null,
-      user: [
-
-      ]
+      currentUserId: null,
+      logs: [],
+      user: [],
     }
 
   }
 
+
+
   //
   /* API CALLS  */
+  //
   //
   /* CREATE USER */
   //Add user to database when SignUp form is submitted
@@ -63,8 +66,11 @@ class App extends Component {
       })
       .then(response => {
         const newUser = response.data.name;
-        //Next step sets new users name in state as the 'currentUser'
-        this.handleSetUser(newUser);
+        const newUserId = response.data.id;
+        //Set user and ID in state
+        this.handleSetUser(newUser, newUserId);
+        //Get user logs
+        this.getUserLogs(newUserId);
         //Next step 'pushes' new URL using react router history
         //(see function declaration for details)
         this.pushNavigation('/');
@@ -81,6 +87,7 @@ class App extends Component {
       alert("User Already Logged In");
     }
   }
+
 
   /* LOGIN USER */
   //Send login request and receive response
@@ -99,10 +106,15 @@ class App extends Component {
       })
       .then(response => {
         //Save to local storage
-        const userInfo = response.data.name;
-        console.log(userInfo);
-        localStorage.setItem("userName", userInfo);
-        this.handleSetUser(userInfo);
+        const userName = response.data.name;
+        const userId = response.data.id;
+        console.log(userId);
+        localStorage.setItem("userName", userName);
+        localStorage.setItem("userId", userId);
+        //Set user and ID in state
+        this.handleSetUser(userName, userId);
+        //Get user logs
+        this.getUserLogs(userId);
         //Next step 'pushes' new URL using react router history
         //(see function declaration for details)
         this.pushNavigation('/');
@@ -120,22 +132,85 @@ class App extends Component {
     }
   }
 
-  //Handle error from API call and inform user
+
+  /* LOG API CALLS*/
+
+  /* Get user logs */
+  getUserLogs = (userId) => {
+    const _userId = userId;
+    axios.get(`http://localhost:5000/api/logs/user/all`, {
+      userId: _userId
+    })
+    .then(response => {
+      const returnedLogs = response.data;
+      this.setState({
+        logs: returnedLogs
+      });
+      console.log(response)
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+  /* Create log */
+  postUserLogs = (newEntry) => {
+    const _currentMonth     = newEntry.month;
+    const _currentDay       = newEntry.day;
+    const _currentYear      = newEntry.year;
+    const _currentMeal      = newEntry.meal;
+    const _currentCalories  = newEntry.calories;
+    const _user             = this.state.currentUserId;
+
+    axios.post("http://localhost:5000/api/logs/new",{
+    month: _currentMonth,
+    day: _currentDay,
+    year: _currentYear,
+    meal: _currentMeal,
+    calories: _currentCalories,
+    user : _user
+  }).then((response)=>{
+    this.getUserLogs(this.state.userId);
+    this.pushNavigation('/log');
+  }).catch((err) => {
+    console.log(err);
+  })
+  }
+  /* Remove Log */
+  removeUserLog = (id) => {
+    axios.post("http://localhost:5000/api/logs/remove", {
+      refID: id
+    })
+    .then(res => {
+      this.getUserLogs(this.state.userId);
+      this.pushNavigation('/log');
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
+
+  /* Functions */
+
+  //Handle error from Sign Up / Login forms and inform user
   handleAPIError = (error) => {
     const errorDialog = document.getElementById("submit-error");
     errorDialog.innerHTML = `<em>*${error}</em>`;
   }
 
-  //Sets new user in state as this.state.currentUser
-  handleSetUser = (newUser) => {
-    this.setState({ currentUser: newUser });
+  /* Sets new user in state as this.state.currentUser and
+  sets user ID as this.state.currentUserId */
+  handleSetUser = (newUser, newUserId) => {
+    this.setState({ currentUser: newUser,
+                    currentUserId: newUserId});
   }
 
-  //Removes user info from local storage and
-  //navigates back to Landing
+  /* Removes user info from local storage and
+  navigates back to Landing */
   logoutUser = () => {
     localStorage.removeItem("userName");
-    this.handleSetUser(null);
+    localStorage.removeItem("userId");
+    this.handleSetUser(null, null);
     this.pushNavigation(`/`);
   }
 
@@ -153,15 +228,17 @@ class App extends Component {
   componentDidMount() {
     //On app mount: if user stored in local log them in
     const getUserFromLocalStorage = localStorage.getItem("userName");
+    const getIdFromLocalStorage = localStorage.getItem("userId");
     if (!!getUserFromLocalStorage) {
-      this.handleSetUser(getUserFromLocalStorage);
+      this.handleSetUser(getUserFromLocalStorage, getIdFromLocalStorage);
+      this.getUserLogs(getIdFromLocalStorage);
     };
   }
 
   render() {
     //Destructuring
     const {weight, goal, by} = this.state.user;
-    const { currentUser, user } = this.state;
+    const { currentUser, user, logs } = this.state;
 
     return (
       <div id="app-container">
@@ -175,7 +252,10 @@ class App extends Component {
           <Route path='/goals'
                  render={(props) => <Goals {...props} renderApp={(e)=> this.renderApp(e)}/>}/>
           <Route path='/log'
-                 component={Log}/>
+                 render={(props) => <Log {...props}
+                 userLogs={logs}
+                 postLog={this.postUserLogs}
+                 removeLog={this.removeUserLog}/>} />
           <Route path='/results'
                  render={(props) => <Results {...props} user={user}
                  weight={weight}

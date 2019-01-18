@@ -15,9 +15,10 @@ router.get("/all", (req, res) => {
 
 });
 // get all logs of a user
-// path would be api/logs/user/:userID/all
-router.get('/users/:userId/all', (req,res) => {
-    Log.find({user: req.params.userId})
+// path would be api/logs/user/user/all
+router.get('/user/all', (req,res) => {
+  const userId = req.body.userId;
+    Log.find({ "user.$oid" : userId })
     .then((log) => {
       res.json(log)
     })
@@ -28,6 +29,14 @@ router.post('/new', (req, res) => {
         .then((log) => {
             res.json(log)
         })
+});
+//remove log
+router.post('/remove', (req, res) => {
+  const refID = req.body.refID;
+    Log.deleteOne({ "_id.$oid" : refID })
+    .then((log) => {
+        res.json(log)
+    })
 });
 
 module.exports = router;
