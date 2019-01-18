@@ -163,7 +163,7 @@ class App extends Component {
       calories: _currentCalories,
       user : _user
     }).then((response)=>{
-      console.log(response);
+      this.getUserLogs(this.state.userId);
       this.pushNavigation('/log');
     }).catch((err) => {
       console.log(err);
