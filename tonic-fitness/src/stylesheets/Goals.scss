@@ -1,12 +1,9 @@
-// Variables
-$color-primary: #5eb8ff;
-$color-secondary: #0288d1;
-$color-dark : #005b9f;
-$font-main: 'IBM Plex Sans', sans-serif;
-$font-header: 'IBM Plex Sans Condensed', sans-serif;
+//Import variabls and general style
+@import 'App.scss';
 
 #goals {
-    background-color: $color-secondary;
+  background-image: $trans-background,
+                    radial-gradient(ellipse at 50%, $color-secondary 60%, $color-dark );
     font-family: $font-main;
     grid-column: c1 / c2;
     grid-row: r2 / r3;
