@@ -36,8 +36,11 @@ class App extends Component {
 
   }
 
+
+
   //
   /* API CALLS  */
+  //
   //
   /* CREATE USER */
   //Add user to database when SignUp form is submitted
@@ -85,6 +88,7 @@ class App extends Component {
     }
   }
 
+
   /* LOGIN USER */
   //Send login request and receive response
   loginUser = (e) => {
@@ -128,8 +132,10 @@ class App extends Component {
     }
   }
 
-  /* Log API calls*/
-  /*Get all the users logs*/
+
+  /* LOG API CALLS*/
+
+  /* Get user logs */
   getUserLogs = (userId) => {
     const _userId = userId;
     axios.get(`http://localhost:5000/api/logs/user/all`, {
@@ -146,57 +152,61 @@ class App extends Component {
       console.log(err);
     })
   }
-    /*Create Log*/
-    postUserLogs = (newEntry) => {
-      const _currentMonth     = newEntry.month;
-      const _currentDay       = newEntry.day;
-      const _currentYear      = newEntry.year;
-      const _currentMeal      = newEntry.meal;
-      const _currentCalories  = newEntry.calories;
-      const _user             = this.state.currentUserId;
+  /* Create log */
+  postUserLogs = (newEntry) => {
+    const _currentMonth     = newEntry.month;
+    const _currentDay       = newEntry.day;
+    const _currentYear      = newEntry.year;
+    const _currentMeal      = newEntry.meal;
+    const _currentCalories  = newEntry.calories;
+    const _user             = this.state.currentUserId;
 
-      axios.post("http://localhost:5000/api/logs/new",{
-      month: _currentMonth,
-      day: _currentDay,
-      year: _currentYear,
-      meal: _currentMeal,
-      calories: _currentCalories,
-      user : _user
-    }).then((response)=>{
+    axios.post("http://localhost:5000/api/logs/new",{
+    month: _currentMonth,
+    day: _currentDay,
+    year: _currentYear,
+    meal: _currentMeal,
+    calories: _currentCalories,
+    user : _user
+  }).then((response)=>{
+    this.getUserLogs(this.state.userId);
+    this.pushNavigation('/log');
+  }).catch((err) => {
+    console.log(err);
+  })
+  }
+  /* Remove Log */
+  removeUserLog = (id) => {
+    axios.post("http://localhost:5000/api/logs/remove", {
+      refID: id
+    })
+    .then(res => {
       this.getUserLogs(this.state.userId);
       this.pushNavigation('/log');
-    }).catch((err) => {
+    })
+    .catch(err => {
       console.log(err);
     })
-    }
-    /*Remove Log*/
-    removeUserLog = (id) => {
-      axios.post("http://localhost:5000/api/logs/remove", {
-        refID: id
-      })
-      .then(res => {
-        this.getUserLogs(this.state.userId);
-        this.pushNavigation('/log');
-      })
-      .catch(err => {
-        console.log(err);
-      })
-    }
+  }
 
-  //Handle error from API call and inform user
+
+  /* Functions */
+
+  //Handle error from Sign Up / Login forms and inform user
   handleAPIError = (error) => {
     const errorDialog = document.getElementById("submit-error");
     errorDialog.innerHTML = `<em>*${error}</em>`;
   }
 
-  //Sets new user in state as this.state.currentUser
+  /* Sets new user in state as this.state.currentUser and
+  sets user ID as this.state.currentUserId */
   handleSetUser = (newUser, newUserId) => {
     this.setState({ currentUser: newUser,
                     currentUserId: newUserId});
   }
 
-  //Removes user info from local storage and
-  //navigates back to Landing
+  /* Removes user info from local storage and
+  navigates back to Landing */
   logoutUser = () => {
     localStorage.removeItem("userName");
     localStorage.removeItem("userId");

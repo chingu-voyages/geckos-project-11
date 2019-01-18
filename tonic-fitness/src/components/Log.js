@@ -16,10 +16,9 @@ class Log extends Component  {
     //Bindings
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleAddEntry = this.handleAddEntry.bind(this);
-    this.handleRemoveEntry = this.handleRemoveEntry.bind(this);
   }
 
-  /* Form inputs are pushed up into this.state.entry so that React has total control of the data */
+  /* Form inputs are pushed up into this.state.localEntry so that React has total control of the data */
   handleInputChange(e) {
     const target = e.target;
     const value = target.value;
@@ -35,9 +34,7 @@ class Log extends Component  {
     })
   }
 
-  /*Commits info from termporary this.state.localEntry to
-  permanent entry in this.state.log and resets input
-  fields in localEntry */
+  /*Commits info from temporary this.state.localEntry to permanent entry in DB log through postUserLogs function in app.js and resets input fields in localEntry */
   handleAddEntry(e) {
     const currentMonth = this.state.localEntry.month;
     const currentDay = this.state.localEntry.day;
@@ -45,7 +42,7 @@ class Log extends Component  {
     const currentMeal = this.state.localEntry.meal;
     const currentCalories = this.state.localEntry.calories;
 
-    //Build new object to push into this.state.log
+    //Build new object to pass to postUserLogs function in app.js
     const newEntry = {
       month: `${currentMonth}`,
       day: `${currentDay}`,
@@ -54,10 +51,10 @@ class Log extends Component  {
       calories: `${currentCalories}`
     }
 
-    //Push into this.state.log// function from aap.js to post it to db
+    //Pass newEntry object to postUserLogs function in app.js
     this.props.postLog(newEntry);
 
-    //Reset local log
+    //Reset log entry form
     this.setState ({
       localEntry: {
         day: '',
@@ -66,15 +63,6 @@ class Log extends Component  {
         meal: '',
         calories: ''
       }
-    })
-  }
-
-  /* Removes entry from this.state.log and visible list of entries on page */
-  handleRemoveEntry(e) {
-    const getLog = this.state.log;
-    const changeLog = getLog.filter(entry => entry !== e);
-    this.setState ({
-      log: changeLog
     })
   }
 
