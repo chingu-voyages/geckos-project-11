@@ -34,7 +34,9 @@ const GoalSchema = new Schema({
   }
 });
 const LogSchema = new Schema({
-  date: Date,
+  month: Number,
+  day: Number,
+  year: Number,
   meal: String,
   calories: Number,
   user: {

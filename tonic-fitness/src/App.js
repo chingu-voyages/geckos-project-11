@@ -30,19 +30,8 @@ class App extends Component {
     this.state = {
       currentUser: null,
       currentUserId: null,
-      user: [
-
-      ],
-      logs: [
-        {
-          month: '12',
-          day: '23',
-          year: '2018',
-          meal: 'breakfast',
-          calories: '124'
-        },
-
-      ],
+      logs: [],
+      user: [],
     }
 
   }
@@ -143,14 +132,15 @@ class App extends Component {
   /*Get all the users logs*/
   getUserLogs = (userId) => {
     const _userId = userId;
-    axios.get(`http://localhost:5000/api/logs/:userId/all`, {
+    axios.get(`http://localhost:5000/api/logs/user/all`, {
       userId: _userId
     })
     .then(response => {
+      const returnedLogs = response.data;
       this.setState({
-        logs: response.data
+        logs: returnedLogs
       });
-      console.log(this.state.logs)
+      console.log(response)
     })
     .catch(err => {
       console.log(err);
@@ -158,23 +148,25 @@ class App extends Component {
   }
     /*Create logs*/
     postUserLogs = (newEntry) => {
-      const _currentDay       = newEntry.day;
       const _currentMonth     = newEntry.month;
+      const _currentDay       = newEntry.day;
       const _currentYear      = newEntry.year;
       const _currentMeal      = newEntry.meal;
       const _currentCalories  = newEntry.calories;
       const _user             = this.state.currentUserId;
 
       axios.post("http://localhost:5000/api/logs/new",{
-      day: _currentDay,
       month: _currentMonth,
+      day: _currentDay,
       year: _currentYear,
       meal: _currentMeal,
       calories: _currentCalories,
       user : _user
     }).then((response)=>{
+      console.log(response);
       this.pushNavigation('/log');
     }).catch((err) => {
+      console.log(err);
     })
     }
 

@@ -15,9 +15,10 @@ router.get("/all", (req, res) => {
 
 });
 // get all logs of a user
-// path would be api/logs/user/:userID/all
-router.get('/:userId/all', (req,res) => {
-    Log.find({user: req.body.userId})
+// path would be api/logs/user/user/all
+router.get('/user/all', (req,res) => {
+  const userId = req.body.userId;
+    Log.find({ "user.$oid" : userId })
     .then((log) => {
       res.json(log)
     })

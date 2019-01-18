@@ -39,16 +39,16 @@ class Log extends Component  {
   permanent entry in this.state.log and resets input
   fields in localEntry */
   handleAddEntry(e) {
-    const currentDay = this.state.localEntry.day;
     const currentMonth = this.state.localEntry.month;
+    const currentDay = this.state.localEntry.day;
     const currentYear = this.state.localEntry.year;
     const currentMeal = this.state.localEntry.meal;
     const currentCalories = this.state.localEntry.calories;
 
     //Build new object to push into this.state.log
     const newEntry = {
-      day: `${currentDay}`,
       month: `${currentMonth}`,
+      day: `${currentDay}`,
       year: `${currentYear}`,
       meal: `${currentMeal}`,
       calories: `${currentCalories}`
