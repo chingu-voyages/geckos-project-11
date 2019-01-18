@@ -108,7 +108,6 @@ class App extends Component {
         //Save to local storage
         const userName = response.data.name;
         const userId = response.data.id;
-        console.log(userId);
         localStorage.setItem("userName", userName);
         localStorage.setItem("userId", userId);
         //Set user and ID in state
@@ -146,7 +145,6 @@ class App extends Component {
       this.setState({
         logs: returnedLogs
       });
-      console.log(response)
     })
     .catch(err => {
       console.log(err);
