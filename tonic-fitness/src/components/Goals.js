@@ -46,19 +46,19 @@ class Goals extends Component  {
             </select>
         </section>
         <section className="goal-display">
-          <article className="flex-col">
+          <article className="goal-box flex-col">
               <i className="fas fa-weight"></i>
-            <p className="heading-text"> Current Weight: <span className='weight'>{UI.weight}</span>
+            <p className="heading-text dark-text"> Current Weight: <span className='weight'>{UI.weight}</span>
             </p>
           </article>
-          <article className="flex-col">
+          <article className="goal-box flex-col">
               <i className="fas fa-running"></i>
-            <p className="heading-text"> Ideal Weight: <span className='goal'>{UI.goal}</span>
+            <p className="heading-text dark-text"> Ideal Weight: <span className='goal'>{UI.goal}</span>
             </p>
           </article>
-          <article className="flex-col">
+          <article className="goal-box flex-col">
               <i className="fas fa-clock"></i>
-            <p className="heading-text"> By: <span className='by'>{UI.by}</span>
+            <p className="heading-text dark-text"> By: <span className='by'>{UI.by}</span>
             </p>
           </article>
         </section>

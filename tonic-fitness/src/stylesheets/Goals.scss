@@ -7,7 +7,6 @@
     font-family: $font-main;
     grid-column: c1 / c2;
     grid-row: r2 / r3;
-    height: 100vh;
 
     .header {
       width: 100%;
@@ -45,6 +44,21 @@
       margin: 2em 0;
     }
 
+    .goal-box {
+      width: 100%;
+      max-width: 250px;
+      padding: 0.5em 0;
+      margin: 1em 0;
+      border-radius: 0.3em;
+      color: $color-secondary;
+      background-color: #ffffff;
+      box-shadow: 1px 1px 20px $color-dark;
+    }
+
+    .dark-text {
+      color: $color-secondary;
+    }
+
     .fas {
       font-size: 3em;
     }
@@ -60,5 +74,21 @@
         height: 74.7vh;
         background-color: $color-secondary;
     }
+
+}
+
+@media only screen and (min-width:600px) {
+
+ #goals {
+
+   .goal-box {
+     max-width: 400px;
+   }
+
+   .fas {
+     font-size: 5em;
+   }
+
+ }
 
 }
