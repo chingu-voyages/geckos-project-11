@@ -1,16 +1,17 @@
 import React from 'react'
 
 const Results = (props) => {
-    let maintenance = 2000;
-    let totalCalories = 1750;
-    let defecit = maintenance - totalCalories;
-    let target = (props.weight - props.goal) * 3500;
-    let pace = Math.round(target/defecit);
-    return (
-        <div id='results'>
+  let maintenance = 2000;
+  let totalCalories = 1750;
+  let defecit = maintenance - totalCalories;
+  let target = (props.weight - props.goal) * 3500;
+  let pace = Math.round(target/defecit);
 
-        <section id="landing-container" className="flex-col">
-        <h1>Maintenance 2000 calories</h1>
+  return (
+    <div id="results">
+      <h2 className="header">Maintenance 2000 calories</h2>
+
+      <section id="landing-container" className="flex-col">
         <div className="display flex-row">
           <article className="flex-col">
               <i className="fas fa-weight"></i>
@@ -26,8 +27,8 @@ const Results = (props) => {
           </article>
         </div>
       </section>
-        </div>
-    )
+    </div>
+  )
 }
 
 
