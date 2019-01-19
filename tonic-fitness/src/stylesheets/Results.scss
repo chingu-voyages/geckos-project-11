@@ -25,19 +25,5 @@
       margin: 2em 0;
     }
 
-    input {
-        margin-left: 42%;
-        width: 300px;
-    }
-    ul {
-        text-align: center;
-        list-style-type: none;
-    }
-    #landing-container {
-        grid-column: c1 / c2;
-        grid-row: r2 / r3;
-        height: 74.7vh;
-        background-color: $color-secondary;
-    }
 
 }
