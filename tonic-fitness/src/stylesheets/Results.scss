@@ -8,9 +8,21 @@
     grid-column: c1 / c2;
     grid-row: r2 / r3;
 
-    h1 {
-        font-family: $font-header;
-        text-align: center;
+    .header {
+      width: 100%;
+      background-color: #000;
+      color: $color-primary;
+      font-family: $font-header;
+      text-align: center;
+    }
+
+    .result-display {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin: 2em 0;
     }
 
     input {
