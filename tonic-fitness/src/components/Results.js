@@ -12,17 +12,17 @@ const Results = (props) => {
       <h2 className="header">Maintenance 2000 calories</h2>
 
       <section className="result-display">
-        <article className="flex-col">
+        <article className="results-box flex-col">
             <i className="fas fa-weight"></i>
-          <p className="heading-text"> Calories today: {totalCalories} </p>
+          <p className="heading-text dark-text"> Calories today: {totalCalories} </p>
         </article>
-        <article className="flex-col">
+        <article className="results-box flex-col">
             <i className="fas fa-chart-line"></i>
-          <p className="heading-text"> Current Pace: {pace} days</p>
+          <p className="heading-text dark-text"> Current Pace: {pace} days</p>
         </article>
-        <article className="flex-col">
+        <article className="results-box flex-col">
             <i className="fas fa-clock"></i>
-          <p className="heading-text"> By: </p>
+          <p className="heading-text dark-text"> By: </p>
         </article>
       </section>
     </div>

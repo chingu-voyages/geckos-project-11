@@ -25,5 +25,39 @@
       margin: 2em 0;
     }
 
+    .results-box {
+      width: 100%;
+      max-width: 250px;
+      padding: 0.5em 0;
+      margin: 1em 0;
+      border-radius: 0.3em;
+      color: $color-secondary;
+      background-color: #ffffff;
+      box-shadow: 1px 1px 20px $color-dark;
+    }
+
+    .dark-text {
+      color: $color-secondary;
+    }
+
+    .fas {
+      font-size: 3em;
+    }
+
+}
+
+@media only screen and (min-width:600px) {
+
+  #results {
+
+    .results-box {
+      max-width: 400px;
+    }
+
+    .fas {
+      font-size: 5em;
+    }
+
+  }
 
 }
