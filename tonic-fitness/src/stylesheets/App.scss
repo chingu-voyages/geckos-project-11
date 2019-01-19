@@ -1,0 +1,60 @@
+// Variables
+$color-primary: #5eb8ff;
+$color-secondary: #0288d1;
+$color-dark : #005b9f;
+$trans-background: url("../backgrounds/escher_dark_bg.png");
+$font-main: 'IBM Plex Sans', sans-serif;
+$font-header: 'IBM Plex Sans Condensed', sans-serif;
+
+
+/*  Root Styling/Layout */
+
+//Remove default styling from links
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+#app-container {
+  display: grid;
+  grid-template-columns: [c1] 100% [c2];
+  grid-template-rows: [r1] 100px [r2] 1fr [r3] 200px [r4];
+}
+
+.flex-col {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.heading-text {
+  font-family: $font-header;
+  font-size: 1em;
+  color: #fff;
+}
+
+.hide {
+  display: none;
+}
+
+
+/* MEDIA QUERIES */
+
+@media only screen and (min-width:600px) {
+
+.heading-text {
+  font-size: 2em;
+}
+
+}

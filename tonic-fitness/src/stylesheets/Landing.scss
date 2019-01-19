@@ -1,0 +1,117 @@
+//Import variabls and general style
+@import 'App.scss';
+
+/* Landing */
+
+#landing-container {
+  grid-column: c1 / c2;
+  grid-row: r2 / r3;
+  height: 100vh;
+  background-image: $trans-background,
+                    radial-gradient(ellipse at 50%, $color-secondary 60%, $color-dark );
+
+  .landing-area {
+    display: grid;
+    grid-template-columns: [c1] 8% [c2] 1fr [c3] 1fr [c4] 8% [c5];
+    grid-template-rows: [r1] 10% [r2] 1fr [r3] 1fr [r4] 1fr [r5] 10% [r6];
+    grid-gap: 0.4em;
+    width: 100%;
+    max-width: 1300px;
+    height: 580px;
+    margin: 1em 0;
+  }
+
+  .landing-box {
+    position: relative;
+    grid-column: c2 / c4;
+    grid-row: r2 / r3;
+    border-radius: 0.3em;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 20px $color-dark;
+  }
+
+  .landing-box:nth-of-type(2) {
+    grid-column: c2 / c3;
+    grid-row: r3 / r4;
+  }
+
+  .landing-box:nth-of-type(3) {
+    grid-column: c3 / c4;
+    grid-row: r3 / r4;
+  }
+
+  .landing-box:nth-of-type(4) {
+    grid-column: c2 / c3;
+    grid-row: r4 / r5;
+  }
+
+  .landing-box:nth-of-type(5) {
+    grid-column: c3 / c4;
+    grid-row: r4 / r5;
+  }
+
+  .landing-header {
+    font-size: 1.3em;
+  }
+
+  .landing-box-words {
+    margin-left: 0.3em;
+    color: $color-secondary;
+  }
+
+  .landing-box-words-d {
+    margin: 0.7em;
+    color: $color-dark;
+  }
+
+  .landing-box-number {
+    position: absolute;
+    bottom: 0.2em;
+    right: 0.2em;
+    padding: 0;
+    margin: 0;
+    font-size: 1.8em;
+    color: $color-secondary;
+  }
+
+  .fas {
+    font-size: 3em;
+  }
+
+}
+
+/* Media Queries */
+
+@media only screen and (min-width:600px) {
+
+#landing-container {
+
+  .landing-area {
+    grid-template-columns: [c1] 20% [c2] 1fr [c3] 1fr [c4] 20% [c5];
+    grid-template-rows: [r1] 10% [r2] 1fr [r3] 1fr [r4] 1fr [r5] 10% [r6];
+    grid-gap: 0.6em;
+    width: 100%;
+    height: 1200px;
+  }
+
+  .landing-header {
+    font-size: 2.2em;
+  }
+
+  .landing-box-number {
+    font-size: 3em;
+  }
+
+  .landing-box-words-d {
+    margin: 1em;
+    font-size: 1.3em;
+  }
+
+  .fas {
+    font-size: 8em;
+  }
+
+}
+
+
+}

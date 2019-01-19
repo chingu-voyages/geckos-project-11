@@ -1,0 +1,164 @@
+//Import variabls and general style
+@import 'App.scss';
+
+/* Login */
+
+#login-container {
+  grid-column: c1 / c2;
+  grid-row: r2 / r3;
+  width: 100%;
+  height: 100vh;
+  background-image: $trans-background,
+                    radial-gradient(ellipse at 50%, $color-secondary 60%, $color-dark );
+
+  .body {
+    position: relative;
+    width: 90%;
+    height: 80%;
+    background-color: #fff;
+    box-shadow: 5px 5px 25px #000;
+    overflow-y: scroll;
+  }
+
+  .close {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    z-index: 2;
+  }
+
+  .close:hover{
+    cursor:pointer;
+  }
+
+  .nav {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    z-index: 2;
+  }
+
+  .nav-item {
+    width: 50%;
+    padding: 0.6em 0;
+    text-align: center;
+    color: #fff;
+    background-color: $color-dark;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .nav-item:hover {
+    cursor: pointer;
+  }
+
+  .login-body {
+    width: 100%;
+  }
+
+}
+
+#signup-form {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  .form-field {
+    width: 90%;
+    margin: 1em auto;
+    color: $color-dark;
+    line-height: 1.2em;
+    font-variant: small-caps;
+  }
+
+  input {
+    width: 100%;
+    margin: 0;
+    padding: 0.2em;
+    font-size: 0.9em;
+    font-family:  monospace;
+    border-radius: 0.4em;
+  }
+
+  #submit-error {
+    color: red;
+  }
+
+  .submit-button {
+    width: 95%;
+    margin: 0;
+    padding: 0.2em 0;
+    color: $color-primary;
+    font-size: 1.2em;
+    font-variant: small-caps;
+    letter-spacing: 0.3em;
+    border-image: 0;
+    border-radius: 0.4em;
+  }
+
+  .submit-button:hover {
+    box-shadow: 4px 3px 20px #000;
+  }
+
+  ::placeholder {
+    padding: 0.3em;
+    color: $color-primary;
+    opacity: 0.5;
+  }
+
+}
+
+
+/* Media Queries */
+
+@media only screen and (min-width:600px) {
+
+#login-container {
+
+  .body {
+    height: auto;
+    max-width: 800px;
+    max-height: 900px;
+  }
+
+  .nav {
+    max-width: 800px;
+    max-height: 900px;
+  }
+
+  .close {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    z-index: 3;
+  }
+
+}
+
+.login-body {
+  margin: 1.2em auto;
+}
+
+#signup-form {
+
+  .form-field {
+    line-height: 1em;
+  }
+
+  .heading-text {
+    font-size: 1.2em;
+  }
+
+  input {
+    margin: 0.2em;
+    font-size: 1em;
+  }
+
+  .submit-button {
+    font-size: 1.6em;
+  }
+
+}
+
+}

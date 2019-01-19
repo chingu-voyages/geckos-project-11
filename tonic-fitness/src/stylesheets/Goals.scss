@@ -1,0 +1,36 @@
+// Variables
+$color-primary: #5eb8ff;
+$color-secondary: #0288d1;
+$color-dark : #005b9f;
+$font-main: 'IBM Plex Sans', sans-serif;
+$font-header: 'IBM Plex Sans Condensed', sans-serif;
+
+#goals {
+    background-color: $color-secondary;
+    font-family: $font-main;
+    grid-column: c1 / c2;
+    grid-row: r2 / r3;
+    height: 100vh;
+
+
+    h1 {
+        font-family: $font-header;
+        text-align: center;
+    }
+
+    input {
+        margin-left: 42%;
+        width: 300px;
+    }
+    ul {
+        text-align: center;
+        list-style-type: none;
+    }
+    #landing-container {
+        grid-column: c1 / c2;
+        grid-row: r2 / r3;
+        height: 74.7vh;
+        background-color: $color-secondary;
+    }
+
+}

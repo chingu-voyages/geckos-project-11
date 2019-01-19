@@ -1,0 +1,87 @@
+//Import variabls and general style
+@import 'App.scss';
+
+
+/* Nav */
+
+#nav-container {
+  grid-column: c1 / c2;
+  grid-row: r1 / r2;
+  width: 100%;
+  background-color: #000;
+  box-shadow: 0 2px 15px #000;
+
+  #header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-height: 100%;
+  }
+
+  #icon {
+    font-size: 2em;
+    color: $color-primary;
+    font-family: $font-header;
+  }
+
+  .login {
+    color: $color-primary;
+    font-family: $font-header;
+  }
+
+  .login-item {
+    font-size: 0.9em;
+  }
+
+  .login-item:hover {
+    cursor: pointer;
+  }
+
+  .login-item:first-of-type {
+    padding: 0.5em;
+    margin: 0.5em;
+    border-right: 1px solid #fff;
+  }
+
+  .welcome {
+    color: $color-primary;
+    font-family: $font-header;
+    padding: 0;
+    margin: 0;
+  }
+
+  .logout {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    padding: 0;
+    margin: 0;
+  }
+
+  .logout:hover {
+    cursor: pointer;
+  }
+
+}
+
+
+/* Media Queries */
+
+@media only screen and (min-width:600px) {
+
+#nav-container {
+
+  #icon {
+    font-size: 3em;
+  }
+
+  .login-item {
+    font-size: 1.2em;
+  }
+
+}
+
+}
