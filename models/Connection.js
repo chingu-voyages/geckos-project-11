@@ -26,8 +26,8 @@ const UserSchema = new Schema({
 });
 const GoalSchema = new Schema({
   weight: Number,
-  lose: Number,
-  by: Date,
+  goal: Number,
+  by: String,
   user: {
     type: Schema.ObjectId,
     ref: 'User'

@@ -197,9 +197,9 @@ class App extends Component {
     const _by = newEntry.by;
     const _user = this.state.currentUserId;
 
-    axios.post("http://localhost:5000/api/goals/new",{
-    currentWeight: _currentWeight,
-    idealWeight: _idealWeight,
+    axios.post("http://localhost:5000/api/goals/update",{
+    weight: _currentWeight,
+    goal: _idealWeight,
     by: _by,
     user : _user
   }).then((response)=>{
