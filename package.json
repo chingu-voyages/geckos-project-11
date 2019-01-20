@@ -4,8 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "concurrently \"nodemon server.js\" \"cd tonic-fitness && npm start\"",
-    "server": "nodemon server.js"
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run server\" \"cd tonic-fitness && npm start\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false cd tonic-fitness && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
