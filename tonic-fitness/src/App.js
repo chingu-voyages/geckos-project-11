@@ -58,7 +58,7 @@ class App extends Component {
       const _location = e.target.location.value;
 
       //API post to register user
-      axios.post("http://localhost:5000/api/users/register", {
+      axios.post("https://chingu-tonic-fitness.herokuapp.com/api/users/register", {
         name: _username,
         email: _email,
         password: _password1,
@@ -101,7 +101,7 @@ class App extends Component {
       const _password = e.target.password.value;
 
       //API post to login user
-      axios.post("http://localhost:5000/api/users/login", {
+      axios.post("https://chingu-tonic-fitness.herokuapp.com/api/users/login", {
         email: _email,
         password: _password
       })

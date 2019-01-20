@@ -4,8 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "server": "node server.js",
-    "start" : "node server.js",
+    "dev": "concurrently \"nodemon server.js\" \"cd tonic-fitness && npm start\"",
+    "server": "nodemon server.js",
+    "start": "node server.js",
     "heroku-postbuild": "cd tonic-fitness && npm install --only=dev && npm install && npm run build"
   },
   "author": "",
@@ -29,5 +30,5 @@
   },
   "engines": {
     "node": "8.9.3"
-}
+  }
 }
