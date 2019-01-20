@@ -1,36 +1,94 @@
-// Variables
-$color-primary: #5eb8ff;
-$color-secondary: #0288d1;
-$color-dark : #005b9f;
-$font-main: 'IBM Plex Sans', sans-serif;
-$font-header: 'IBM Plex Sans Condensed', sans-serif;
+//Import variabls and general style
+@import 'App.scss';
 
 #goals {
-    background-color: $color-secondary;
+  background-image: $trans-background,
+                    radial-gradient(ellipse at 50%, $color-secondary 60%, $color-dark );
     font-family: $font-main;
     grid-column: c1 / c2;
     grid-row: r2 / r3;
-    height: 100vh;
 
-
-    h1 {
-        font-family: $font-header;
-        text-align: center;
+    .header {
+      width: 100%;
+      background-color: #000;
+      color: $color-primary;
+      font-family: $font-header;
+      text-align: center;
     }
 
-    input {
-        margin-left: 42%;
-        width: 300px;
+    .enter-goal {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
     }
+
+    .text-goal {
+      width: 250px;
+      margin: 1em 0;
+    }
+
+    .selection {
+      margin: 1em 0;
+      background-color: #fff;
+      border: 1px solid gray;
+    }
+
+    .goal-display {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin: 2em 0;
+    }
+
+    .goal-box {
+      width: 100%;
+      max-width: 250px;
+      padding: 0.5em 0;
+      margin: 1em 0;
+      border-radius: 0.3em;
+      color: $color-secondary;
+      background-color: #ffffff;
+      box-shadow: 1px 1px 20px $color-dark;
+    }
+
+    .dark-text {
+      color: $color-secondary;
+    }
+
+    .fas {
+      font-size: 3em;
+    }
+
     ul {
         text-align: center;
         list-style-type: none;
     }
+
     #landing-container {
         grid-column: c1 / c2;
         grid-row: r2 / r3;
         height: 74.7vh;
         background-color: $color-secondary;
     }
+
+}
+
+@media only screen and (min-width:600px) {
+
+ #goals {
+
+   .goal-box {
+     max-width: 400px;
+   }
+
+   .fas {
+     font-size: 5em;
+   }
+
+ }
 
 }
