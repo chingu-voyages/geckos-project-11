@@ -31,7 +31,7 @@ class Goals extends Component  {
 
   render () {
     const {UI} = this.state;
-    
+
     return (
       <div id="goals">
         <h2 className="header">My Goals</h2>

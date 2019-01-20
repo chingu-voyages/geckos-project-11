@@ -32,7 +32,7 @@ class App extends Component {
       currentUser: null,
       currentUserId: null,
       logs: [],
-      user: [],
+      user: {},
     }
 
   }
@@ -188,6 +188,43 @@ class App extends Component {
     })
   }
 
+  /* Goal API Calls */
+
+  /* Set User Goals */
+  postUserGoals = (newEntry) => {
+    const _currentWeight = newEntry.weight;
+    const _idealWeight = newEntry.goal;
+    const _by = newEntry.by;
+    const _user = this.state.currentUserId;
+
+    axios.post("http://localhost:5000/api/goals/new",{
+    currentWeight: _currentWeight,
+    idealWeight: _idealWeight,
+    by: _by,
+    user : _user
+  }).then((response)=>{
+    console.log(response.data);
+  }).catch((err) => {
+    console.log(err);
+  })
+  }
+
+  /* Get User Goals */
+  getUserGoals = (userId) => {
+    const _userId = userId;
+    axios.get(`http://localhost:5000/api/goals/user/all`, {
+      userId: _userId
+    })
+    .then(response => {
+      const returnedGoals = response.data;
+      this.setState({
+        user: returnedGoals
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
 
   /* Functions */
 
@@ -222,6 +259,7 @@ class App extends Component {
 
   renderApp = (e) => {
     this.setState({user:e});
+    this.postUserGoals(e);
   }
 
   componentDidMount() {

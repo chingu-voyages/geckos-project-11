@@ -15,9 +15,10 @@ router.get("/all", (req, res) => {
 
 });
 // get goals of a user
-// path would be api/goals/user/:userID/all
-router.get('/users/:userId/all', (req,res) => {
-    Goal.find({user: req.params.userId})
+// path would be api/goals/user/all
+router.get('user/all', (req,res) => {
+  const userId = req.body.userId;
+    Goal.find({ "user.$oid" : userId })
     .then((goal) => {
       res.json(goal)
     })
