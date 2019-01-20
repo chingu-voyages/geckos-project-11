@@ -54,7 +54,7 @@ if (process.env.NODE_ENV === "production") {
   // Set static folder
   app.use(express.static('tonic-fitness/build'));
   app.get('*', (req,res) => {
-    res.sendFile(path.resolve(_dirname, 'tonic-fitness', 'build', 'index.html'));
+    res.sendFile(path.resolve(___dirname, 'tonic-fitness', 'build', 'index.html'));
   });
 }
 
