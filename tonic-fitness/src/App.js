@@ -197,7 +197,7 @@ class App extends Component {
     const _by = newEntry.by;
     const _user = this.state.currentUserId;
 
-    axios.post("http://localhost:5000/api/goals/update",{
+    axios.post("http://localhost:5000/api/goals/new",{
     weight: _currentWeight,
     goal: _idealWeight,
     by: _by,
@@ -269,6 +269,7 @@ class App extends Component {
     if (!!getUserFromLocalStorage) {
       this.handleSetUser(getUserFromLocalStorage, getIdFromLocalStorage);
       this.getUserLogs(getIdFromLocalStorage);
+      this.getUserGoals(getIdFromLocalStorage);
     };
   }
 

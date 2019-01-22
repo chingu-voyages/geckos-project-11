@@ -22,6 +22,20 @@ router.get('/user/all', (req,res) => {
     .then((goal) => {
       res.json(goal)
     })
+});
+// if goal already exists for user update it, if none exist then create the initial goal
+router.post('/update', (req, res) => {
+  const query = {"user.$oid" : req.body.userId};
+  const update = req.body
+  Goal.findOneAndUpdate(
+    query,
+    update,
+    {upsert:true, new:true},
+    function(error, result) {
+      if (error) return res.send(500, {error});
+      return res.send("Success!");
+    }
+  )
 })
 // router.post('/goals/:_id/updategoal', function(req,res){
 //     Goal.findOneAndUpdate({_id: req.params._id},req.body,{new: true})
@@ -30,6 +44,7 @@ router.get('/user/all', (req,res) => {
 //     })
 //   });
 // create goal
+
 router.post('/new', (req, res) => {
     Goal.create(req.body)
         .then((goal) => {
