@@ -7,7 +7,9 @@ const goals = require("./routes/api/goals");
 const logs = require("./routes/api/logs");
 const app = express();
 const cors = require('cors');
-
+const path = require("path");
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'tonic-fitness/build')));
 //CORS workaround for localhost
 const corsOptions = {
   origin: function (origin, callback) {
@@ -47,6 +49,8 @@ require("./config/passport")(passport);
 app.use("/api/users", users);
 app.use("/api/goals", goals);
 app.use("/api/logs", logs);
-
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/tonic-fitness/build/index.html'));
+});
 const port = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
 app.listen(port, () => console.log(`Server up and running on port ${port} !`));
