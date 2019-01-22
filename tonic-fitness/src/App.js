@@ -21,6 +21,7 @@ import './stylesheets/Dashboard.scss';
 import './stylesheets/Login.scss';
 import './stylesheets/Goals.scss';
 import './stylesheets/Log.scss';
+import './stylesheets/Results.scss';
 import './stylesheets/Footer.scss';
 
 
