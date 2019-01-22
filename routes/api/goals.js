@@ -34,7 +34,7 @@ router.post('/update', (req, res) => {
     {upsert:true, new:true},
     function(error, result) {
       if (error) return res.send(500, {error});
-      return res.send("Success!");
+      return res.send("Goal successfully updated");
     }
   )
 })

@@ -188,13 +188,15 @@ class App extends Component {
     })
   }
 
+
   /* Goal API Calls */
 
   /* Set User Goals */
-  postUserGoals = (newEntry) => {
-    const _currentWeight = newEntry.weight;
-    const _idealWeight = newEntry.goal;
-    const _by = newEntry.by;
+  postUserGoals = (e) => {
+    e.preventDefault();
+    const _currentWeight = e.target.weight.value;
+    const _idealWeight = e.target.goal.value;
+    const _by = e.target.by.value;
     const _user = this.state.currentUserId;
 
     axios.post("http://localhost:5000/api/goals/update",{
@@ -217,13 +219,13 @@ class App extends Component {
     })
     .then(response => {
       const returnedGoals = response.data[0];
-      this.setState({
-        user: {
-          weight: returnedGoals.weight,
-          goal: returnedGoals.goal,
-          by: returnedGoals.by
-        }
-      });
+        this.setState({
+          user: {
+            weight: (!!returnedGoals ? returnedGoals.weight : '[Input Above]'),
+            goal: (!!returnedGoals ? returnedGoals.goal : '[Input Above]'),
+            by: (!!returnedGoals ? returnedGoals.by : '[Input Above]')
+          }
+        });
       console.log(returnedGoals);
     })
     .catch(err => {
@@ -293,7 +295,8 @@ class App extends Component {
               Dashboard, else it displays Landing */
                  component={() => !!currentUser ? <Dashboard/> : <Landing/>} />
           <Route path='/goals'
-                 render={(props) => <Goals {...props} renderApp={(e)=> this.renderApp(e)}/>}/>
+                 render={(props) => <Goals {...props} handleAddUserGoal={this.postUserGoals}
+                 userGoals={this.state.user} />}/>
           <Route path='/log'
                  render={(props) => <Log {...props}
                  userLogs={logs}
