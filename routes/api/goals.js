@@ -23,7 +23,8 @@ router.get('/user/all', (req,res) => {
       res.json(goal)
     })
 });
-// if goal already exists for user update it, if none exist then create the initial goal
+// if goal already exists for user update it, if none exist then create the initial goal.
+//upsert tells Mongo to create the entry if the query can't be matched
 router.post('/update', (req, res) => {
   const query = {"user.$oid" : req.body.userId};
   const update = req.body
@@ -37,19 +38,13 @@ router.post('/update', (req, res) => {
     }
   )
 })
-// router.post('/goals/:_id/updategoal', function(req,res){
-//     Goal.findOneAndUpdate({_id: req.params._id},req.body,{new: true})
+
+// create goal
+// router.post('/new', (req, res) => {
+//     Goal.create(req.body)
 //         .then((goal) => {
 //             res.json(goal)
-//     })
-//   });
-// create goal
-
-router.post('/new', (req, res) => {
-    Goal.create(req.body)
-        .then((goal) => {
-            res.json(goal)
-        })
-});
+//         })
+// });
 
 module.exports = router;

@@ -216,10 +216,15 @@ class App extends Component {
       userId: _userId
     })
     .then(response => {
-      const returnedGoals = response.data;
+      const returnedGoals = response.data[0];
       this.setState({
-        user: returnedGoals
+        user: {
+          weight: returnedGoals.weight,
+          goal: returnedGoals.goal,
+          by: returnedGoals.by
+        }
       });
+      console.log(returnedGoals);
     })
     .catch(err => {
       console.log(err);
