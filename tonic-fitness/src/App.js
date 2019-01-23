@@ -207,7 +207,6 @@ class App extends Component {
   }).then((response)=>{
     this.getUserGoals(this.state.userId);
     this.pushNavigation('/goals');
-    console.log(response.data);
   }).catch((err) => {
     console.log(err);
   })
@@ -228,7 +227,6 @@ class App extends Component {
             by: (!!returnedGoals ? returnedGoals.by : '[Input Above]')
           }
         });
-      console.log(returnedGoals);
     })
     .catch(err => {
       console.log(err);
