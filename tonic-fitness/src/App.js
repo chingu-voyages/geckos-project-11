@@ -205,6 +205,8 @@ class App extends Component {
     by: _by,
     user : _user
   }).then((response)=>{
+    this.getUserGoals(this.state.userId);
+    this.pushNavigation('/goals');
     console.log(response.data);
   }).catch((err) => {
     console.log(err);
