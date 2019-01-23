@@ -32,7 +32,7 @@ class App extends Component {
       currentUser: null,
       currentUserId: null,
       logs: [],
-      user: [],
+      user: {},
     }
 
   }
@@ -189,6 +189,52 @@ class App extends Component {
   }
 
 
+  /* Goal API Calls */
+
+  /* Set User Goals */
+  postUserGoals = (e) => {
+    e.preventDefault();
+    const _currentWeight = e.target.weight.value;
+    const _idealWeight = e.target.goal.value;
+    const _by = e.target.by.value;
+    const _user = this.state.currentUserId;
+
+    axios.post("http://localhost:5000/api/goals/update",{
+    weight: _currentWeight,
+    goal: _idealWeight,
+    by: _by,
+    user : _user
+  }).then((response)=>{
+    this.getUserGoals(this.state.userId);
+    this.pushNavigation('/goals');
+    console.log(response.data);
+  }).catch((err) => {
+    console.log(err);
+  })
+  }
+
+  /* Get User Goals */
+  getUserGoals = (userId) => {
+    const _userId = userId;
+    axios.get(`http://localhost:5000/api/goals/user/all`, {
+      userId: _userId
+    })
+    .then(response => {
+      const returnedGoals = response.data[0];
+        this.setState({
+          user: {
+            weight: (!!returnedGoals ? returnedGoals.weight : '[Input Above]'),
+            goal: (!!returnedGoals ? returnedGoals.goal : '[Input Above]'),
+            by: (!!returnedGoals ? returnedGoals.by : '[Input Above]')
+          }
+        });
+      console.log(returnedGoals);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
   /* Functions */
 
   //Handle error from Sign Up / Login forms and inform user
@@ -222,6 +268,7 @@ class App extends Component {
 
   renderApp = (e) => {
     this.setState({user:e});
+    this.postUserGoals(e);
   }
 
   componentDidMount() {
@@ -231,6 +278,7 @@ class App extends Component {
     if (!!getUserFromLocalStorage) {
       this.handleSetUser(getUserFromLocalStorage, getIdFromLocalStorage);
       this.getUserLogs(getIdFromLocalStorage);
+      this.getUserGoals(getIdFromLocalStorage);
     };
   }
 
@@ -249,7 +297,8 @@ class App extends Component {
               Dashboard, else it displays Landing */
                  component={() => !!currentUser ? <Dashboard/> : <Landing/>} />
           <Route path='/goals'
-                 render={(props) => <Goals {...props} renderApp={(e)=> this.renderApp(e)}/>}/>
+                 render={(props) => <Goals {...props} handleAddUserGoal={this.postUserGoals}
+                 userGoals={this.state.user} />}/>
           <Route path='/log'
                  render={(props) => <Log {...props}
                  userLogs={logs}
