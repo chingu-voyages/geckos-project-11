@@ -13,16 +13,16 @@ const path = require("path");
 app.use(express.static(path.join(__dirname, 'tonic-fitness/build')));
 
 //CORS workaround for localhost
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (origin === "http://localhost:3000" ){
-      callback(null, true)
-    } else {
-      callback(new Error("Not Allowed By CORS"))
-    }
-  }
-}
-app.use(cors(corsOptions))
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (origin === "http://localhost:5000" ){
+//       callback(null, true)
+//     } else {
+//       callback(new Error("Not Allowed By CORS"))
+//     }
+//   }
+// }
+// app.use(cors(corsOptions))
 
 // Bodyparser middleware
 app.use(

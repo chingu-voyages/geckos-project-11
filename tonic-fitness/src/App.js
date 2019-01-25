@@ -58,7 +58,7 @@ class App extends Component {
       const _location = e.target.location.value;
 
       //API post to register user
-      axios.post("http://localhost:5000/api/users/register", {
+      axios.post("/api/users/register", {
         name: _username,
         email: _email,
         password: _password1,
@@ -101,7 +101,7 @@ class App extends Component {
       const _password = e.target.password.value;
 
       //API post to login user
-      axios.post("http://localhost:5000/api/users/login", {
+      axios.post("/api/users/login", {
         email: _email,
         password: _password
       })
@@ -138,7 +138,7 @@ class App extends Component {
   /* Get user logs */
   getUserLogs = (userId) => {
     const _userId = userId;
-    axios.get(`http://localhost:5000/api/logs/user/all`, {
+    axios.get("/api/logs/user/all", {
       userId: _userId
     })
     .then(response => {
@@ -160,7 +160,7 @@ class App extends Component {
     const _currentCalories  = newEntry.calories;
     const _user             = this.state.currentUserId;
 
-    axios.post("http://localhost:5000/api/logs/new",{
+    axios.post("/api/logs/new",{
     month: _currentMonth,
     day: _currentDay,
     year: _currentYear,
@@ -176,7 +176,7 @@ class App extends Component {
   }
   /* Remove Log */
   removeUserLog = (id) => {
-    axios.post("http://localhost:5000/api/logs/remove", {
+    axios.post("/api/logs/remove", {
       refID: id
     })
     .then(res => {
@@ -199,7 +199,7 @@ class App extends Component {
     const _by = e.target.by.value;
     const _user = this.state.currentUserId;
 
-    axios.post("http://localhost:5000/api/goals/update",{
+    axios.post("api/goals/update",{
     weight: _currentWeight,
     goal: _idealWeight,
     by: _by,
@@ -215,7 +215,7 @@ class App extends Component {
   /* Get User Goals */
   getUserGoals = (userId) => {
     const _userId = userId;
-    axios.get(`http://localhost:5000/api/goals/user/all`, {
+    axios.get("/api/goals/user/all", {
       userId: _userId
     })
     .then(response => {
