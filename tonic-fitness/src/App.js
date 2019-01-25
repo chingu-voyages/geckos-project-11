@@ -32,7 +32,7 @@ class App extends Component {
       currentUser: null,
       currentUserId: null,
       logs: [],
-      user: [],
+      user: {},
     }
 
   }
@@ -58,7 +58,7 @@ class App extends Component {
       const _location = e.target.location.value;
 
       //API post to register user
-      axios.post("http://localhost:5000/api/users/register", {
+      axios.post("/api/users/register", {
         name: _username,
         email: _email,
         password: _password1,
@@ -101,7 +101,7 @@ class App extends Component {
       const _password = e.target.password.value;
 
       //API post to login user
-      axios.post("http://localhost:5000/api/users/login", {
+      axios.post("/api/users/login", {
         email: _email,
         password: _password
       })
@@ -138,7 +138,7 @@ class App extends Component {
   /* Get user logs */
   getUserLogs = (userId) => {
     const _userId = userId;
-    axios.get(`http://localhost:5000/api/logs/user/all`, {
+    axios.get("/api/logs/user/all", {
       userId: _userId
     })
     .then(response => {
@@ -160,7 +160,7 @@ class App extends Component {
     const _currentCalories  = newEntry.calories;
     const _user             = this.state.currentUserId;
 
-    axios.post("http://localhost:5000/api/logs/new",{
+    axios.post("/api/logs/new",{
     month: _currentMonth,
     day: _currentDay,
     year: _currentYear,
@@ -176,7 +176,7 @@ class App extends Component {
   }
   /* Remove Log */
   removeUserLog = (id) => {
-    axios.post("http://localhost:5000/api/logs/remove", {
+    axios.post("/api/logs/remove", {
       refID: id
     })
     .then(res => {
@@ -188,6 +188,50 @@ class App extends Component {
     })
   }
 
+
+  /* Goal API Calls */
+
+  /* Set User Goals */
+  postUserGoals = (e) => {
+    e.preventDefault();
+    const _currentWeight = e.target.weight.value;
+    const _idealWeight = e.target.goal.value;
+    const _by = e.target.by.value;
+    const _user = this.state.currentUserId;
+
+    axios.post("api/goals/update",{
+    weight: _currentWeight,
+    goal: _idealWeight,
+    by: _by,
+    user : _user
+  }).then((response)=>{
+    this.getUserGoals(this.state.userId);
+    this.pushNavigation('/goals');
+  }).catch((err) => {
+    console.log(err);
+  })
+  }
+
+  /* Get User Goals */
+  getUserGoals = (userId) => {
+    const _userId = userId;
+    axios.get("/api/goals/user/all", {
+      userId: _userId
+    })
+    .then(response => {
+      const returnedGoals = response.data[0];
+        this.setState({
+          user: {
+            weight: (!!returnedGoals ? returnedGoals.weight : '[Input Above]'),
+            goal: (!!returnedGoals ? returnedGoals.goal : '[Input Above]'),
+            by: (!!returnedGoals ? returnedGoals.by : '[Input Above]')
+          }
+        });
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
 
   /* Functions */
 
@@ -222,6 +266,7 @@ class App extends Component {
 
   renderApp = (e) => {
     this.setState({user:e});
+    this.postUserGoals(e);
   }
 
   componentDidMount() {
@@ -231,6 +276,7 @@ class App extends Component {
     if (!!getUserFromLocalStorage) {
       this.handleSetUser(getUserFromLocalStorage, getIdFromLocalStorage);
       this.getUserLogs(getIdFromLocalStorage);
+      this.getUserGoals(getIdFromLocalStorage);
     };
   }
 
@@ -249,7 +295,8 @@ class App extends Component {
               Dashboard, else it displays Landing */
                  component={() => !!currentUser ? <Dashboard/> : <Landing/>} />
           <Route path='/goals'
-                 render={(props) => <Goals {...props} renderApp={(e)=> this.renderApp(e)}/>}/>
+                 render={(props) => <Goals {...props} handleAddUserGoal={this.postUserGoals}
+                 userGoals={this.state.user} />}/>
           <Route path='/log'
                  render={(props) => <Log {...props}
                  userLogs={logs}
