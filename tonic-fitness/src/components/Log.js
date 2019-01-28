@@ -5,9 +5,7 @@ class Log extends Component  {
     super(props);
     this.state = {
       localEntry: {
-        month: '',
         day: '',
-        year: '',
         meal: '',
         calories: ''
       },
@@ -36,17 +34,13 @@ class Log extends Component  {
 
   /*Commits info from temporary this.state.localEntry to permanent entry in DB log through postUserLogs function in app.js and resets input fields in localEntry */
   handleAddEntry(e) {
-    const currentMonth = this.state.localEntry.month;
     const currentDay = this.state.localEntry.day;
-    const currentYear = this.state.localEntry.year;
     const currentMeal = this.state.localEntry.meal;
     const currentCalories = this.state.localEntry.calories;
 
     //Build new object to pass to postUserLogs function in app.js
     const newEntry = {
-      month: `${currentMonth}`,
       day: `${currentDay}`,
-      year: `${currentYear}`,
       meal: `${currentMeal}`,
       calories: `${currentCalories}`
     }
@@ -58,8 +52,6 @@ class Log extends Component  {
     this.setState ({
       localEntry: {
         day: '',
-        month: '',
-        year: '',
         meal: '',
         calories: ''
       }
@@ -80,28 +72,20 @@ class Log extends Component  {
 
         <section className="cal-entry flex-col">
 
-          <h4 className="cal-entry-item-title">Date: </h4>
+          <h4 className="cal-entry-item-title">Day: </h4>
           <div className="cal-entry-item flex-row">
-            <input name="month"
-                   type="number"
-                   min="1"
-                   max="12"
-                   placeholder="M"
-                   value={localEntry.month}
-                   onChange={this.handleInputChange} />
-            <input name="day"
-                   type="number"
-                   min="1"
-                   max="31"
-                   placeholder="D"
-                   value={localEntry.day}
-                   onChange={this.handleInputChange} />
-            <input name="year"
-                   type="number"
-                   min="2017"
-                   placeholder="Y"
-                   value={localEntry.year}
-                   onChange={this.handleInputChange} />
+            <select name="day"
+                    value={localEntry.day}
+                    onChange={this.handleInputChange} >
+              <option>Choose Day</option>
+              <option value="Sunday">Sunday</option>
+              <option value="Monday">Monday</option>
+              <option value="Tuesday">Tuesday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Thursday">Thursday</option>
+              <option value="Friday">Friday</option>
+              <option value="Saturday">Saturday</option>
+            </select>
           </div>
           <h4 className="cal-entry-item-title">Meal: </h4>
           <div className="cal-entry-item flex-row">
@@ -139,11 +123,7 @@ class Log extends Component  {
                      key={index} >
               <div className="flex-col">
                 <span className="flex-row">
-                  <h4 className="log-entry-item title"> {currentEntry.month} </h4>
-                  <h4 className="log-entry-item title"> / </h4>
                   <h4 className="log-entry-item title"> {currentEntry.day} </h4>
-                  <h4 className="log-entry-item title"> / </h4>
-                  <h4 className="log-entry-item title"> {currentEntry.year} </h4>
                 </span>
                 <h4 className="log-entry-item title"> {currentEntry.meal} - {currentEntry.calories} calories </h4>
               </div>
