@@ -2,11 +2,14 @@ import React from 'react';
 import { HorizontalBar } from 'react-chartjs-2';
 
 const Results = (props) => {
-  let maintenance = 2000;
-  let totalCalories = 1750;
-  let defecit = maintenance - totalCalories;
-  let target = (props.weight - props.goal) * 3500;
-  let overUnder = Math.round(target/defecit);
+  let logs = props.userLogs;
+  // let dailyCalories = [];
+
+  //Filter by day
+  const dayFilter = (day) => {logs.filter(log => log.day === day)}
+
+  //Loop over User Logs and add daily calories to dailyCalories
+  let monday = dayFilter("Monday");
 
   //Set data for Chart
   const chartData = {
@@ -14,7 +17,7 @@ const Results = (props) => {
     datasets: [
       {
         label: "Calories Logged",
-        data: ["1000", "1200", "1500", "1200", "2000", "2000", "2200",],
+        data: [monday, "1200", "1500", "1200", "2000", "2000", "2200",],
         backgroundColor: "#5eb8ff",
         borderColor: "#0288d1",
         borderWidth: 1
@@ -58,11 +61,11 @@ const Results = (props) => {
         </article>
         <article className="results-box flex-col">
             <i className="fas fa-weight"></i>
-          <p className="heading-text dark-text"> Weekly Calorie Total: {totalCalories} </p>
+          <p className="heading-text dark-text"> Weekly Calorie Total: {monday} </p>
         </article>
         <article className="results-box flex-col">
             <i className="fas fa-chart-line"></i>
-          <p className="heading-text dark-text"> Over/Under Goal: {overUnder}</p>
+          <p className="heading-text dark-text"> Over/Under Goal: Placeholder</p>
         </article>
       </section>
     </div>
