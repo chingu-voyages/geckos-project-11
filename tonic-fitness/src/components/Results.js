@@ -1,5 +1,5 @@
 import React from 'react';
-import Chart from 'chart.js';
+import { HorizontalBar } from 'react-chartjs-2';
 
 const Results = (props) => {
   let maintenance = 2000;
@@ -8,56 +8,50 @@ const Results = (props) => {
   let target = (props.weight - props.goal) * 3500;
   let pace = Math.round(target/defecit);
 
-  //Define ctx for Chart
-  let ctx = document.getElementById("results-chart");
-
-  //Setup Chart
-  let resultChart = new Chart (ctx, {
-    type: 'bar',
-    data: {
-      labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      datasets: [{
-        label: "Daily Goal",
-        data: ["2000", "2000", "2000", "2000", "2000", "2000", "2000",],
-        backgroundColor: [
-          "green",
-          "green",
-          "green",
-          "green",
-          "green",
-          "green",
-          "green"
-        ],
-        borderColor: [
-          "red",
-          "red",
-          "red",
-          "red",
-          "red",
-          "red",
-          "red"
-        ],
+  //Set data for Chart
+  const chartData = {
+    labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    datasets: [
+      {
+        label: "Calories Logged",
+        data: ["1000", "1200", "1500", "1200", "2000", "2000", "2200",],
+        backgroundColor: "#5eb8ff",
+        borderColor: "#0288d1",
         borderWidth: 1
+      },
+      {
+      label: "Daily Goal",
+      data: ["2000", "2000", "2000", "2000", "2000", "2000", "2000",],
+      backgroundColor: "black",
+      borderColor: "#0288d1",
+      borderWidth: 1
+    }]
+  };
+
+  //Set options for chart
+  const chartOptions = {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero:true
+        },
+        stacked: true
       }]
     },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero:true
-          }
-        }]
-      }
-    }
-  });
+    barThickness: "flex"
+  };
+
 
   return (
     <div id="results">
       <h2 className="header">Maintenance 2000 calories</h2>
 
       <section className="result-display">
-        <canvas id="results-chart" width="600" height="600">
-        </canvas>
+        <article className="chart">
+          <HorizontalBar
+            data = {chartData}
+            options= {chartOptions} />
+        </article>
         <article className="results-box flex-col">
             <i className="fas fa-weight"></i>
           <p className="heading-text dark-text"> Calories today: {totalCalories} </p>
