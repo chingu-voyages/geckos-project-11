@@ -30,6 +30,10 @@ const Results = (props) => {
 
   //Set options for chart
   const chartOptions = {
+    title: {
+      display: true,
+      text: "Daily goal based on 2000 calorie diet",
+    },
     scales: {
       yAxes: [{
         ticks: {
@@ -44,7 +48,7 @@ const Results = (props) => {
 
   return (
     <div id="results">
-      <h2 className="header">Maintenance 2000 calories</h2>
+      <h2 className="header">Weekly Result</h2>
 
       <section className="result-display">
         <article className="chart">
