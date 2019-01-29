@@ -6,7 +6,7 @@ const Results = (props) => {
   let totalCalories = 1750;
   let defecit = maintenance - totalCalories;
   let target = (props.weight - props.goal) * 3500;
-  let pace = Math.round(target/defecit);
+  let overUnder = Math.round(target/defecit);
 
   //Set data for Chart
   const chartData = {
@@ -54,15 +54,11 @@ const Results = (props) => {
         </article>
         <article className="results-box flex-col">
             <i className="fas fa-weight"></i>
-          <p className="heading-text dark-text"> Calories today: {totalCalories} </p>
+          <p className="heading-text dark-text"> Weekly Calorie Total: {totalCalories} </p>
         </article>
         <article className="results-box flex-col">
             <i className="fas fa-chart-line"></i>
-          <p className="heading-text dark-text"> Current Pace: {pace} days</p>
-        </article>
-        <article className="results-box flex-col">
-            <i className="fas fa-clock"></i>
-          <p className="heading-text dark-text"> By: </p>
+          <p className="heading-text dark-text"> Over/Under Goal: {overUnder}</p>
         </article>
       </section>
     </div>

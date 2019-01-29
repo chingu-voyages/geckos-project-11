@@ -86,9 +86,15 @@
 
   #results {
 
+    .result-display {
+      flex-flow: row wrap;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
     .chart {
       width: 800px;
-      height: 600px;
+      height: 520px;
     }
 
   }
@@ -101,7 +107,7 @@
 
     .chart {
       width: 1000px;
-      height: 800px;
+      height: 680px;
     }
 
   }
