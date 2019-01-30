@@ -2,14 +2,39 @@ import React from 'react';
 import { HorizontalBar } from 'react-chartjs-2';
 
 const Results = (props) => {
+  //Bring in User Logs fromn props
   let logs = props.userLogs;
-  // let dailyCalories = [];
 
-  //Filter by day
-  const dayFilter = (day) => {logs.filter(log => log.day === day)}
+  //Filter logs by day
+  const dayFilter = (day) => {logs.filter(log => log.day === day)};
 
-  //Loop over User Logs and add daily calories to dailyCalories
-  let monday = dayFilter("Monday");
+  //Add calories from selected day
+  const calorieAdder = (day) => {
+    let dayOfWeek = dayFilter(day);
+    let calorieTotal = 0;
+    if (!dayOfWeek) {
+      console.log(calorieTotal);
+      return calorieTotal;
+    } else {
+      for (day in dayOfWeek) {
+        calorieTotal += day.calories;
+      };
+      console.log(calorieTotal);
+      return calorieTotal;
+    }
+  };
+
+  //Store daily/weekly calorie totals
+  const sundayTotal = calorieAdder("Sunday");
+  const mondayTotal = calorieAdder("Monday");
+  const tuesdayTotal = calorieAdder("Tuesday");
+  const wednesdayTotal = calorieAdder("Wednesday");
+  const thursdayTotal = calorieAdder("Thursday");
+  const fridayTotal = calorieAdder("Friday");
+  const saturdayTotal = calorieAdder("Saturday");
+  const totalCalories = (sundayTotal + mondayTotal + tuesdayTotal + wednesdayTotal + thursdayTotal + fridayTotal + saturdayTotal);
+  const overUnder = (-14000 + totalCalories);
+
 
   //Set data for Chart
   const chartData = {
@@ -17,7 +42,7 @@ const Results = (props) => {
     datasets: [
       {
         label: "Calories Logged",
-        data: [monday, "1200", "1500", "1200", "2000", "2000", "2200",],
+        data: [sundayTotal, mondayTotal, tuesdayTotal, wednesdayTotal, thursdayTotal, fridayTotal, saturdayTotal],
         backgroundColor: "#5eb8ff",
         borderColor: "#0288d1",
         borderWidth: 1
@@ -61,11 +86,11 @@ const Results = (props) => {
         </article>
         <article className="results-box flex-col">
             <i className="fas fa-weight"></i>
-          <p className="heading-text dark-text"> Weekly Calorie Total: {monday} </p>
+          <p className="heading-text dark-text"> Weekly Calorie Total: {totalCalories} </p>
         </article>
         <article className="results-box flex-col">
             <i className="fas fa-chart-line"></i>
-          <p className="heading-text dark-text"> Over/Under Goal: Placeholder</p>
+          <p className="heading-text dark-text"> Over/Under Goal: {overUnder}</p>
         </article>
       </section>
     </div>
