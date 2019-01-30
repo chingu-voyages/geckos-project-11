@@ -113,3 +113,42 @@
   }
 
 }
+
+@media only screen and (min-width:1400px) {
+
+  #results {
+
+    .chart {
+      width: 1300px;
+      height: 800px;
+    }
+
+  }
+
+}
+
+@media only screen and (min-width:1700px) {
+
+  #results {
+
+    .chart {
+      width: 1600px;
+      height: 1000px;
+    }
+
+  }
+
+}
+
+@media only screen and (min-width:2000px) {
+
+  #results {
+
+    .chart {
+      width: 1900px;
+      height: 1100px;
+    }
+
+  }
+
+}
