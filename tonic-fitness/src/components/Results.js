@@ -5,10 +5,9 @@ const Results = (props) => {
   //Bring in User Logs fromn props
   let logs = props.userLogs;
 
-  //Filter logs by day
+  //Filter logs by day and return all calories for that day
   const dayFilter = (day) => {
     let filteredLog = logs.filter(log => log.day === day);
-    console.log(filteredLog);
     if (!!filteredLog) {
       let calorieTotal = 0;
       for (let i=0; i < filteredLog.length; i++) {
@@ -28,8 +27,11 @@ const Results = (props) => {
   const thursdayTotal = dayFilter("Thursday");
   const fridayTotal = dayFilter("Friday");
   const saturdayTotal = dayFilter("Saturday");
+
   const totalCalories = (sundayTotal + mondayTotal + tuesdayTotal + wednesdayTotal + thursdayTotal + fridayTotal + saturdayTotal);
-  const overUnder = (-14000 + totalCalories);
+
+  const overUnder = (14000 - totalCalories);
+  const overUnderQualifier = (overUnder < 14000) ? "under goal" : (overUnder === 0) ? "at goal" : "over goal";
 
 
   //Set data for Chart
@@ -86,7 +88,7 @@ const Results = (props) => {
         </article>
         <article className="results-box flex-col">
             <i className="fas fa-chart-line"></i>
-          <p className="heading-text dark-text"> Over/Under Goal: {overUnder}</p>
+          <p className="heading-text dark-text">{overUnder} {overUnderQualifier}</p>
         </article>
       </section>
     </div>
