@@ -22,14 +22,14 @@ const Nav = (props) => {
         </section>
         {/* Ternary to display Login options if no user logged in or Welcome {name} if user is signed in */
           (!props.currentUser) ?
-          (<div id="top-right-of-nav" className="login">
+          (<div id="top-right-of-nav-login" className="login">
             <Link to="/login/signup"
                   className="login-item">Sign up</Link>
             <Link to="/login/signin"
                   className="login-item">Sign in</Link>
           </div>)
           :
-          (<div id="top-right-of-nav" className="welcome">
+          (<div id="top-right-of-nav-welcome" className="welcome">
             <p> Welcome {props.currentUser}! </p>
             <button className="logout"
                   onClick={props.handleLogoutUser}>Logout</button>

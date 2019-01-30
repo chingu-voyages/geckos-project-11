@@ -46,9 +46,21 @@
     padding: 0 0.5em;
   }
 
-  #top-right-of-nav {
+  #top-right-of-nav-login {
     grid-column: c3 / c4;
     grid-row: r1 / r3;
+    display: flex;
+    flex-flow:row nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+  #top-right-of-nav-welcome{
+    grid-column: c3 / c4;
+    grid-row: r1 / r3;
+    display: flex;
+    flex-flow:column nowrap;
+    justify-content: center;
+    align-items: center;
   }
 
   .login {
