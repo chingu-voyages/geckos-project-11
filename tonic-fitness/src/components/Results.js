@@ -6,32 +6,28 @@ const Results = (props) => {
   let logs = props.userLogs;
 
   //Filter logs by day
-  const dayFilter = (day) => {logs.filter(log => log.day === day)};
-
-  //Add calories from selected day
-  const calorieAdder = (day) => {
-    let dayOfWeek = dayFilter(day);
-    let calorieTotal = 0;
-    if (!dayOfWeek) {
-      console.log(calorieTotal);
+  const dayFilter = (day) => {
+    let filteredLog = logs.filter(log => log.day === day);
+    console.log(filteredLog);
+    if (!!filteredLog) {
+      let calorieTotal = 0;
+      for (let i=0; i < filteredLog.length; i++) {
+        calorieTotal += filteredLog[i].calories;
+      }
       return calorieTotal;
     } else {
-      for (day in dayOfWeek) {
-        calorieTotal += day.calories;
-      };
-      console.log(calorieTotal);
-      return calorieTotal;
+      return 0;
     }
   };
 
   //Store daily/weekly calorie totals
-  const sundayTotal = calorieAdder("Sunday");
-  const mondayTotal = calorieAdder("Monday");
-  const tuesdayTotal = calorieAdder("Tuesday");
-  const wednesdayTotal = calorieAdder("Wednesday");
-  const thursdayTotal = calorieAdder("Thursday");
-  const fridayTotal = calorieAdder("Friday");
-  const saturdayTotal = calorieAdder("Saturday");
+  const sundayTotal = dayFilter("Sunday");
+  const mondayTotal = dayFilter("Monday");
+  const tuesdayTotal = dayFilter("Tuesday");
+  const wednesdayTotal = dayFilter("Wednesday");
+  const thursdayTotal = dayFilter("Thursday");
+  const fridayTotal = dayFilter("Friday");
+  const saturdayTotal = dayFilter("Saturday");
   const totalCalories = (sundayTotal + mondayTotal + tuesdayTotal + wednesdayTotal + thursdayTotal + fridayTotal + saturdayTotal);
   const overUnder = (-14000 + totalCalories);
 
