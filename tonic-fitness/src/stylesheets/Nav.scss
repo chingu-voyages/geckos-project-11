@@ -10,20 +10,45 @@
   width: 100%;
   background-color: #000;
   box-shadow: 0 2px 15px #000;
+  color: $color-primary;
 
   #header {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    align-items: center;
+    display: grid;
+    grid-template-columns: [c1] 5px [c2] 1fr [c3] 1fr [c5] 5px [c6];
+    grid-template-rows: [r1] 2fr [r2] 1fr [r3];
+    grid-gap: 0.2em;
     width: 100%;
     max-height: 100%;
   }
 
-  #icon {
+  .top-left-title {
+    grid-column: c2 / c3;
+    grid-row: r1 / r2;
+  }
+
+  .title {
+    padding: 0;
+    margin: 0;
     font-size: 2em;
     color: $color-primary;
     font-family: $font-header;
+  }
+
+  .icons {
+    grid-column: c2 / c3;
+    grid-row: r2 / r3;
+    width: 100%;
+    font-size: 1.2em;
+    text-align: center;
+  }
+
+  .link-icons {
+    padding: 0 0.5em;
+  }
+
+  #top-right-of-nav {
+    grid-column: c3 / c4;
+    grid-row: r1 / r3;
   }
 
   .login {
@@ -74,7 +99,7 @@
 
 #nav-container {
 
-  #icon {
+  #title {
     font-size: 3em;
   }
 
