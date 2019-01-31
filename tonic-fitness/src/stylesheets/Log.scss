@@ -123,7 +123,7 @@
   #log {
       display: grid;
       grid-template-columns: [c1] 5% [c2] 1fr [c3] 1fr [c4] 5% [c5];
-      grid-template-rows: [r1] 50px [r2] 100px [r3] 1fr [r4] 200px [r5];
+      grid-template-rows: [r1] 50px [r2] 80px [r3] 1fr [r4] 200px [r5];
       grid-gap: 25px;
 
       .cal-entry {

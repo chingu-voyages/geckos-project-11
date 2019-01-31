@@ -153,17 +153,13 @@ class App extends Component {
   }
   /* Create log */
   postUserLogs = (newEntry) => {
-    const _currentMonth     = newEntry.month;
     const _currentDay       = newEntry.day;
-    const _currentYear      = newEntry.year;
     const _currentMeal      = newEntry.meal;
     const _currentCalories  = newEntry.calories;
     const _user             = this.state.currentUserId;
 
     axios.post("/api/logs/new",{
-    month: _currentMonth,
     day: _currentDay,
-    year: _currentYear,
     meal: _currentMeal,
     calories: _currentCalories,
     user : _user

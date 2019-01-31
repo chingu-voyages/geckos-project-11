@@ -6,7 +6,7 @@
 #dashboard-container {
   grid-column: c1 / c2;
   grid-row: r2 / r3;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 270px);
   background-image: $trans-background,
                     radial-gradient(ellipse at 50%, $color-secondary 60%, $color-dark );
 
