@@ -10,20 +10,72 @@
   width: 100%;
   background-color: #000;
   box-shadow: 0 2px 15px #000;
+  color: $color-primary;
 
   #header {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    align-items: center;
+    display: grid;
+    grid-template-columns: [c1] 5px [c2] 1fr [c3] 1fr [c4] 5px [c5];
+    grid-template-rows: [r1] 2fr [r2] 1fr [r3];
+    grid-gap: 0.2em;
     width: 100%;
-    max-height: 100%;
+    height: 100px;
   }
 
-  #icon {
+  .top-left-title {
+    grid-column: c2 / c3;
+    grid-row: r1 / r2;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 0.2em;
+  }
+
+  .title {
+    padding: 0;
+    margin: 0;
     font-size: 2em;
     color: $color-primary;
     font-family: $font-header;
+  }
+
+  .icons {
+    grid-column: c2 / c3;
+    grid-row: r2 / r3;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    width: 100%;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+  }
+
+  .link-icons {
+    padding: 0 0.5em;
+  }
+
+  .link-icons:hover{
+    color: #fff;
+  }
+
+  #top-right-of-nav-login {
+    grid-column: c3 / c4;
+    grid-row: r1 / r3;
+    display: flex;
+    flex-flow:row nowrap;
+    justify-content: center;
+    align-items: center;
+    padding-right: 0.3em;
+  }
+
+  #top-right-of-nav-welcome{
+    grid-column: c3 / c4;
+    grid-row: r1 / r3;
+    display: flex;
+    flex-flow:column nowrap;
+    justify-content: center;
+    align-items: flex-end;
+    padding-right: 0.3em;
   }
 
   .login {
@@ -74,12 +126,48 @@
 
 #nav-container {
 
-  #icon {
+  #header {
+    display: grid;
+    grid-template-columns: [c1] 10px [c2] 1fr [c3] 1fr [c4] 1fr [c5] 10px [c6];
+    grid-template-rows: [r1] 1fr [r2];
+    grid-gap: 0.2em;
+  }
+
+  .icons {
+    grid-column: c3 / c4;
+    grid-row: r1 / r2;
+    padding-bottom: 0.3em;
+    font-size: 1.6em;
+  }
+
+  #top-right-of-nav-login {
+    grid-column: c4 / c5;
+    grid-row: r1 / r2;
+  }
+
+  #top-right-of-nav-welcome{
+    grid-column: c4 / c5;
+    grid-row: r1 / r2;
+  }
+
+  #title {
     font-size: 3em;
   }
 
   .login-item {
     font-size: 1.2em;
+  }
+
+}
+
+}
+
+@media only screen and (min-width:900px) {
+
+#nav-container {
+
+  .icons {
+    font-size: 2em;
   }
 
 }
