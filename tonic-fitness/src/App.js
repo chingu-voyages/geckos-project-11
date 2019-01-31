@@ -153,17 +153,13 @@ class App extends Component {
   }
   /* Create log */
   postUserLogs = (newEntry) => {
-    const _currentMonth     = newEntry.month;
     const _currentDay       = newEntry.day;
-    const _currentYear      = newEntry.year;
     const _currentMeal      = newEntry.meal;
     const _currentCalories  = newEntry.calories;
     const _user             = this.state.currentUserId;
 
     axios.post("/api/logs/new",{
-    month: _currentMonth,
     day: _currentDay,
-    year: _currentYear,
     meal: _currentMeal,
     calories: _currentCalories,
     user : _user
@@ -282,7 +278,6 @@ class App extends Component {
 
   render() {
     //Destructuring
-    const {weight, goal, by} = this.state.user;
     const { currentUser, user, logs } = this.state;
 
     return (
@@ -296,17 +291,14 @@ class App extends Component {
                  component={() => !!currentUser ? <Dashboard/> : <Landing/>} />
           <Route path='/goals'
                  render={(props) => <Goals {...props} handleAddUserGoal={this.postUserGoals}
-                 userGoals={this.state.user} />}/>
+                 userGoals={user} />}/>
           <Route path='/log'
                  render={(props) => <Log {...props}
                  userLogs={logs}
                  postLog={this.postUserLogs}
                  removeLog={this.removeUserLog}/>} />
           <Route path='/results'
-                 render={(props) => <Results {...props} user={user}
-                 weight={weight}
-                 goal={goal}
-                 by={by}/>}/>
+                 render={(props) => <Results {...props} userLogs={logs}/>}/>
         </Switch>
         <Route path="/login"
                render={(props) => <Login handleCreateUser={this.createUser}
