@@ -278,7 +278,6 @@ class App extends Component {
 
   render() {
     //Destructuring
-    const {weight, goal, by} = this.state.user;
     const { currentUser, user, logs } = this.state;
 
     return (
@@ -292,17 +291,14 @@ class App extends Component {
                  component={() => !!currentUser ? <Dashboard/> : <Landing/>} />
           <Route path='/goals'
                  render={(props) => <Goals {...props} handleAddUserGoal={this.postUserGoals}
-                 userGoals={this.state.user} />}/>
+                 userGoals={user} />}/>
           <Route path='/log'
                  render={(props) => <Log {...props}
                  userLogs={logs}
                  postLog={this.postUserLogs}
                  removeLog={this.removeUserLog}/>} />
           <Route path='/results'
-                 render={(props) => <Results {...props} user={user}
-                 weight={weight}
-                 goal={goal}
-                 by={by}/>}/>
+                 render={(props) => <Results {...props} userLogs={logs}/>}/>
         </Switch>
         <Route path="/login"
                render={(props) => <Login handleCreateUser={this.createUser}
