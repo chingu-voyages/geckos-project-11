@@ -54,6 +54,10 @@
     padding: 0 0.5em;
   }
 
+  .link-icons:hover{
+    color: #fff;
+  }
+
   #top-right-of-nav-login {
     grid-column: c3 / c4;
     grid-row: r1 / r3;
