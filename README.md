@@ -18,7 +18,7 @@ This project will include:
 - [x] Ability to sign up and log in
 - [x] Page to set your goals
 - [x] Ability to input food to track calories
-- [ ] Charts to show/track progress
+- [x] Charts to show/track progress
 
 ## Dependencies
 Our project uses the following:
