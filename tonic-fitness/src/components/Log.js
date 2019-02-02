@@ -125,7 +125,7 @@ class Log extends Component  {
                 <span className="flex-row">
                   <h4 className="log-entry-item title"> {currentEntry.day} </h4>
                 </span>
-                <h4 className="log-entry-item title"> {currentEntry.meal} - {currentEntry.calories} calories </h4>
+                <h4 className="log-entry-item title"> {currentEntry.meal} - {currentEntry.calories} cal </h4>
               </div>
               <button name="remove"
                       className="remove-button"
