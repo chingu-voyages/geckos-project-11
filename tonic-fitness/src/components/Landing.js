@@ -7,7 +7,7 @@ const Landing = () => {
         <article className="landing-area">
           <div className="landing-box">
             <h2 className="heading-text landing-header landing-box-words">Welcome to Tonic Fitness!</h2>
-            <p className="landing-box-words-d">We offer 3 easy to use features for creating goals, logging your caloric intake, and tracking you results.</p>
+            <p className="landing-box-words-d">We offer 3 easy to use features for creating goals, logging your caloric intake, and tracking your results.</p>
             <p className="landing-box-words-d">You + these tools = Results!</p>
           </div>
           <div className="landing-box">
