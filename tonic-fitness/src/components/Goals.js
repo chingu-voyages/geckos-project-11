@@ -58,7 +58,7 @@ class Goals extends Component  {
                     name="add-goal"
                     id="goal-button"
                     className="submit-button">
-              Set/Update Goal
+              Set Goal
             </button>
           </form>
         <section className="goal-display">
